@@ -1,0 +1,23 @@
+{
+  "site": "https://thenewslog.org/",
+  "pages_scanned": 3,
+  "issues": [
+    {
+      "url": "https://thenewslog.org/feed.xml",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://thenewslog.org/feed.xml",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    }
+  ],
+  "meta": {
+    "max_pages": 30,
+    "timestamp": "2025-11-10T22:41:42.039466Z",
+    "agent": "tinyseoai/0.1.0"
+  }
+}

@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tinyseoai"
+version = "0.1.0"
+description = "TinySEO AI – Local SEO Audit Agent powered by OpenAI"
+authors = [
+    { name = "Stalyn Disla" }
+]
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.12"
+
+dependencies = [
+    "typer>=0.12",
+    "rich>=13.7",
+    "pydantic>=2.8",
+    "platformdirs>=4.2",
+    "httpx[http2]>=0.27",
+    "trafilatura>=1.9",
+    "beautifulsoup4>=4.12",
+    "lxml>=5.2",
+    "tldextract>=5.1",
+    "yarl>=1.9",
+    "robotexclusionrulesparser>=1.7",
+    "pandas>=2.2",
+    "numpy>=2.1",
+    "jinja2>=3.1",
+    "playwright>=1.48",
+    "openpyxl>=3.1",
+    "openai>=1.53.0",
+    "python-dotenv>=1.0.1"
+]
+
+[project.optional-dependencies]
+build = ["pyinstaller>=6.10"]
+
+[project.scripts]
+tinyseoai = "tinyseoai.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["tinyseoai*"]
+
+[tool.black]
+line-length = 88
+target-version = ['py312']
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true

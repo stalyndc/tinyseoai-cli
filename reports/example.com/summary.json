@@ -1,0 +1,17 @@
+{
+  "site": "https://example.com/",
+  "pages_scanned": 1,
+  "issues": [
+    {
+      "url": "https://example.com/",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    }
+  ],
+  "meta": {
+    "max_pages": 30,
+    "timestamp": "2025-11-10T23:25:54.152204Z",
+    "agent": "tinyseoai/0.1.0"
+  }
+}

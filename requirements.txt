@@ -1,0 +1,30 @@
+# --- CLI & configuration ---
+typer>=0.12
+rich>=13.7
+pydantic>=2.8
+platformdirs>=4.2
+
+# --- HTTP, crawl, parse ---
+httpx[http2]>=0.27
+trafilatura>=1.9
+beautifulsoup4>=4.12
+lxml>=5.2
+tldextract>=5.1
+yarl>=1.9
+robotexclusionrulesparser>=1.7
+
+# --- Data & scoring ---
+pandas>=2.2
+numpy>=2.1
+
+# --- Reporting (PDF/XLSX) ---
+jinja2>=3.1
+playwright>=1.48        # or comment out and use weasyprint>=62.3
+openpyxl>=3.1           # or xlsxwriter>=3.2
+
+# --- AI / API ---
+openai>=1.53.0          # modern OpenAI client
+python-dotenv>=1.0.1    # load .env (API keys, etc.)
+
+# --- Packaging & local build ---
+pyinstaller>=6.10

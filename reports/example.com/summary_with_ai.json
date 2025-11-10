@@ -1,0 +1,45 @@
+{
+  "site": "https://example.com/",
+  "summary": "The website has a missing meta description, which can negatively impact its visibility in search engine results. Addressing this issue will enhance click-through rates and improve overall SEO performance.",
+  "top_issues": [
+    {
+      "type": "Meta Description Missing",
+      "why_it_matters": "Meta descriptions help search engines understand page content and influence user clicks.",
+      "evidence": "The homepage lacks a meta description, which is crucial for SEO."
+    }
+  ],
+  "recommended_actions": [
+    {
+      "action": "Add a meta description to the homepage",
+      "impact": "high",
+      "effort": "low"
+    },
+    {
+      "action": "Review other pages for missing meta descriptions",
+      "impact": "medium",
+      "effort": "medium"
+    },
+    {
+      "action": "Optimize existing meta descriptions for better engagement",
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "action": "Monitor click-through rates after updates",
+      "impact": "medium",
+      "effort": "low"
+    },
+    {
+      "action": "Educate team on the importance of meta descriptions",
+      "impact": "medium",
+      "effort": "low"
+    }
+  ],
+  "quick_wins": [
+    "Add a concise meta description to the homepage",
+    "Use a meta description template for consistency",
+    "Check for character limits (150-160 characters)"
+  ],
+  "risk_items": [],
+  "plan_used": "free"
+}
