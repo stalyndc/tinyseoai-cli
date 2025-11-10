@@ -464,3 +464,46 @@ def explain(
     console.print(table)
 
     console.print(f"🧠 Saved AI summary → [bold]{out}[/]")
+
+
+# --- NEW: report export (xlsx) ------------------------------------------------
+from .reporting.excel import write_xlsx
+
+@app.command()
+def report(
+    folder: Path = typer.Argument(..., help="Folder containing summary.json (and optionally summary_with_ai.json)"),
+    format: str = typer.Option("xlsx", "--format", "-f", help="Report format (xlsx)"),
+    out: Path = typer.Option(None, "--out", "-o", help="Output file path"),
+):
+    """
+    Build a client-friendly report. Currently supports: XLSX.
+    - Reads summary.json
+    - If summary_with_ai.json exists, merges it under key 'ai_summary'
+    """
+    console.rule("[bold green]Build Report[/]")
+
+    summary_path = folder / "summary.json"
+    if not summary_path.exists():
+        console.print(f"[red]Missing:[/] {summary_path}")
+        raise typer.Exit(code=2)
+
+    data = json.loads(summary_path.read_text())
+
+    ai_path = folder / "summary_with_ai.json"
+    if ai_path.exists():
+        try:
+            ai_data = json.loads(ai_path.read_text())
+            data["ai_summary"] = ai_data
+        except Exception:
+            console.print("[yellow]Note:[/] Could not parse summary_with_ai.json, skipping AI section.")
+
+    if format.lower() != "xlsx":
+        console.print("[red]Only xlsx is supported right now.[/]")
+        raise typer.Exit(code=2)
+
+    if out is None:
+        site_slug = urlparse(data.get("site", "")).netloc or "site"
+        out = folder / f"{site_slug}-report.xlsx"
+
+    result_path = write_xlsx(data, out)
+    console.print(f"📦 Report saved → [bold]{result_path}[/]")
