@@ -4,45 +4,107 @@
   <meta charset="utf-8"/>
   <title>{{ title or "TinySEO AI Report" }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
   <style>
-    :root {
-      --ink:#111;
-      --muted:#666;
-      --border:#e5e7eb;
-      --accent:#2563eb;
-      --bg:#ffffff;
+    {% if font_data %}
+    @font-face{
+      font-family: "Work Sans";
+      src: url("data:font/ttf;base64,{{ font_data }}") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
     }
-    * { box-sizing:border-box; }
-    html,body { margin:0; padding:0; color:var(--ink); background:var(--bg); font: 14px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; }
-    .wrap { max-width: 900px; margin: 32px auto; padding: 0 20px; }
-    header { border-bottom: 2px solid var(--border); margin-bottom: 18px; padding-bottom: 10px; }
-    h1 { font-size: 26px; margin: 0 0 4px; }
-    .subtitle { color: var(--muted); font-size: 13px; }
-    h2 { margin: 28px 0 8px; font-size: 18px; border-bottom: 1px solid var(--border); padding-bottom: 4px; }
-    h3 { margin: 18px 0 6px; font-size: 15px; }
-    p { margin: 10px 0; }
-    .kvs { width:100%; border-collapse: collapse; margin: 8px 0 14px; }
-    .kvs th, .kvs td { text-align: left; padding: 8px 10px; border: 1px solid var(--border); }
-    .kvs th { background:#f8fafc; width:230px; font-weight: 700; }
-    .pill { display:inline-block; font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid var(--border); color:#0f172a; }
-    .pill.high { background:#fee2e2; border-color:#fecaca; }
-    .pill.medium { background:#fff7ed; border-color:#fed7aa; }
-    .pill.low { background:#ecfeff; border-color:#bae6fd; }
-    table.tbl { width:100%; border-collapse: collapse; }
-    table.tbl th, table.tbl td { border:1px solid var(--border); padding:8px 10px; vertical-align: top; }
-    table.tbl th { background:#f8fafc; text-align:left; }
-    .muted { color:var(--muted); }
-    footer { margin-top:32px; padding-top:10px; border-top:1px solid var(--border); font-size:12px; color:var(--muted); }
-    @page { size: A4; margin: 18mm 14mm; }
+    {% endif %}
+
+    /* Brand palette */
+    :root{
+      --brand-coral:#F38181;
+      --brand-yellow:#FCE38A;
+      --brand-mint:#EAFFD0;
+      --brand-teal:#95E1D3;
+
+      --ink:#141414;
+      --muted:#666;
+      --border:#e6e6e6;
+      --bg:#ffffff;
+      --accent: var(--brand-teal);
+    }
+
+    *{box-sizing:border-box}
+    html,body{
+      margin:0; padding:0; color:var(--ink); background:var(--bg);
+      font:14px/1.6 {% if font_data %}"Work Sans"{% else %}system-ui,-apple-system,Segoe UI,Roboto,Ubuntu{% endif %},Arial,"Noto Sans";
+    }
+
+    .wrap{max-width:900px;margin:32px auto;padding:0 20px}
+
+    header{
+      display:flex; align-items:center; gap:14px;
+      border-bottom:2px solid var(--border); padding-bottom:12px; margin-bottom:18px;
+    }
+    .logo{
+      width:42px; height:42px; border-radius:10px;
+      background: linear-gradient(135deg, var(--brand-teal), var(--brand-mint));
+      display:flex; align-items:center; justify-content:center;
+      border:1px solid rgba(0,0,0,.05);
+    }
+    .wordmark h1{font-size:26px; line-height:1.2; margin:0}
+    .subtitle{color:var(--muted); font-size:12.5px}
+
+    h2{margin:26px 0 8px; font-size:18px; border-bottom:1px solid var(--border); padding-bottom:4px}
+    h3{margin:18px 0 6px; font-size:15px}
+    p{margin:10px 0}
+
+    .kvs{width:100%; border-collapse:collapse; margin:8px 0 14px}
+    .kvs th,.kvs td{padding:8px 10px; border:1px solid var(--border); text-align:left}
+    .kvs th{background:var(--brand-mint); width:230px; font-weight:700}
+
+    .pill{display:inline-block; font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid var(--border); color:#0f172a}
+    .pill.high{background:#fee2e2; border-color:#fecaca}
+    .pill.medium{background:#fff7ed; border-color:#fed7aa}
+    .pill.low{background:#ecfeff; border-color:#bae6fd}
+
+    table.tbl{width:100%; border-collapse:collapse}
+    table.tbl th, table.tbl td{border:1px solid var(--border); padding:8px 10px; vertical-align:top}
+    table.tbl th{background:#f8fafc; text-align:left}
+
+    .section-chip{
+      display:inline-block; font-size:11px; letter-spacing:.4px;
+      background:var(--brand-yellow); padding:2px 6px; border-radius:6px; color:#333;
+      border:1px solid rgba(0,0,0,.05);
+    }
+
+    footer{margin-top:32px; padding-top:10px; border-top:1px solid var(--border); font-size:12px; color:var(--muted)}
+    @page{size:A4; margin:18mm 14mm}
+    @page{ @bottom-center { content:"Page " counter(page) " of " counter(pages); } }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-      <h1>{{ title or "TinySEO AI Report" }}</h1>
-      <div class="subtitle">{{ subtitle or "" }}</div>
+      <!-- Inline SVG bot icon -->
+      <div class="logo" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- head -->
+          <rect x="10" y="16" width="44" height="34" rx="10" ry="10" fill="#ffffff" stroke="rgba(0,0,0,.15)" stroke-width="2"/>
+          <!-- eyes -->
+          <circle cx="24" cy="33" r="4.5" fill="#222"/>
+          <circle cx="40" cy="33" r="4.5" fill="#222"/>
+          <!-- antenna -->
+          <line x1="32" y1="10" x2="32" y2="16" stroke="#2b2b2b" stroke-width="2"/>
+          <circle cx="32" cy="8" r="3" fill="#2b2b2b"/>
+          <!-- accent bar -->
+          <rect x="10" y="22" width="44" height="4" rx="2" fill="#95E1D3"/>
+        </svg>
+      </div>
+      <div class="wordmark">
+        <h1>{{ title or "TinySEO AI Report" }}</h1>
+        <div class="subtitle">{{ subtitle or "" }}</div>
+      </div>
     </header>
+
     {% block content %}{% endblock %}
+
     <footer>
       Generated by TinySEO AI • {{ ts }}
     </footer>

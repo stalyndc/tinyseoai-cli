@@ -1,11 +1,11 @@
 {
   "site": "https://example.com/",
-  "summary": "The website has a missing meta description, which can negatively impact search engine visibility and click-through rates. Addressing this issue will enhance the site's SEO performance.",
+  "summary": "The site has a missing meta description, which can negatively impact its visibility in search results. Addressing this issue will improve click-through rates and overall SEO performance.",
   "top_issues": [
     {
       "type": "Meta Description Missing",
-      "why_it_matters": "Meta descriptions help improve search engine rankings and attract clicks from users.",
-      "evidence": "The homepage at https://example.com/ lacks a meta description."
+      "why_it_matters": "Meta descriptions help search engines understand page content and influence user clicks.",
+      "evidence": "The homepage lacks a meta description."
     }
   ],
   "recommended_actions": [
@@ -25,20 +25,20 @@
       "effort": "high"
     },
     {
-      "action": "Monitor search performance after updates",
+      "action": "Monitor click-through rates after implementing changes",
       "impact": "medium",
       "effort": "low"
     },
     {
-      "action": "Educate the team on the importance of meta tags",
+      "action": "Educate the team on best practices for meta descriptions",
       "impact": "medium",
       "effort": "low"
     }
   ],
   "quick_wins": [
-    "Add a relevant meta description to the homepage",
+    "Add a concise meta description to the homepage",
     "Ensure all pages have unique meta descriptions",
-    "Use tools to check for missing meta tags regularly"
+    "Use relevant keywords in meta descriptions"
   ],
   "risk_items": [],
   "plan_used": "free"

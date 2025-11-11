@@ -3,16 +3,26 @@ from __future__ import annotations
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, Any
+import base64
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
+import os
+import importlib.resources as pkg_resources
 
 
 def _templates_path() -> str:
-    # Resolve the templates folder relative to this file
-    from pathlib import Path
-    current_file = Path(__file__).resolve()
-    return str(current_file.parent / "templates")
+    # Resolve templates directory relative to this file to ensure a real
+    # filesystem path for Jinja's FileSystemLoader.
+    return str((Path(__file__).parent / "templates").resolve())
 
+def _font_base64() -> str | None:
+    try:
+        font_pkg = "tinyseoai.reporting.fonts"
+        font_path = pkg_resources.files(font_pkg) / "WorkSans-Regular.woff2"
+        b = font_path.read_bytes()
+        return base64.b64encode(b).decode("ascii")
+    except Exception:
+        return None
 
 def build_html(summary: Dict[str, Any]) -> str:
     env = Environment(
@@ -32,5 +42,6 @@ def build_html(summary: Dict[str, Any]) -> str:
         "issues": summary.get("issues", []),
         "meta": summary.get("meta", {}),
         "ai": summary.get("ai_summary"),
+        "font_data": _font_base64(),
     }
     return tpl.render(**ctx)

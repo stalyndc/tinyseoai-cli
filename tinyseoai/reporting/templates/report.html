@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2>Overview</h2>
+<h2>Overview <span class="section-chip">summary</span></h2>
 <table class="kvs">
   <tr><th>Site</th><td><a href="{{ site }}">{{ site }}</a></td></tr>
   <tr><th>Pages scanned</th><td>{{ pages_scanned }}</td></tr>
@@ -57,7 +57,7 @@
   {% endif %}
 {% endif %}
 
-<h2>All Issues</h2>
+<h2>All Issues <span class="section-chip">{{ issues|length }}</span></h2>
 <table class="tbl">
   <thead>
     <tr><th>Type</th><th>Severity</th><th>URL</th><th>Detail</th></tr>
