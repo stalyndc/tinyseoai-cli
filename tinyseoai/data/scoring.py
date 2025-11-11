@@ -3,10 +3,7 @@ Scoring algorithms for SEO impact/effort analysis and health score calculation.
 """
 from __future__ import annotations
 
-from typing import Dict, List, Tuple
-
 from .models import Issue
-
 
 # Impact scores for different issue types (1-10, higher = more impact)
 ISSUE_IMPACT_SCORES = {
@@ -161,7 +158,7 @@ class IssueScorer:
         priority = (impact / effort) * 5  # Scale factor
         return min(10.0, priority)  # Cap at 10
 
-    def score_issue(self, issue: Issue) -> Dict[str, any]:
+    def score_issue(self, issue: Issue) -> dict[str, any]:
         """
         Score a single issue.
 
@@ -260,8 +257,8 @@ class HealthScoreCalculator:
         self.scorer = IssueScorer()
 
     def calculate_health_score(
-        self, issues: List[Issue], pages_scanned: int
-    ) -> Dict[str, any]:
+        self, issues: list[Issue], pages_scanned: int
+    ) -> dict[str, any]:
         """
         Calculate overall SEO health score.
 
@@ -309,8 +306,8 @@ class HealthScoreCalculator:
         }
 
     def _calculate_category_scores(
-        self, scored_issues: List[Dict[str, any]]
-    ) -> Dict[str, Dict[str, any]]:
+        self, scored_issues: list[dict[str, any]]
+    ) -> dict[str, dict[str, any]]:
         """Calculate scores by category."""
         categories = {}
 
@@ -354,8 +351,8 @@ class HealthScoreCalculator:
             return "F"
 
     def _generate_recommendations(
-        self, scored_issues: List[Dict[str, any]]
-    ) -> List[Dict[str, any]]:
+        self, scored_issues: list[dict[str, any]]
+    ) -> list[dict[str, any]]:
         """
         Generate top recommendations based on priority.
 
@@ -391,7 +388,7 @@ class HealthScoreCalculator:
         return recommendations
 
 
-def prioritize_issues(issues: List[Issue]) -> List[Tuple[Issue, Dict[str, any]]]:
+def prioritize_issues(issues: list[Issue]) -> list[tuple[Issue, dict[str, any]]]:
     """
     Prioritize issues by their impact/effort ratio.
 

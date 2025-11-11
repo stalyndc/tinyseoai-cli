@@ -4,7 +4,6 @@ Web crawler functionality for fetching and extracting page data.
 from __future__ import annotations
 
 import re
-from typing import Set, Tuple
 from urllib.parse import urljoin
 
 import httpx
@@ -53,7 +52,7 @@ async def fetch_page(
         return None
 
 
-def extract_links(html: str, base: str) -> Set[str]:
+def extract_links(html: str, base: str) -> set[str]:
     """
     Extract all links from HTML content.
 
@@ -65,7 +64,7 @@ def extract_links(html: str, base: str) -> Set[str]:
         Set of normalized absolute URLs
     """
     soup = BeautifulSoup(html, "lxml")
-    links: Set[str] = set()
+    links: set[str] = set()
 
     for anchor in soup.find_all("a", href=True):
         href = anchor.get("href").strip()
@@ -81,7 +80,7 @@ def extract_links(html: str, base: str) -> Set[str]:
     return links
 
 
-def extract_meta(html: str) -> Tuple[str | None, str | None, bool]:
+def extract_meta(html: str) -> tuple[str | None, str | None, bool]:
     """
     Extract key metadata from HTML: title, meta description, and noindex status.
 

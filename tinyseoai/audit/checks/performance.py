@@ -4,11 +4,9 @@ Performance checks for page speed optimization and Core Web Vitals indicators.
 from __future__ import annotations
 
 import re
-from typing import Dict, List, Optional
 from urllib.parse import urlparse
 
 from bs4 import BeautifulSoup
-from loguru import logger
 
 from ...data.models import Issue
 
@@ -16,7 +14,7 @@ from ...data.models import Issue
 class PerformanceChecker:
     """Check performance-related SEO factors."""
 
-    def __init__(self, html: str, url: str, response_headers: Optional[Dict] = None):
+    def __init__(self, html: str, url: str, response_headers: dict | None = None):
         """
         Initialize performance checker.
 
@@ -30,7 +28,7 @@ class PerformanceChecker:
         self.soup = BeautifulSoup(html, "lxml")
         self.headers = response_headers or {}
 
-    def check_all(self) -> List[Issue]:
+    def check_all(self) -> list[Issue]:
         """
         Run all performance checks.
 
@@ -48,7 +46,7 @@ class PerformanceChecker:
 
         return issues
 
-    def check_images(self) -> List[Issue]:
+    def check_images(self) -> list[Issue]:
         """
         Check image optimization.
 
@@ -115,7 +113,7 @@ class PerformanceChecker:
 
         return issues
 
-    def check_render_blocking_resources(self) -> List[Issue]:
+    def check_render_blocking_resources(self) -> list[Issue]:
         """
         Check for render-blocking CSS and JavaScript.
 
@@ -169,7 +167,7 @@ class PerformanceChecker:
 
         return issues
 
-    def check_compression(self) -> List[Issue]:
+    def check_compression(self) -> list[Issue]:
         """
         Check if compression is enabled.
 
@@ -205,7 +203,7 @@ class PerformanceChecker:
 
         return issues
 
-    def check_caching(self) -> List[Issue]:
+    def check_caching(self) -> list[Issue]:
         """
         Check caching headers.
 
@@ -271,7 +269,7 @@ class PerformanceChecker:
 
         return issues
 
-    def check_page_size(self) -> List[Issue]:
+    def check_page_size(self) -> list[Issue]:
         """
         Check estimated page size.
 
@@ -330,7 +328,7 @@ class PerformanceChecker:
 
         return issues
 
-    def check_preconnect(self) -> List[Issue]:
+    def check_preconnect(self) -> list[Issue]:
         """
         Check for resource hints (preconnect, dns-prefetch, preload).
 
@@ -370,7 +368,7 @@ class PerformanceChecker:
 
         return issues
 
-    def get_performance_metrics(self) -> Dict[str, any]:
+    def get_performance_metrics(self) -> dict[str, any]:
         """
         Get performance-related metrics.
 

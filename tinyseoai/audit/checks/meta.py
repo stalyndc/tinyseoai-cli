@@ -3,10 +3,7 @@ Meta tag validation including Open Graph, Twitter Cards, and other social meta t
 """
 from __future__ import annotations
 
-from typing import Dict, List, Optional
-
 from bs4 import BeautifulSoup
-from loguru import logger
 
 from ...data.models import Issue
 
@@ -26,7 +23,7 @@ class MetaTagChecker:
         self.url = url
         self.soup = BeautifulSoup(html, "lxml")
 
-    def check_all(self) -> List[Issue]:
+    def check_all(self) -> list[Issue]:
         """
         Run all meta tag checks.
 
@@ -44,7 +41,7 @@ class MetaTagChecker:
 
         return issues
 
-    def check_basic_meta(self) -> List[Issue]:
+    def check_basic_meta(self) -> list[Issue]:
         """
         Check basic meta tags.
 
@@ -72,7 +69,7 @@ class MetaTagChecker:
 
         return issues
 
-    def check_open_graph(self) -> List[Issue]:
+    def check_open_graph(self) -> list[Issue]:
         """
         Check Open Graph meta tags for social sharing.
 
@@ -153,7 +150,7 @@ class MetaTagChecker:
 
         return issues
 
-    def check_twitter_cards(self) -> List[Issue]:
+    def check_twitter_cards(self) -> list[Issue]:
         """
         Check Twitter Card meta tags.
 
@@ -253,7 +250,7 @@ class MetaTagChecker:
 
         return issues
 
-    def check_favicon(self) -> List[Issue]:
+    def check_favicon(self) -> list[Issue]:
         """
         Check for favicon presence.
 
@@ -297,7 +294,7 @@ class MetaTagChecker:
 
         return issues
 
-    def check_language(self) -> List[Issue]:
+    def check_language(self) -> list[Issue]:
         """
         Check for language declaration.
 
@@ -340,7 +337,7 @@ class MetaTagChecker:
 
         return issues
 
-    def check_viewport(self) -> List[Issue]:
+    def check_viewport(self) -> list[Issue]:
         """
         Check for viewport meta tag (mobile optimization).
 
@@ -386,7 +383,7 @@ class MetaTagChecker:
 
         return issues
 
-    def get_meta_summary(self) -> Dict[str, any]:
+    def get_meta_summary(self) -> dict[str, any]:
         """
         Get a summary of all meta tags found.
 

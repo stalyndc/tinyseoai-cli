@@ -5,7 +5,7 @@ Multi-agent coordinator for running SEO analysis with specialist agents.
 from __future__ import annotations
 
 import asyncio
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 from ..data.models import AuditResult
 from ..utils.logging import get_logger
@@ -30,12 +30,12 @@ logger = get_logger(__name__)
 class SimpleAgentContext:
     """Simple implementation of AgentContext for dependency injection."""
 
-    def __init__(self, audit_data: Dict[str, Any], session_id: str):
+    def __init__(self, audit_data: dict[str, Any], session_id: str):
         self._audit_data = audit_data
         self._session_id = session_id
-        self._messages: List[AgentMessage] = []
+        self._messages: list[AgentMessage] = []
 
-    def get_audit_data(self) -> Dict[str, Any]:
+    def get_audit_data(self) -> dict[str, Any]:
         """Get audit data for analysis."""
         return self._audit_data
 
@@ -68,8 +68,8 @@ class MultiAgentCoordinator:
 
     def __init__(
         self,
-        openai_api_key: Optional[str] = None,
-        anthropic_api_key: Optional[str] = None,
+        openai_api_key: str | None = None,
+        anthropic_api_key: str | None = None,
     ):
         """
         Initialize the multi-agent coordinator.
@@ -82,13 +82,13 @@ class MultiAgentCoordinator:
         self.anthropic_api_key = anthropic_api_key
 
         # Agents will be initialized per session
-        self.agents: Dict[AgentRole, Any] = {}
+        self.agents: dict[AgentRole, Any] = {}
 
         logger.info("Multi-agent coordinator initialized")
 
     def _initialize_agents(
         self, context: AgentContext
-    ) -> Dict[AgentRole, Any]:
+    ) -> dict[AgentRole, Any]:
         """Initialize all specialist agents."""
         agents = {
             AgentRole.ORCHESTRATOR: OrchestratorAgent(context, self.openai_api_key),
@@ -104,7 +104,7 @@ class MultiAgentCoordinator:
 
     async def analyze_with_agents(
         self, audit_result: AuditResult, enable_fix_generation: bool = True
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """
         Run multi-agent analysis on audit results.
 
@@ -193,8 +193,8 @@ class MultiAgentCoordinator:
         return synthesis
 
     async def _execute_specialist_tasks(
-        self, tasks: List[AgentTask], include_fix_gen: bool
-    ) -> List[Any]:
+        self, tasks: list[AgentTask], include_fix_gen: bool
+    ) -> list[Any]:
         """Execute specialist agent tasks in parallel."""
         # Group tasks by agent
         agent_tasks = {}
@@ -224,8 +224,8 @@ class MultiAgentCoordinator:
         return valid_results
 
     async def _generate_fixes(
-        self, audit_data: Dict[str, Any], specialist_results: List[Any]
-    ) -> Optional[Any]:
+        self, audit_data: dict[str, Any], specialist_results: list[Any]
+    ) -> Any | None:
         """Generate code fixes based on specialist recommendations."""
         try:
             fix_generator = self.agents[AgentRole.FIX_GENERATOR]
@@ -256,8 +256,8 @@ class MultiAgentCoordinator:
         self,
         session: MultiAgentSession,
         orchestration_result: Any,
-        specialist_results: List[Any],
-    ) -> Dict[str, Any]:
+        specialist_results: list[Any],
+    ) -> dict[str, Any]:
         """Synthesize all agent results into comprehensive analysis."""
         synthesis = {
             "session_id": session.id,
@@ -325,7 +325,7 @@ class MultiAgentCoordinator:
 
         return synthesis
 
-    def get_agent_stats(self) -> Dict[str, Any]:
+    def get_agent_stats(self) -> dict[str, Any]:
         """Get performance statistics for all agents."""
         stats = {}
         for role, agent in self.agents.items():

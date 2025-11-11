@@ -5,18 +5,17 @@ from __future__ import annotations
 
 from collections import deque
 from datetime import datetime
-from typing import Dict, List, Set
 from urllib.parse import urlparse
 
 import httpx
 from loguru import logger
 
-from ..data.models import Issue, AuditResult
+from ..data.models import AuditResult, Issue
 from ..data.scoring import HealthScoreCalculator, prioritize_issues
 from ..utils.url import normalize_url, same_host
 from .checks.content import ContentAnalyzer, DuplicateContentDetector
 from .checks.indexability import IndexabilityChecker, check_pagination
-from .checks.links import LinkChecker, LinkGraph
+from .checks.links import LinkChecker
 from .checks.meta import MetaTagChecker
 from .checks.performance import PerformanceChecker
 from .checks.security import SecurityChecker, check_ssl_certificate
@@ -40,7 +39,7 @@ class EnhancedPage:
         meta_desc: str | None = None,
         noindex: bool = False,
         html: str = "",
-        headers: Dict = None,
+        headers: dict = None,
     ):
         self.url = url
         self.status = status
@@ -49,9 +48,9 @@ class EnhancedPage:
         self.noindex = noindex
         self.html = html
         self.headers = headers or {}
-        self.links: Set[str] = set()
-        self.internal_links: List[Dict] = []
-        self.external_links: List[Dict] = []
+        self.links: set[str] = set()
+        self.internal_links: list[dict] = []
+        self.external_links: list[dict] = []
 
 
 async def comprehensive_audit(
@@ -79,8 +78,8 @@ async def comprehensive_audit(
         "Accept": "text/html,application/xhtml+xml;q=0.9,*/*;q=0.8",
     }
 
-    all_issues: List[Issue] = []
-    pages: List[EnhancedPage] = []
+    all_issues: list[Issue] = []
+    pages: list[EnhancedPage] = []
 
     # Phase 1: Analyze robots.txt
     logger.info("Phase 1: Analyzing robots.txt...")
@@ -108,7 +107,7 @@ async def comprehensive_audit(
 
         # Phase 2: Crawl pages
         logger.info(f"Phase 2: Crawling up to {max_pages} pages...")
-        visited: Set[str] = set()
+        visited: set[str] = set()
         to_visit: deque[str] = deque([seed_url])
 
         # Prioritize sitemap URLs if available
@@ -185,7 +184,7 @@ async def comprehensive_audit(
             if crawl_count % 10 == 0:
                 logger.info(f"Crawled {crawl_count}/{max_pages} pages...")
 
-    logger.info(f"Phase 3: Running post-crawl analysis...")
+    logger.info("Phase 3: Running post-crawl analysis...")
 
     # Phase 3: Post-crawl checks
     post_crawl_issues = await _run_post_crawl_checks(pages, seed_url, enable_all_checks)
@@ -197,7 +196,7 @@ async def comprehensive_audit(
     health_score = health_calc.calculate_health_score(all_issues, len(pages))
 
     # Prioritize issues
-    prioritized = prioritize_issues(all_issues)
+    prioritize_issues(all_issues)
 
     # Build enhanced metadata
     meta = {
@@ -226,7 +225,7 @@ async def comprehensive_audit(
 
 async def _run_page_checks(
     page: EnhancedPage, site_root: str, enable_all: bool, client: httpx.AsyncClient
-) -> List[Issue]:
+) -> list[Issue]:
     """Run all checks for a single page."""
     issues = []
 
@@ -293,8 +292,8 @@ async def _run_page_checks(
 
 
 async def _run_post_crawl_checks(
-    pages: List[EnhancedPage], seed_url: str, enable_all: bool
-) -> List[Issue]:
+    pages: list[EnhancedPage], seed_url: str, enable_all: bool
+) -> list[Issue]:
     """Run checks that require analysis across all pages."""
     issues = []
 
@@ -354,7 +353,7 @@ async def _run_post_crawl_checks(
     return issues
 
 
-def _check_title(url: str, title: str | None) -> List[Issue]:
+def _check_title(url: str, title: str | None) -> list[Issue]:
     """Check title tag."""
     issues = []
     if not title:
@@ -366,7 +365,7 @@ def _check_title(url: str, title: str | None) -> List[Issue]:
     return issues
 
 
-def _check_meta_description(url: str, meta_desc: str | None) -> List[Issue]:
+def _check_meta_description(url: str, meta_desc: str | None) -> list[Issue]:
     """Check meta description."""
     issues = []
     if not meta_desc:
@@ -374,7 +373,7 @@ def _check_meta_description(url: str, meta_desc: str | None) -> List[Issue]:
     return issues
 
 
-def _check_noindex(url: str, noindex: bool) -> List[Issue]:
+def _check_noindex(url: str, noindex: bool) -> list[Issue]:
     """Check noindex directive."""
     issues = []
     if noindex:
@@ -382,10 +381,10 @@ def _check_noindex(url: str, noindex: bool) -> List[Issue]:
     return issues
 
 
-def _check_duplicate_titles(pages: List[EnhancedPage]) -> List[Issue]:
+def _check_duplicate_titles(pages: list[EnhancedPage]) -> list[Issue]:
     """Check for duplicate titles."""
     issues = []
-    titles: Dict[str, List[str]] = {}
+    titles: dict[str, list[str]] = {}
 
     for page in pages:
         if page.title:
@@ -402,10 +401,10 @@ def _check_duplicate_titles(pages: List[EnhancedPage]) -> List[Issue]:
     return issues
 
 
-def _check_duplicate_meta_descriptions(pages: List[EnhancedPage]) -> List[Issue]:
+def _check_duplicate_meta_descriptions(pages: list[EnhancedPage]) -> list[Issue]:
     """Check for duplicate meta descriptions."""
     issues = []
-    descriptions: Dict[str, List[str]] = {}
+    descriptions: dict[str, list[str]] = {}
 
     for page in pages:
         if page.meta_desc:

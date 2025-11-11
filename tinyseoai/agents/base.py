@@ -6,11 +6,11 @@ from __future__ import annotations
 
 import time
 from abc import ABC, abstractmethod
-from typing import Any, Dict, List, Optional, Protocol
+from typing import Any, Protocol
 
 from langchain_anthropic import ChatAnthropic
 from langchain_core.language_models import BaseChatModel
-from langchain_core.messages import HumanMessage, SystemMessage
+from langchain_core.messages import SystemMessage
 from langchain_openai import ChatOpenAI
 
 from ..config import get_config
@@ -30,7 +30,7 @@ logger = get_logger(__name__)
 class AgentContext(Protocol):
     """Protocol for agent context (dependency injection)."""
 
-    def get_audit_data(self) -> Dict[str, Any]:
+    def get_audit_data(self) -> dict[str, Any]:
         """Get audit data for analysis."""
         ...
 
@@ -58,8 +58,8 @@ class BaseAgent(ABC):
     def __init__(
         self,
         profile: AgentProfile,
-        context: Optional[AgentContext] = None,
-        api_key: Optional[str] = None,
+        context: AgentContext | None = None,
+        api_key: str | None = None,
     ):
         """
         Initialize the agent.
@@ -84,7 +84,7 @@ class BaseAgent(ABC):
 
         logger.info(f"Initialized {self.profile.name} ({self.profile.role.value})")
 
-    def _initialize_llm(self, api_key: Optional[str] = None) -> BaseChatModel:
+    def _initialize_llm(self, api_key: str | None = None) -> BaseChatModel:
         """
         Initialize the language model with fallback support.
 
@@ -113,7 +113,7 @@ class BaseAgent(ABC):
         raise RuntimeError(f"Could not initialize any model for {self.profile.role}")
 
     @abstractmethod
-    def _initialize_tools(self) -> List[Any]:
+    def _initialize_tools(self) -> list[Any]:
         """
         Initialize the tools this agent can use.
 
@@ -141,7 +141,7 @@ class BaseAgent(ABC):
 
     async def reason_with_chain_of_thought(
         self, task: AgentTask, prompt: str, cot: ChainOfThought
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """
         Execute reasoning with explicit chain-of-thought steps.
 
@@ -237,7 +237,7 @@ Provide structured reasoning and a clear recommendation."""
             raise
 
     async def run_with_tools(
-        self, task: AgentTask, prompt: str, cot: Optional[ChainOfThought] = None
+        self, task: AgentTask, prompt: str, cot: ChainOfThought | None = None
     ) -> str:
         """
         Run the agent (simplified version - tool execution removed for LangChain 1.0 compatibility).
@@ -255,11 +255,11 @@ Provide structured reasoning and a clear recommendation."""
         result_data = await self.reason_with_chain_of_thought(task, prompt, cot)
         return result_data.get("reasoning", "")
 
-    def get_capabilities(self) -> List[AgentCapability]:
+    def get_capabilities(self) -> list[AgentCapability]:
         """Get the list of capabilities this agent has."""
         return self.profile.capabilities
 
-    def get_stats(self) -> Dict[str, Any]:
+    def get_stats(self) -> dict[str, Any]:
         """Get performance statistics for this agent."""
         avg_time = (
             self.total_execution_time_ms / self.tasks_completed

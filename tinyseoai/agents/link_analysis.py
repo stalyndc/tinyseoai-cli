@@ -6,13 +6,12 @@ from __future__ import annotations
 
 import json
 import time
-from typing import Any, Dict, List, Optional
-
+from typing import Any
 
 from ..utils.logging import get_logger
 from .base import AgentContext, BaseAgent
 from .models import AgentProfile, AgentResult, AgentRole, AgentTask
-from .prompts import LINK_ANALYSIS_SYSTEM_PROMPT, format_link_analysis_prompt
+from .prompts import format_link_analysis_prompt
 
 logger = get_logger(__name__)
 
@@ -30,7 +29,7 @@ class LinkAnalysisAgent(BaseAgent):
     - Site architecture
     """
 
-    def __init__(self, context: Optional[AgentContext] = None, api_key: Optional[str] = None):
+    def __init__(self, context: AgentContext | None = None, api_key: str | None = None):
         profile = AgentProfile(
             role=AgentRole.LINK_ANALYSIS,
             name="Link Analysis Agent",
@@ -43,11 +42,11 @@ class LinkAnalysisAgent(BaseAgent):
         )
         super().__init__(profile, context, api_key)
 
-    def _initialize_tools(self) -> List[Any]:
+    def _initialize_tools(self) -> list[Any]:
         """Initialize tools (simplified for LangChain 1.0)."""
         return []
 
-    
+
     def _analyze_broken_links(self, issues_json: str) -> str:
         """Analyze broken link issues."""
         try:
@@ -195,7 +194,7 @@ class LinkAnalysisAgent(BaseAgent):
             task.fail(str(e))
             return result
 
-    def _extract_link_insights(self, issues: List[Dict[str, Any]]) -> List[str]:
+    def _extract_link_insights(self, issues: list[dict[str, Any]]) -> list[str]:
         """Extract link analysis insights."""
         insights = []
 
@@ -225,7 +224,7 @@ class LinkAnalysisAgent(BaseAgent):
         return insights
 
     def _add_link_recommendations(
-        self, result: AgentResult, issues: List[Dict[str, Any]]
+        self, result: AgentResult, issues: list[dict[str, Any]]
     ) -> None:
         """Add link optimization recommendations."""
         # Broken links

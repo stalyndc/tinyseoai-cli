@@ -6,13 +6,12 @@ from __future__ import annotations
 
 import json
 import time
-from typing import Any, Dict, List, Optional
-
+from typing import Any
 
 from ..utils.logging import get_logger
 from .base import AgentContext, BaseAgent
 from .models import AgentProfile, AgentResult, AgentRole, AgentTask
-from .prompts import FIX_GENERATOR_SYSTEM_PROMPT, format_fix_generator_prompt
+from .prompts import format_fix_generator_prompt
 
 logger = get_logger(__name__)
 
@@ -30,7 +29,7 @@ class FixGeneratorAgent(BaseAgent):
     - Security header configuration
     """
 
-    def __init__(self, context: Optional[AgentContext] = None, api_key: Optional[str] = None):
+    def __init__(self, context: AgentContext | None = None, api_key: str | None = None):
         profile = AgentProfile(
             role=AgentRole.FIX_GENERATOR,
             name="Fix Generator Agent",
@@ -43,16 +42,15 @@ class FixGeneratorAgent(BaseAgent):
         )
         super().__init__(profile, context, api_key)
 
-    def _initialize_tools(self) -> List[Any]:
+    def _initialize_tools(self) -> list[Any]:
         """Initialize tools (simplified for LangChain 1.0)."""
         return []
 
-    
+
     def _generate_meta_tags(self, context_json: str) -> str:
         """Generate meta tag fix code."""
         try:
             context = json.loads(context_json)
-            page_url = context.get("url", "")
             issue_type = context.get("type", "")
 
             if "title" in issue_type:
@@ -106,7 +104,7 @@ Disallow: /tmp/
     def _generate_htaccess_rules(self, context_json: str) -> str:
         """Generate .htaccess security and redirect rules."""
         try:
-            context = json.loads(context_json)
+            json.loads(context_json)
 
             code = """# .htaccess Security and SEO Rules
 
@@ -242,8 +240,8 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
             return result
 
     def _extract_fixes(
-        self, issues: List[Dict[str, Any]], result_data: Dict[str, Any]
-    ) -> List[Dict[str, Any]]:
+        self, issues: list[dict[str, Any]], result_data: dict[str, Any]
+    ) -> list[dict[str, Any]]:
         """Extract structured fixes from result data."""
         fixes = []
 
@@ -278,7 +276,7 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
         }
         return templates.get(issue_type, f"<!-- Fix for {issue_type} -->")
 
-    def _get_implementation_steps(self, issue_type: str) -> List[str]:
+    def _get_implementation_steps(self, issue_type: str) -> list[str]:
         """Get implementation steps for issue type."""
         steps = {
             "title_missing": [
@@ -300,7 +298,7 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
         )
 
     def _add_fix_recommendations(
-        self, result: AgentResult, fixes: List[Dict[str, Any]]
+        self, result: AgentResult, fixes: list[dict[str, Any]]
     ) -> None:
         """Add fix implementation recommendations."""
         for fix in fixes[:5]:  # Top 5 fixes

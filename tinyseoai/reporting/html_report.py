@@ -1,13 +1,12 @@
 from __future__ import annotations
 
+import base64
+import importlib.resources as pkg_resources
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, Any
-import base64
+from typing import Any
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
-import importlib.resources as pkg_resources
-import os
 
 from ..config import get_config
 
@@ -43,7 +42,7 @@ def _font_base64() -> str | None:
         return None
 
 
-def build_html(summary: Dict[str, Any]) -> str:
+def build_html(summary: dict[str, Any]) -> str:
     cfg = get_config()
     env = Environment(
         loader=FileSystemLoader(_templates_path()),

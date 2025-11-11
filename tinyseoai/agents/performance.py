@@ -6,13 +6,12 @@ from __future__ import annotations
 
 import json
 import time
-from typing import Any, Dict, List, Optional
-
+from typing import Any
 
 from ..utils.logging import get_logger
 from .base import AgentContext, BaseAgent
 from .models import AgentProfile, AgentResult, AgentRole, AgentTask
-from .prompts import PERFORMANCE_SYSTEM_PROMPT, format_performance_prompt
+from .prompts import format_performance_prompt
 
 logger = get_logger(__name__)
 
@@ -30,7 +29,7 @@ class PerformanceAgent(BaseAgent):
     - Core Web Vitals
     """
 
-    def __init__(self, context: Optional[AgentContext] = None, api_key: Optional[str] = None):
+    def __init__(self, context: AgentContext | None = None, api_key: str | None = None):
         profile = AgentProfile(
             role=AgentRole.PERFORMANCE,
             name="Performance Agent",
@@ -43,11 +42,11 @@ class PerformanceAgent(BaseAgent):
         )
         super().__init__(profile, context, api_key)
 
-    def _initialize_tools(self) -> List[Any]:
+    def _initialize_tools(self) -> list[Any]:
         """Initialize tools (simplified for LangChain 1.0)."""
         return []
 
-    
+
     def _analyze_image_optimization(self, issues_json: str) -> str:
         """Analyze image optimization issues."""
         try:
@@ -174,7 +173,7 @@ class PerformanceAgent(BaseAgent):
             task.fail(str(e))
             return result
 
-    def _extract_performance_insights(self, issues: List[Dict[str, Any]]) -> List[str]:
+    def _extract_performance_insights(self, issues: list[dict[str, Any]]) -> list[str]:
         """Extract performance insights."""
         insights = []
 
@@ -197,7 +196,7 @@ class PerformanceAgent(BaseAgent):
         return insights
 
     def _add_performance_recommendations(
-        self, result: AgentResult, issues: List[Dict[str, Any]]
+        self, result: AgentResult, issues: list[dict[str, Any]]
     ) -> None:
         """Add performance recommendations."""
         # Image optimization

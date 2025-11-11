@@ -3,8 +3,6 @@ Security checks for HTTPS, headers, and SSL validation.
 """
 from __future__ import annotations
 
-import ssl
-from typing import Dict, List, Optional
 from urllib.parse import urlparse
 
 import httpx
@@ -27,7 +25,7 @@ class SecurityChecker:
         self.parsed = urlparse(url)
         self.is_https = self.parsed.scheme == "https"
 
-    async def check_all(self, client: httpx.AsyncClient) -> List[Issue]:
+    async def check_all(self, client: httpx.AsyncClient) -> list[Issue]:
         """
         Run all security checks.
 
@@ -52,7 +50,7 @@ class SecurityChecker:
 
         return issues
 
-    def check_https(self) -> List[Issue]:
+    def check_https(self) -> list[Issue]:
         """
         Check if the site uses HTTPS.
 
@@ -73,7 +71,7 @@ class SecurityChecker:
 
         return issues
 
-    def check_security_headers(self, headers: dict) -> List[Issue]:
+    def check_security_headers(self, headers: dict) -> list[Issue]:
         """
         Check for important security headers.
 
@@ -180,7 +178,7 @@ class SecurityChecker:
 
         return issues
 
-    def check_mixed_content(self, html: str) -> List[Issue]:
+    def check_mixed_content(self, html: str) -> list[Issue]:
         """
         Check for mixed content (HTTP resources on HTTPS pages).
 
@@ -221,7 +219,7 @@ class SecurityChecker:
         return issues
 
 
-async def check_ssl_certificate(url: str) -> List[Issue]:
+async def check_ssl_certificate(url: str) -> list[Issue]:
     """
     Check SSL certificate validity.
 
@@ -296,7 +294,7 @@ async def check_ssl_certificate(url: str) -> List[Issue]:
     return issues
 
 
-def check_cookies(headers: dict) -> List[Issue]:
+def check_cookies(headers: dict) -> list[Issue]:
     """
     Check cookie security settings.
 

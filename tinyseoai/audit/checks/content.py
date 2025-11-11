@@ -6,10 +6,8 @@ from __future__ import annotations
 import hashlib
 import re
 from collections import Counter
-from typing import Dict, List, Set
 
 from bs4 import BeautifulSoup
-from loguru import logger
 
 from ...data.models import Issue
 
@@ -40,7 +38,7 @@ class ContentAnalyzer:
         text = self.soup.get_text(separator=" ", strip=True)
         return text
 
-    def check_all(self) -> List[Issue]:
+    def check_all(self) -> list[Issue]:
         """
         Run all content checks.
 
@@ -56,7 +54,7 @@ class ContentAnalyzer:
 
         return issues
 
-    def check_content_length(self) -> List[Issue]:
+    def check_content_length(self) -> list[Issue]:
         """
         Check if content has sufficient length.
 
@@ -88,7 +86,7 @@ class ContentAnalyzer:
 
         return issues
 
-    def check_readability(self) -> List[Issue]:
+    def check_readability(self) -> list[Issue]:
         """
         Check content readability using simple metrics.
 
@@ -193,7 +191,7 @@ class ContentAnalyzer:
         # Every word has at least one syllable
         return max(1, syllable_count)
 
-    def check_heading_content_ratio(self) -> List[Issue]:
+    def check_heading_content_ratio(self) -> list[Issue]:
         """
         Check ratio of heading text to body text.
 
@@ -226,7 +224,7 @@ class ContentAnalyzer:
 
         return issues
 
-    def check_keyword_stuffing(self) -> List[Issue]:
+    def check_keyword_stuffing(self) -> list[Issue]:
         """
         Check for potential keyword stuffing.
 
@@ -266,7 +264,7 @@ class ContentAnalyzer:
 
         return issues
 
-    def extract_top_keywords(self, n: int = 10) -> List[Tuple[str, int]]:
+    def extract_top_keywords(self, n: int = 10) -> list[tuple[str, int]]:
         """
         Extract top keywords from content.
 
@@ -300,7 +298,7 @@ class ContentAnalyzer:
         word_freq = Counter(words)
         return word_freq.most_common(n)
 
-    def get_content_metrics(self) -> Dict[str, any]:
+    def get_content_metrics(self) -> dict[str, any]:
         """
         Get comprehensive content metrics.
 
@@ -326,8 +324,8 @@ class DuplicateContentDetector:
 
     def __init__(self):
         """Initialize duplicate content detector."""
-        self.content_hashes: Dict[str, List[str]] = {}  # hash -> URLs
-        self.content_fingerprints: Dict[str, Set[str]] = {}  # URL -> shingles
+        self.content_hashes: dict[str, list[str]] = {}  # hash -> URLs
+        self.content_fingerprints: dict[str, set[str]] = {}  # URL -> shingles
 
     def add_page(self, url: str, text: str) -> None:
         """
@@ -347,7 +345,7 @@ class DuplicateContentDetector:
         shingles = self._create_shingles(text, k=5)
         self.content_fingerprints[url] = shingles
 
-    def _create_shingles(self, text: str, k: int = 5) -> Set[str]:
+    def _create_shingles(self, text: str, k: int = 5) -> set[str]:
         """
         Create k-shingles from text for similarity comparison.
 
@@ -367,7 +365,7 @@ class DuplicateContentDetector:
 
         return shingles
 
-    def find_duplicates(self) -> List[Issue]:
+    def find_duplicates(self) -> list[Issue]:
         """
         Find duplicate content issues.
 
@@ -377,7 +375,7 @@ class DuplicateContentDetector:
         issues = []
 
         # Find exact duplicates
-        for content_hash, urls in self.content_hashes.items():
+        for _content_hash, urls in self.content_hashes.items():
             if len(urls) > 1:
                 for url in urls:
                     issues.append(
@@ -392,7 +390,7 @@ class DuplicateContentDetector:
 
         return issues
 
-    def find_near_duplicates(self, threshold: float = 0.8) -> List[Issue]:
+    def find_near_duplicates(self, threshold: float = 0.8) -> list[Issue]:
         """
         Find near-duplicate content using Jaccard similarity.
 
@@ -425,7 +423,7 @@ class DuplicateContentDetector:
 
         return issues
 
-    def _jaccard_similarity(self, set1: Set[str], set2: Set[str]) -> float:
+    def _jaccard_similarity(self, set1: set[str], set2: set[str]) -> float:
         """
         Calculate Jaccard similarity between two sets.
 

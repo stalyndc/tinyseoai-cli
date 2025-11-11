@@ -2,7 +2,7 @@
 Agent prompts library with specialized prompts for each agent role.
 """
 
-from typing import Any, Dict
+from typing import Any
 
 # ============================================================================
 # ORCHESTRATOR AGENT PROMPTS
@@ -271,7 +271,7 @@ Make code copy-paste ready with proper formatting."""
 # ============================================================================
 
 
-def format_orchestrator_planning_prompt(audit_data: Dict[str, Any]) -> str:
+def format_orchestrator_planning_prompt(audit_data: dict[str, Any]) -> str:
     """Format the orchestrator task planning prompt with audit data."""
     # Count issues by severity
     issues = audit_data.get("issues", [])

@@ -3,22 +3,25 @@ from __future__ import annotations
 import asyncio
 import json
 import sys
-from collections import deque
 from pathlib import Path
 from urllib.parse import urlparse
 
 import bs4
 import httpx
 import typer
+from pydantic import ValidationError
 from rich.console import Console
 from rich.table import Table
 
-from .config import get_config, save_config
-from .data.models import Issue, AuditResult
-from .utils.io import ensure_dir, write_json
-from .utils.url import validate_url, URLValidationError
-from .audit.engine import audit_site, DEFAULT_MAX_PAGES
+from .ai.summarizer import summarize_with_ai
+from .audit.engine import DEFAULT_MAX_PAGES, audit_site
 from .audit.engine_v2 import comprehensive_audit
+from .config import get_config, save_config
+from .data.models import AuditResult
+from .reporting.excel import write_xlsx
+from .reporting.pdf import write_pdf
+from .utils.io import ensure_dir, write_json
+from .utils.url import URLValidationError, validate_url
 
 try:
     from .agents.coordinator import MultiAgentCoordinator
@@ -283,7 +286,7 @@ def audit_ai(
         with open(agent_json, "w") as f:
             json.dump(agent_analysis, f, indent=2)
 
-        console.print(f"\n✅ Multi-agent analysis complete!\n")
+        console.print("\n✅ Multi-agent analysis complete!\n")
 
         # Display results
         # Summary table
@@ -335,13 +338,13 @@ def audit_ai(
                     f"({cot['confidence']:.1%} confidence, {cot['reasoning_time_ms']:.0f}ms)"
                 )
 
-        console.print(f"\n📁 Results saved:")
+        console.print("\n📁 Results saved:")
         console.print(f"  • Audit: [bold]{out_json}[/]")
         console.print(f"  • AI Analysis: [bold]{agent_json}[/]")
 
         # Show agent stats
         stats = coordinator.get_agent_stats()
-        console.print(f"\n📊 [bold]Agent Performance:[/]")
+        console.print("\n📊 [bold]Agent Performance:[/]")
         for agent_name, agent_stats in stats.items():
             console.print(
                 f"  • {agent_name}: {agent_stats['tasks_completed']} tasks, "
@@ -384,8 +387,7 @@ def doctor():
     console.print("[green]OK[/] — try: tinyseoai audit https://example.com")
 
 # --- NEW: AI summary command -----------------------------------------------
-from .ai.summarizer import summarize_with_ai
-from pydantic import ValidationError
+
 
 @app.command()
 def explain(
@@ -436,9 +438,7 @@ def explain(
 
 
 # --- REPORT export (xlsx/pdf) ------------------------------------------------
-from .reporting.excel import write_xlsx
-from .reporting.pdf import write_pdf
-from .ai.summarizer import summarize_with_ai
+
 
 @app.command()
 def report(

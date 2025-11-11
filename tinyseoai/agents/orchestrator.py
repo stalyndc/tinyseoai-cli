@@ -6,10 +6,8 @@ from __future__ import annotations
 
 import json
 import time
-from typing import Any, Dict, List, Optional
+from typing import Any
 
-
-from ..data.models import Issue
 from ..utils.logging import get_logger
 from .base import AgentContext, BaseAgent
 from .models import (
@@ -18,10 +16,8 @@ from .models import (
     AgentRole,
     AgentTask,
     TaskPriority,
-    TaskStatus,
 )
 from .prompts import (
-    ORCHESTRATOR_SYSTEM_PROMPT,
     format_orchestrator_planning_prompt,
 )
 
@@ -40,7 +36,7 @@ class OrchestratorAgent(BaseAgent):
     - Generate final comprehensive recommendations
     """
 
-    def __init__(self, context: Optional[AgentContext] = None, api_key: Optional[str] = None):
+    def __init__(self, context: AgentContext | None = None, api_key: str | None = None):
         profile = AgentProfile(
             role=AgentRole.ORCHESTRATOR,
             name="Orchestrator Agent",
@@ -53,11 +49,11 @@ class OrchestratorAgent(BaseAgent):
         )
         super().__init__(profile, context, api_key)
 
-    def _initialize_tools(self) -> List[Any]:
+    def _initialize_tools(self) -> list[Any]:
         """Initialize tools (simplified for LangChain 1.0)."""
         return []
 
-    
+
     def _analyze_audit_data(self, audit_json: str) -> str:
         """Analyze audit data and return summary statistics."""
         try:
@@ -71,7 +67,7 @@ class OrchestratorAgent(BaseAgent):
                 severity_counts[severity] = severity_counts.get(severity, 0) + 1
 
             # Count by category
-            category_counts: Dict[str, int] = {}
+            category_counts: dict[str, int] = {}
             for issue in issues:
                 issue_type = issue.get("type", "unknown")
                 # Categorize by issue type
@@ -159,7 +155,7 @@ class OrchestratorAgent(BaseAgent):
     def _create_execution_plan(self, analysis_json: str) -> str:
         """Create a structured execution plan."""
         try:
-            analysis = json.loads(analysis_json)
+            json.loads(analysis_json)
 
             plan = {
                 "phases": [
@@ -285,8 +281,8 @@ class OrchestratorAgent(BaseAgent):
             return result
 
     def _extract_insights(
-        self, audit_data: Dict[str, Any], result_data: Dict[str, Any]
-    ) -> List[str]:
+        self, audit_data: dict[str, Any], result_data: dict[str, Any]
+    ) -> list[str]:
         """Extract key insights from orchestration analysis."""
         insights = []
 
@@ -340,7 +336,7 @@ class OrchestratorAgent(BaseAgent):
         return insights
 
     def _add_orchestration_recommendations(
-        self, result: AgentResult, audit_data: Dict[str, Any]
+        self, result: AgentResult, audit_data: dict[str, Any]
     ) -> None:
         """Add orchestration-level recommendations."""
         issues = audit_data.get("issues", [])
@@ -387,15 +383,15 @@ class OrchestratorAgent(BaseAgent):
             )
 
     def create_task_distribution_plan(
-        self, audit_data: Dict[str, Any]
-    ) -> List[AgentTask]:
+        self, audit_data: dict[str, Any]
+    ) -> list[AgentTask]:
         """
         Create a list of tasks for specialist agents based on audit results.
 
         Returns:
             List of AgentTask objects ready for execution
         """
-        tasks: List[AgentTask] = []
+        tasks: list[AgentTask] = []
         issues = audit_data.get("issues", [])
 
         # Group issues by agent category

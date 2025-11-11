@@ -1,10 +1,12 @@
 from __future__ import annotations
+
 import json
 import os
 from pathlib import Path
-from pydantic import BaseModel, Field
-from platformdirs import user_config_dir
+
 from dotenv import load_dotenv
+from platformdirs import user_config_dir
+from pydantic import BaseModel, Field
 
 # Load .env file from project root
 load_dotenv()
@@ -44,7 +46,6 @@ class AppConfig(BaseModel):
 
 
 def _cfg_path() -> Path:
-    from platformdirs import user_config_dir
     cfg_dir = Path(user_config_dir(APP_NAME))
     cfg_dir.mkdir(parents=True, exist_ok=True)
     return cfg_dir / "config.json"
@@ -70,7 +71,7 @@ def get_config() -> AppConfig:
     cfg = AppConfig()
     try:
         p.write_text(cfg.model_dump_json(indent=2))
-    except (IOError, OSError) as e:
+    except OSError as e:
         # Can't write config, but continue with default in-memory config
         import sys
         print(f"Warning: Cannot write config file ({e}), using defaults", file=sys.stderr)
@@ -85,8 +86,8 @@ def save_config(cfg: AppConfig) -> None:
     BUGFIX: Use atomic write to prevent corruption from concurrent access.
     See: BUGFIXES.md #5
     """
-    import tempfile
     import os
+    import tempfile
 
     p = _cfg_path()
     content = cfg.model_dump_json(indent=2)

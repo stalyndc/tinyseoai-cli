@@ -3,11 +3,9 @@ Indexability checks including canonical tags, robots meta, and XML sitemap valid
 """
 from __future__ import annotations
 
-from typing import Dict, List, Optional
 from urllib.parse import urljoin, urlparse
 
 from bs4 import BeautifulSoup
-from loguru import logger
 
 from ...data.models import Issue
 
@@ -28,7 +26,7 @@ class IndexabilityChecker:
         self.soup = BeautifulSoup(html, "lxml")
         self.parsed_url = urlparse(url)
 
-    def check_all(self) -> List[Issue]:
+    def check_all(self) -> list[Issue]:
         """
         Run all indexability checks.
 
@@ -44,7 +42,7 @@ class IndexabilityChecker:
 
         return issues
 
-    def check_canonical(self) -> List[Issue]:
+    def check_canonical(self) -> list[Issue]:
         """
         Check canonical tag implementation.
 
@@ -133,7 +131,7 @@ class IndexabilityChecker:
 
         return issues
 
-    def check_robots_meta(self) -> List[Issue]:
+    def check_robots_meta(self) -> list[Issue]:
         """
         Check robots meta tag directives.
 
@@ -229,7 +227,7 @@ class IndexabilityChecker:
 
         return issues
 
-    def check_meta_robots(self) -> List[Issue]:
+    def check_meta_robots(self) -> list[Issue]:
         """
         Check for Googlebot-specific and other search engine specific robots meta tags.
 
@@ -258,7 +256,7 @@ class IndexabilityChecker:
 
         return issues
 
-    def check_x_robots_tag(self) -> List[Issue]:
+    def check_x_robots_tag(self) -> list[Issue]:
         """
         Note: X-Robots-Tag is an HTTP header, not in HTML.
         This method serves as a placeholder for header-based checks.
@@ -286,7 +284,7 @@ class SitemapValidator:
         self.url = sitemap_url
         self.soup = BeautifulSoup(sitemap_xml, "lxml-xml")
 
-    def validate(self) -> List[Issue]:
+    def validate(self) -> list[Issue]:
         """
         Validate sitemap structure and content.
 
@@ -406,7 +404,7 @@ class SitemapValidator:
         return issues
 
 
-def check_pagination(html: str, url: str) -> List[Issue]:
+def check_pagination(html: str, url: str) -> list[Issue]:
     """
     Check for proper pagination implementation.
 

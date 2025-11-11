@@ -2,14 +2,14 @@ from __future__ import annotations
 
 import json
 from collections import Counter, defaultdict
-from typing import Any, Dict, List
+from typing import Any
 
-from ..data.models import AuditResult, Issue
 from ..config import get_config
-from .openai_client import call_ai_json, AIError
+from ..data.models import AuditResult, Issue
+from .openai_client import call_ai_json
 
 
-def _compact_issues(issues: List[Issue], limit_per_type: int = 5) -> Dict[str, Any]:
+def _compact_issues(issues: list[Issue], limit_per_type: int = 5) -> dict[str, Any]:
     """
     Compress issues for prompt efficiency:
     - per-type counts
@@ -60,7 +60,7 @@ Only include the JSON object. No commentary.
     return instructions + "\nINPUT:\n" + json.dumps(payload, ensure_ascii=False)
 
 
-def summarize_with_ai(result: AuditResult) -> Dict[str, Any]:
+def summarize_with_ai(result: AuditResult) -> dict[str, Any]:
     cfg = get_config()
     plan = cfg.plan  # 'free' or 'premium'
 

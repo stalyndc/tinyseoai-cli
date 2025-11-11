@@ -6,13 +6,12 @@ from __future__ import annotations
 
 import json
 import time
-from typing import Any, Dict, List, Optional
-
+from typing import Any
 
 from ..utils.logging import get_logger
 from .base import AgentContext, BaseAgent
 from .models import AgentProfile, AgentResult, AgentRole, AgentTask
-from .prompts import TECHNICAL_SEO_SYSTEM_PROMPT, format_technical_seo_prompt
+from .prompts import format_technical_seo_prompt
 
 logger = get_logger(__name__)
 
@@ -31,7 +30,7 @@ class TechnicalSEOAgent(BaseAgent):
     - Indexability directives
     """
 
-    def __init__(self, context: Optional[AgentContext] = None, api_key: Optional[str] = None):
+    def __init__(self, context: AgentContext | None = None, api_key: str | None = None):
         profile = AgentProfile(
             role=AgentRole.TECHNICAL_SEO,
             name="Technical SEO Agent",
@@ -44,11 +43,11 @@ class TechnicalSEOAgent(BaseAgent):
         )
         super().__init__(profile, context, api_key)
 
-    def _initialize_tools(self) -> List[Any]:
+    def _initialize_tools(self) -> list[Any]:
         """Initialize tools (simplified for LangChain 1.0)."""
         return []
 
-    
+
     def _analyze_https_issues(self, issues_json: str) -> str:
         """Analyze HTTPS-related issues."""
         try:
@@ -230,8 +229,8 @@ class TechnicalSEOAgent(BaseAgent):
             return result
 
     def _extract_technical_insights(
-        self, issues: List[Dict[str, Any]], metadata: Dict[str, Any]
-    ) -> List[str]:
+        self, issues: list[dict[str, Any]], metadata: dict[str, Any]
+    ) -> list[str]:
         """Extract technical SEO insights."""
         insights = []
 
@@ -261,7 +260,7 @@ class TechnicalSEOAgent(BaseAgent):
         return insights
 
     def _add_technical_recommendations(
-        self, result: AgentResult, issues: List[Dict[str, Any]], metadata: Dict[str, Any]
+        self, result: AgentResult, issues: list[dict[str, Any]], metadata: dict[str, Any]
     ) -> None:
         """Add technical SEO recommendations."""
         # HTTPS recommendation

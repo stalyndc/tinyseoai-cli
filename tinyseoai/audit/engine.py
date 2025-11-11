@@ -5,15 +5,14 @@ from __future__ import annotations
 
 from collections import deque
 from datetime import datetime
-from typing import Set
 from urllib.parse import urlparse
 
 import httpx
-
-from ..data.models import Issue, AuditResult
-from ..utils.url import normalize_url, same_host
-from .crawler import fetch_page, extract_meta, extract_links
 from bs4 import BeautifulSoup
+
+from ..data.models import AuditResult, Issue
+from ..utils.url import normalize_url, same_host
+from .crawler import extract_links, extract_meta, fetch_page
 
 # Constants
 DEFAULT_MAX_PAGES = 50
@@ -33,7 +32,7 @@ class Page:
         title: str | None = None,
         meta_desc: str | None = None,
         noindex: bool = False,
-        links: Set[str] | None = None,
+        links: set[str] | None = None,
     ):
         self.url = url
         self.status = status
@@ -63,7 +62,7 @@ async def audit_site(seed_url: str, max_pages: int = DEFAULT_MAX_PAGES) -> Audit
         "Accept": "text/html,application/xhtml+xml;q=0.9,*/*;q=0.8"
     }
 
-    visited: Set[str] = set()
+    visited: set[str] = set()
     to_visit: deque[str] = deque([seed_url])
     pages: list[Page] = []
     issues: list[Issue] = []
@@ -249,23 +248,23 @@ def _check_duplicate_meta_descriptions(pages: list[Page]) -> list[Issue]:
     """Check for duplicate meta descriptions across pages."""
     issues = []
     mds: dict[str, list[str]] = {}
-    
+
     for page in pages:
         if page.meta_desc:
             key = page.meta_desc.strip().lower()
             if key:
                 mds.setdefault(key, []).append(page.url)
-    
+
     for desc, urls in mds.items():
         if len(urls) > 1:
             for url in urls:
                 issues.append(
                     Issue(
-                        url=url, 
-                        type="duplicate_meta_description", 
-                        severity="low", 
+                        url=url,
+                        type="duplicate_meta_description",
+                        severity="low",
                         detail=(desc[:120] + ("…" if len(desc) > 120 else ""))
                     )
                 )
-    
+
     return issues

@@ -6,7 +6,7 @@ from __future__ import annotations
 
 from datetime import datetime
 from enum import Enum
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 from pydantic import BaseModel, Field
 
@@ -59,7 +59,7 @@ class AgentMessage(BaseModel):
     from_agent: AgentRole
     to_agent: AgentRole
     content: str
-    metadata: Dict[str, Any] = Field(default_factory=dict)
+    metadata: dict[str, Any] = Field(default_factory=dict)
     timestamp: datetime = Field(default_factory=datetime.now)
 
 
@@ -70,7 +70,7 @@ class ThoughtStep(BaseModel):
     type: str  # observation, reflection, planning, action, verification
     content: str
     confidence: float = Field(ge=0.0, le=1.0, default=1.0)
-    supporting_data: Optional[Dict[str, Any]] = None
+    supporting_data: dict[str, Any] | None = None
     timestamp: datetime = Field(default_factory=datetime.now)
 
 
@@ -80,8 +80,8 @@ class ChainOfThought(BaseModel):
     agent_role: AgentRole
     task_id: str
     goal: str
-    steps: List[ThoughtStep] = Field(default_factory=list)
-    final_decision: Optional[str] = None
+    steps: list[ThoughtStep] = Field(default_factory=list)
+    final_decision: str | None = None
     confidence_score: float = Field(ge=0.0, le=1.0, default=0.0)
     reasoning_time_ms: float = 0.0
     created_at: datetime = Field(default_factory=datetime.now)
@@ -91,7 +91,7 @@ class ChainOfThought(BaseModel):
         step_type: str,
         content: str,
         confidence: float = 1.0,
-        supporting_data: Optional[Dict[str, Any]] = None,
+        supporting_data: dict[str, Any] | None = None,
     ) -> None:
         """Add a reasoning step to the chain."""
         step = ThoughtStep(
@@ -124,13 +124,13 @@ class AgentTask(BaseModel):
     status: TaskStatus = TaskStatus.PENDING
     title: str
     description: str
-    context: Dict[str, Any] = Field(default_factory=dict)
-    dependencies: List[str] = Field(default_factory=list)  # Task IDs
-    parent_task_id: Optional[str] = None
+    context: dict[str, Any] = Field(default_factory=dict)
+    dependencies: list[str] = Field(default_factory=list)  # Task IDs
+    parent_task_id: str | None = None
     created_at: datetime = Field(default_factory=datetime.now)
-    started_at: Optional[datetime] = None
-    completed_at: Optional[datetime] = None
-    result: Optional[AgentResult] = None
+    started_at: datetime | None = None
+    completed_at: datetime | None = None
+    result: AgentResult | None = None
 
     def start(self) -> None:
         """Mark task as started."""
@@ -161,13 +161,13 @@ class AgentResult(BaseModel):
     task_id: str
     agent_role: AgentRole
     success: bool
-    data: Dict[str, Any] = Field(default_factory=dict)
-    insights: List[str] = Field(default_factory=list)
-    recommendations: List[Dict[str, Any]] = Field(default_factory=list)
-    chain_of_thought: Optional[ChainOfThought] = None
+    data: dict[str, Any] = Field(default_factory=dict)
+    insights: list[str] = Field(default_factory=list)
+    recommendations: list[dict[str, Any]] = Field(default_factory=list)
+    chain_of_thought: ChainOfThought | None = None
     execution_time_ms: float = 0.0
-    model_used: Optional[str] = None
-    tokens_used: Optional[int] = None
+    model_used: str | None = None
+    tokens_used: int | None = None
     confidence: float = Field(ge=0.0, le=1.0, default=1.0)
     timestamp: datetime = Field(default_factory=datetime.now)
 
@@ -201,7 +201,7 @@ class AgentCapability(BaseModel):
 
     name: str
     description: str
-    required_models: List[str] = Field(default_factory=list)
+    required_models: list[str] = Field(default_factory=list)
     estimated_cost: float = 0.0  # USD per invocation
     average_duration_ms: float = 0.0
 
@@ -212,11 +212,11 @@ class AgentProfile(BaseModel):
     role: AgentRole
     name: str
     description: str
-    capabilities: List[AgentCapability]
-    specialization: List[str]  # e.g., ["technical", "security", "performance"]
+    capabilities: list[AgentCapability]
+    specialization: list[str]  # e.g., ["technical", "security", "performance"]
     max_concurrent_tasks: int = 3
     default_model: str = "gpt-4o-mini"
-    fallback_models: List[str] = Field(default_factory=lambda: ["gpt-4o", "claude-3-5-sonnet"])
+    fallback_models: list[str] = Field(default_factory=lambda: ["gpt-4o", "claude-3-5-sonnet"])
 
 
 class MultiAgentSession(BaseModel):
@@ -225,11 +225,11 @@ class MultiAgentSession(BaseModel):
     id: str = Field(default_factory=lambda: f"session_{datetime.now().timestamp()}")
     site_url: str
     initiated_by: AgentRole = AgentRole.ORCHESTRATOR
-    tasks: List[AgentTask] = Field(default_factory=list)
-    messages: List[AgentMessage] = Field(default_factory=list)
-    results: Dict[str, AgentResult] = Field(default_factory=dict)  # task_id -> result
+    tasks: list[AgentTask] = Field(default_factory=list)
+    messages: list[AgentMessage] = Field(default_factory=list)
+    results: dict[str, AgentResult] = Field(default_factory=dict)  # task_id -> result
     started_at: datetime = Field(default_factory=datetime.now)
-    completed_at: Optional[datetime] = None
+    completed_at: datetime | None = None
     total_cost_usd: float = 0.0
     total_tokens: int = 0
 
@@ -247,14 +247,14 @@ class MultiAgentSession(BaseModel):
         if result.tokens_used:
             self.total_tokens += result.tokens_used
 
-    def get_task(self, task_id: str) -> Optional[AgentTask]:
+    def get_task(self, task_id: str) -> AgentTask | None:
         """Get a task by ID."""
         for task in self.tasks:
             if task.id == task_id:
                 return task
         return None
 
-    def get_pending_tasks(self) -> List[AgentTask]:
+    def get_pending_tasks(self) -> list[AgentTask]:
         """Get all pending tasks."""
         return [t for t in self.tasks if t.status == TaskStatus.PENDING]
 

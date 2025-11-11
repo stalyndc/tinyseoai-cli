@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import os
 from dataclasses import dataclass
-from typing import Any, Dict, Optional
+from typing import Any
 
 from dotenv import load_dotenv
 from openai import OpenAI
@@ -56,10 +56,10 @@ def get_client() -> OpenAI:
 def call_ai_json(
     prompt: str,
     plan: str = "free",
-    system: Optional[str] = None,
+    system: str | None = None,
     temperature: float = 0.2,
-    max_output_tokens: Optional[int] = None,
-) -> Dict[str, Any]:
+    max_output_tokens: int | None = None,
+) -> dict[str, Any]:
     """
     Calls OpenAI Chat Completions API and returns parsed JSON.
     Uses a cheap model for 'free' plan and a stronger one for 'premium'.
@@ -95,7 +95,7 @@ def call_ai_json(
             response_format={"type": "json_object"},
         )
     except Exception as e:
-        raise AIError(f"OpenAI request failed: {e}")
+        raise AIError(f"OpenAI request failed: {e}") from e
 
     # Extract text from the response
     import json
@@ -106,6 +106,6 @@ def call_ai_json(
             raise AIError("OpenAI returned empty response")
         return json.loads(txt)
     except (IndexError, AttributeError, KeyError) as e:
-        raise AIError(f"Could not parse OpenAI response structure: {e}")
+        raise AIError(f"Could not parse OpenAI response structure: {e}") from e
     except json.JSONDecodeError as e:
-        raise AIError(f"Model did not return valid JSON: {e}\nRaw: {txt[:400] if txt else 'None'}")
+        raise AIError(f"Model did not return valid JSON: {e}\nRaw: {txt[:400] if txt else 'None'}") from e

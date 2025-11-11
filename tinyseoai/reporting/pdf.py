@@ -4,6 +4,7 @@ from pathlib import Path
 
 from .html_report import build_html
 
+
 # We try Playwright first; if not available, fall back to WeasyPrint if installed.
 def write_pdf(summary: dict, out_path: Path) -> Path:
     html = build_html(summary)
@@ -26,4 +27,4 @@ def write_pdf(summary: dict, out_path: Path) -> Path:
             HTML(string=html).write_pdf(str(out_path))
             return out_path
         except Exception as e2:
-            raise RuntimeError(f"PDF generation failed. Playwright error: {e}; WeasyPrint error: {e2}")
+            raise RuntimeError(f"PDF generation failed. Playwright error: {e}; WeasyPrint error: {e2}") from e

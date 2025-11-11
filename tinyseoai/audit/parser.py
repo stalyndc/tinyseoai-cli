@@ -5,13 +5,11 @@ from __future__ import annotations
 
 import json
 import re
-from typing import Any, Dict, List, Optional
+from typing import Any
 from urllib.parse import urljoin
 
 from bs4 import BeautifulSoup, Tag
 from loguru import logger
-
-from ..exceptions import ParserError
 
 
 class StructuredDataParser:
@@ -28,11 +26,11 @@ class StructuredDataParser:
         self.html = html
         self.url = url
         self.soup = BeautifulSoup(html, "lxml")
-        self.json_ld: List[Dict[str, Any]] = []
-        self.microdata: List[Dict[str, Any]] = []
-        self.rdfa: List[Dict[str, Any]] = []
+        self.json_ld: list[dict[str, Any]] = []
+        self.microdata: list[dict[str, Any]] = []
+        self.rdfa: list[dict[str, Any]] = []
 
-    def extract_all(self) -> Dict[str, Any]:
+    def extract_all(self) -> dict[str, Any]:
         """
         Extract all types of structured data.
 
@@ -78,7 +76,7 @@ class StructuredDataParser:
             except Exception as e:
                 logger.warning(f"Error parsing microdata on {self.url}: {e}")
 
-    def _parse_microdata_item(self, item: Tag) -> Optional[Dict[str, Any]]:
+    def _parse_microdata_item(self, item: Tag) -> dict[str, Any] | None:
         """Parse a single microdata item."""
         item_type = item.get("itemtype")
         if not item_type:
@@ -126,7 +124,7 @@ class StructuredDataParser:
             except Exception as e:
                 logger.warning(f"Error parsing RDFa on {self.url}: {e}")
 
-    def get_schema_types(self) -> List[str]:
+    def get_schema_types(self) -> list[str]:
         """
         Get all schema.org types found on the page.
 
@@ -175,7 +173,7 @@ class ContentParser:
         self.url = url
         self.soup = BeautifulSoup(html, "lxml")
 
-    def extract_headings(self) -> Dict[str, List[str]]:
+    def extract_headings(self) -> dict[str, list[str]]:
         """
         Extract all headings with hierarchy.
 
@@ -191,7 +189,7 @@ class ContentParser:
 
         return headings
 
-    def validate_heading_hierarchy(self) -> List[str]:
+    def validate_heading_hierarchy(self) -> list[str]:
         """
         Validate heading hierarchy for SEO best practices.
 
@@ -223,7 +221,7 @@ class ContentParser:
 
         return issues
 
-    def extract_images(self) -> List[Dict[str, Optional[str]]]:
+    def extract_images(self) -> list[dict[str, str | None]]:
         """
         Extract all images with metadata.
 
@@ -245,7 +243,7 @@ class ContentParser:
 
         return images
 
-    def check_images_have_alt(self) -> Dict[str, Any]:
+    def check_images_have_alt(self) -> dict[str, Any]:
         """
         Check if all images have alt text.
 
@@ -264,7 +262,7 @@ class ContentParser:
             "missing_alt_percentage": (missing_alt / total * 100) if total > 0 else 0,
         }
 
-    def extract_main_content(self) -> Optional[str]:
+    def extract_main_content(self) -> str | None:
         """
         Extract main content text from the page.
 
@@ -309,7 +307,7 @@ class ContentParser:
         words = content.split()
         return len(words)
 
-    def extract_internal_links(self, base_url: str) -> List[Dict[str, str]]:
+    def extract_internal_links(self, base_url: str) -> list[dict[str, str]]:
         """
         Extract internal links with anchor text.
 
@@ -338,7 +336,7 @@ class ContentParser:
 
         return links
 
-    def extract_external_links(self, base_url: str) -> List[Dict[str, str]]:
+    def extract_external_links(self, base_url: str) -> list[dict[str, str]]:
         """
         Extract external links with metadata.
 
@@ -383,7 +381,7 @@ class HTMLParser:
         self.structured_data_parser = StructuredDataParser(html, url)
         self.content_parser = ContentParser(html, url)
 
-    def parse_all(self) -> Dict[str, Any]:
+    def parse_all(self) -> dict[str, Any]:
         """
         Parse all data from the HTML.
 

@@ -4,14 +4,11 @@ Robots.txt parsing and sitemap discovery.
 from __future__ import annotations
 
 import re
-from typing import List, Optional
-from urllib.parse import urljoin, urlparse
+from urllib.parse import urlparse
 from urllib.robotparser import RobotFileParser
 
 import httpx
 from loguru import logger
-
-from ..exceptions import CrawlerError
 
 
 class RobotsAnalyzer:
@@ -29,11 +26,11 @@ class RobotsAnalyzer:
         self.robots_url = f"{parsed.scheme}://{parsed.netloc}/robots.txt"
         self.parser = RobotFileParser()
         self.parser.set_url(self.robots_url)
-        self.content: Optional[str] = None
-        self.sitemaps: List[str] = []
-        self.crawl_delay: Optional[float] = None
-        self.disallowed_paths: List[str] = []
-        self.allowed_paths: List[str] = []
+        self.content: str | None = None
+        self.sitemaps: list[str] = []
+        self.crawl_delay: float | None = None
+        self.disallowed_paths: list[str] = []
+        self.allowed_paths: list[str] = []
 
     async def fetch_and_parse(self, client: httpx.AsyncClient) -> bool:
         """
@@ -126,7 +123,7 @@ class RobotsAnalyzer:
         allow_pattern = re.compile(r"^\s*Allow:\s*(.+)\s*$", re.IGNORECASE | re.MULTILINE)
         self.allowed_paths = [match.strip() for match in allow_pattern.findall(self.content)]
 
-    def get_sitemap_urls(self) -> List[str]:
+    def get_sitemap_urls(self) -> list[str]:
         """
         Get all sitemap URLs discovered.
 
@@ -166,8 +163,8 @@ class SitemapParser:
             sitemap_url: URL of the sitemap
         """
         self.sitemap_url = sitemap_url
-        self.urls: List[dict] = []
-        self.nested_sitemaps: List[str] = []
+        self.urls: list[dict] = []
+        self.nested_sitemaps: list[str] = []
 
     async def fetch_and_parse(self, client: httpx.AsyncClient) -> bool:
         """
@@ -230,7 +227,7 @@ class SitemapParser:
             if url_data:
                 self.urls.append(url_data)
 
-    def _extract_url_data(self, entry: str) -> Optional[dict]:
+    def _extract_url_data(self, entry: str) -> dict | None:
         """Extract data from a single URL entry."""
         # Extract loc (required)
         loc_match = re.search(r"<loc>(.*?)</loc>", entry)
@@ -253,7 +250,7 @@ class SitemapParser:
             else None,
         }
 
-    def get_urls(self) -> List[str]:
+    def get_urls(self) -> list[str]:
         """
         Get all URLs from the sitemap.
 
@@ -262,7 +259,7 @@ class SitemapParser:
         """
         return [url_data["loc"] for url_data in self.urls]
 
-    def get_priority_urls(self, min_priority: float = 0.8) -> List[str]:
+    def get_priority_urls(self, min_priority: float = 0.8) -> list[str]:
         """
         Get high-priority URLs from the sitemap.
 
@@ -278,7 +275,7 @@ class SitemapParser:
             if url_data.get("priority") and url_data["priority"] >= min_priority
         ]
 
-    def get_nested_sitemaps(self) -> List[str]:
+    def get_nested_sitemaps(self) -> list[str]:
         """
         Get nested sitemap URLs.
 
@@ -290,7 +287,7 @@ class SitemapParser:
 
 async def discover_sitemaps(
     base_url: str, client: httpx.AsyncClient, max_depth: int = 2
-) -> List[str]:
+) -> list[str]:
     """
     Discover all sitemaps for a website.
 
@@ -319,7 +316,7 @@ async def discover_sitemaps(
         sitemap_urls = common_sitemap_urls
 
     # Parse all sitemaps
-    all_urls: List[str] = []
+    all_urls: list[str] = []
     processed_sitemaps = set()
 
     async def parse_sitemap(url: str, depth: int = 0):

@@ -4,8 +4,6 @@ Comprehensive link analysis including link graphs, orphan pages, and redirect ch
 from __future__ import annotations
 
 from collections import defaultdict
-from typing import Dict, List, Set, Tuple
-from urllib.parse import urlparse
 
 import httpx
 from loguru import logger
@@ -18,10 +16,10 @@ class LinkGraph:
 
     def __init__(self):
         """Initialize the link graph."""
-        self.nodes: Set[str] = set()
-        self.edges: Dict[str, Set[str]] = defaultdict(set)  # source -> targets
-        self.backlinks: Dict[str, Set[str]] = defaultdict(set)  # target -> sources
-        self.anchor_texts: Dict[Tuple[str, str], List[str]] = defaultdict(list)
+        self.nodes: set[str] = set()
+        self.edges: dict[str, set[str]] = defaultdict(set)  # source -> targets
+        self.backlinks: dict[str, set[str]] = defaultdict(set)  # target -> sources
+        self.anchor_texts: dict[tuple[str, str], list[str]] = defaultdict(list)
 
     def add_page(self, url: str) -> None:
         """
@@ -49,7 +47,7 @@ class LinkGraph:
         if anchor_text:
             self.anchor_texts[(source, target)].append(anchor_text)
 
-    def get_orphan_pages(self) -> List[str]:
+    def get_orphan_pages(self) -> list[str]:
         """
         Find pages with no internal links pointing to them (orphans).
 
@@ -66,7 +64,7 @@ class LinkGraph:
 
         return orphans
 
-    def get_page_depth(self, start_url: str) -> Dict[str, int]:
+    def get_page_depth(self, start_url: str) -> dict[str, int]:
         """
         Calculate the depth of each page from the start URL using BFS.
 
@@ -92,7 +90,7 @@ class LinkGraph:
 
         return depths
 
-    def get_pages_beyond_depth(self, start_url: str, max_depth: int = 3) -> List[str]:
+    def get_pages_beyond_depth(self, start_url: str, max_depth: int = 3) -> list[str]:
         """
         Find pages that are too many clicks away from the homepage.
 
@@ -106,7 +104,7 @@ class LinkGraph:
         depths = self.get_page_depth(start_url)
         return [url for url, depth in depths.items() if depth > max_depth]
 
-    def get_page_metrics(self, url: str) -> Dict[str, int]:
+    def get_page_metrics(self, url: str) -> dict[str, int]:
         """
         Get metrics for a specific page.
 
@@ -129,7 +127,7 @@ class LinkGraph:
             ),
         }
 
-    def get_hub_pages(self, top_n: int = 10) -> List[Tuple[str, int]]:
+    def get_hub_pages(self, top_n: int = 10) -> list[tuple[str, int]]:
         """
         Find hub pages (pages with many outbound links).
 
@@ -143,7 +141,7 @@ class LinkGraph:
         hubs.sort(key=lambda x: x[1], reverse=True)
         return hubs[:top_n]
 
-    def get_authority_pages(self, top_n: int = 10) -> List[Tuple[str, int]]:
+    def get_authority_pages(self, top_n: int = 10) -> list[tuple[str, int]]:
         """
         Find authority pages (pages with many inbound links).
 
@@ -172,8 +170,8 @@ class LinkChecker:
         self.link_graph = LinkGraph()
 
     def analyze_internal_linking(
-        self, pages_data: List[Dict[str, any]]
-    ) -> List[Issue]:
+        self, pages_data: list[dict[str, any]]
+    ) -> list[Issue]:
         """
         Analyze internal linking structure.
 
@@ -227,7 +225,7 @@ class LinkChecker:
 
         return issues
 
-    def check_anchor_text(self, links: List[Dict[str, str]], url: str) -> List[Issue]:
+    def check_anchor_text(self, links: list[dict[str, str]], url: str) -> list[Issue]:
         """
         Check anchor text quality.
 
@@ -289,8 +287,8 @@ class LinkChecker:
         return issues
 
     def check_link_attributes(
-        self, links: List[Dict[str, any]], url: str
-    ) -> List[Issue]:
+        self, links: list[dict[str, any]], url: str
+    ) -> list[Issue]:
         """
         Check link attributes like rel, target, etc.
 
@@ -330,7 +328,7 @@ class LinkChecker:
 
 async def check_redirect_chains(
     url: str, client: httpx.AsyncClient, max_redirects: int = 10
-) -> List[Issue]:
+) -> list[Issue]:
     """
     Check for redirect chains and loops.
 
@@ -424,7 +422,7 @@ async def check_redirect_chains(
     return issues
 
 
-def analyze_link_distribution(pages_data: List[Dict[str, any]]) -> Dict[str, any]:
+def analyze_link_distribution(pages_data: list[dict[str, any]]) -> dict[str, any]:
     """
     Analyze the distribution of internal links across pages.
 
