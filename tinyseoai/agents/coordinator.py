@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Stalyn Disla
+# Licensed under the MIT License
+
 """
 Multi-agent coordinator for running SEO analysis with specialist agents.
 """

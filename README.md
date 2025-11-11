@@ -58,8 +58,10 @@ pip install tinyseoai
 git clone https://github.com/stalyndc/tinyseoai-cli.git
 cd tinyseoai-cli
 python -m venv .venv && source .venv/bin/activate
-pip install -e ".[dev,ai]"
+pip install -e ".[all]"
 ```
+
+**Note**: All dependencies are now managed in `pyproject.toml`. Use `pip install -e .` for production or `pip install -e ".[all]"` to include development tools.
 
 ### Requirements
 

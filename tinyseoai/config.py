@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Stalyn Disla
+# Licensed under the MIT License
+
 from __future__ import annotations
 
 import json
@@ -5,6 +8,7 @@ import os
 from pathlib import Path
 
 from dotenv import load_dotenv
+from loguru import logger
 from platformdirs import user_config_dir
 from pydantic import BaseModel, Field
 
@@ -64,8 +68,7 @@ def get_config() -> AppConfig:
             return AppConfig(**json.loads(p.read_text()))
         except (json.JSONDecodeError, ValueError) as e:
             # Config file is corrupted, log warning and recreate
-            import sys
-            print(f"Warning: Config file corrupted ({e}), recreating with defaults", file=sys.stderr)
+            logger.warning(f"Config file corrupted ({e}), recreating with defaults")
 
     # Create new config file
     cfg = AppConfig()
@@ -73,8 +76,7 @@ def get_config() -> AppConfig:
         p.write_text(cfg.model_dump_json(indent=2))
     except OSError as e:
         # Can't write config, but continue with default in-memory config
-        import sys
-        print(f"Warning: Cannot write config file ({e}), using defaults", file=sys.stderr)
+        logger.warning(f"Cannot write config file ({e}), using defaults")
 
     return cfg
 

@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Stalyn Disla
+# Licensed under the MIT License
+
 from __future__ import annotations
 
 import asyncio

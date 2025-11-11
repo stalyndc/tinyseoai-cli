@@ -23,10 +23,15 @@ classifiers = [
 ]
 
 dependencies = [
+    # CLI & Configuration
     "typer>=0.12",
     "rich>=13.7",
-    "pydantic>=2.8",
+    "pydantic>=2.12.4",
+    "pydantic-settings>=2.1.0",
     "platformdirs>=4.2",
+    "python-dotenv>=1.0.1",
+
+    # HTTP, Crawl, Parse
     "httpx[http2]>=0.27",
     "trafilatura>=1.9",
     "beautifulsoup4>=4.12",
@@ -34,14 +39,46 @@ dependencies = [
     "tldextract>=5.1",
     "yarl>=1.9",
     "robotexclusionrulesparser>=1.7",
+
+    # Data & Scoring
     "pandas>=2.2",
     "numpy>=2.1",
+
+    # Reporting (PDF/XLSX)
     "jinja2>=3.1",
     "playwright>=1.48",
+    "weasyprint>=62.3",
     "openpyxl>=3.1",
+    "plotly>=5.18",
+    "pillow>=10.2",
+
+    # AI / LLM / Agents
     "openai>=1.53.0",
-    "python-dotenv>=1.0.1",
+    "anthropic>=0.18.0",
+    "langchain>=1.0.5",
+    "langchain-openai>=0.0.5",
+    "langchain-anthropic>=0.1.0",
+    "langsmith>=0.0.87",
+    "instructor>=0.5.0",
+
+    # Vector Storage
+    "chromadb>=0.4.22",
+    "sentence-transformers>=2.3.0",
+    "langchain-chroma>=0.1.0",
+
+    # Content Analysis
+    "textstat>=0.7.3",
+
+    # Security
+    "cryptography>=42.0.0",
+    "requests>=2.31.0",
+    "certifi>=2024.0.0",
+
+    # Logging
     "loguru>=0.7.2",
+
+    # Integration APIs
+    "pygithub>=2.1.1",
 ]
 
 [project.optional-dependencies]
@@ -56,17 +93,11 @@ dev = [
     "isort>=5.13",
     "pre-commit>=3.6",
     "faker>=22.0",
+    "hypothesis>=6.98.0",
+    "vcrpy>=5.1.0",
 ]
 build = ["pyinstaller>=6.10"]
-ai = [
-    "langchain>=0.1.0",
-    "anthropic>=0.18.0",
-    "chromadb>=0.4.22",
-    "sentence-transformers>=2.3.0",
-    "langchain-openai>=0.0.5",
-    "langchain-anthropic>=0.1.0",
-]
-all = ["tinyseoai[dev,build,ai]"]
+all = ["tinyseoai[dev,build]"]
 
 [project.scripts]
 tinyseoai = "tinyseoai.cli:app"
