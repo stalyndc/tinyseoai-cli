@@ -1,6 +1,7 @@
 from __future__ import annotations
-from urllib.parse import urlparse, urlunparse
+
 import ipaddress
+from urllib.parse import urlparse, urlunparse
 
 
 class URLValidationError(ValueError):
@@ -33,8 +34,8 @@ def validate_url(url: str) -> str:
 
     try:
         parsed = urlparse(url)
-    except Exception as e:
-        raise URLValidationError(f"Invalid URL format: {e}")
+    except Exception as exc:
+        raise URLValidationError(f"Invalid URL format: {exc}") from exc
 
     # Check scheme
     if parsed.scheme not in ("http", "https"):
@@ -104,8 +105,8 @@ def normalize_url(u: str) -> str:
 
     try:
         p = urlparse(u)
-    except Exception as e:
-        raise URLValidationError(f"Failed to parse URL: {e}")
+    except Exception as exc:
+        raise URLValidationError(f"Failed to parse URL: {exc}") from exc
 
     scheme = p.scheme or "https"
     netloc = p.netloc.lower() if p.netloc else ""
