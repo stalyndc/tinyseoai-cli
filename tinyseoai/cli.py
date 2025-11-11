@@ -466,19 +466,20 @@ def explain(
     console.print(f"🧠 Saved AI summary → [bold]{out}[/]")
 
 
-# --- UPDATED: report export (xlsx) ------------------------------------------------
+# --- REPORT export (xlsx/pdf) ------------------------------------------------
 from .reporting.excel import write_xlsx
+from .reporting.pdf import write_pdf
 from .ai.summarizer import summarize_with_ai
 
 @app.command()
 def report(
     folder: Path = typer.Argument(..., help="Folder containing summary.json"),
-    format: str = typer.Option("xlsx", "--format", "-f", help="Report format (xlsx)"),
+    format: str = typer.Option("xlsx", "--format", "-f", help="Report format: xlsx|pdf"),
     out: Path = typer.Option(None, "--out", "-o", help="Output file path"),
     ai: bool = typer.Option(False, "--with-ai", help="Generate AI summary on the fly (uses your OpenAI key)"),
 ):
     """
-    Build a client-friendly report (XLSX).
+    Build a client-friendly report (XLSX or PDF).
     - Reads summary.json
     - If summary_with_ai.json exists OR --with-ai is set, merges AI results under 'ai_summary'
     """
@@ -491,9 +492,9 @@ def report(
 
     data = json.loads(summary_path.read_text())
 
+    # Merge AI (cached or live)
     ai_path = folder / "summary_with_ai.json"
     merged_ai = None
-
     if ai_path.exists():
         try:
             merged_ai = json.loads(ai_path.read_text())
@@ -501,26 +502,30 @@ def report(
             console.print("[yellow]Note:[/] Could not parse summary_with_ai.json, skipping cached AI.")
 
     if ai or merged_ai is None:
-        # Optionally generate AI now
         try:
             from .data.models import AuditResult
             result = AuditResult(**data)
             merged_ai = summarize_with_ai(result)
-            # also save alongside for reuse
-            (folder / "summary_with_ai.json").write_text(json.dumps(merged_ai, indent=2))
+            ai_path.write_text(json.dumps(merged_ai, indent=2))
         except Exception as e:
             console.print(f"[yellow]AI step skipped:[/] {e}")
 
     if merged_ai:
         data["ai_summary"] = merged_ai
 
-    if format.lower() != "xlsx":
-        console.print("[red]Only xlsx is supported right now.[/]")
+    fmt = format.lower()
+    site_slug = urlparse(data.get("site", "")).netloc or "site"
+
+    if fmt == "xlsx":
+        if out is None:
+            out = folder / f"{site_slug}-report.xlsx"
+        path = write_xlsx(data, out)
+        console.print(f"📦 XLSX saved → [bold]{path}[/]")
+    elif fmt == "pdf":
+        if out is None:
+            out = folder / f"{site_slug}-report.pdf"
+        path = write_pdf(data, out)
+        console.print(f"🖨️ PDF saved → [bold]{path}[/]")
+    else:
+        console.print("[red]Unsupported format. Use xlsx or pdf.[/]")
         raise typer.Exit(code=2)
-
-    if out is None:
-        site_slug = urlparse(data.get("site", "")).netloc or "site"
-        out = folder / f"{site_slug}-report.xlsx"
-
-    result_path = write_xlsx(data, out)
-    console.print(f"📦 Report saved → [bold]{result_path}[/]")

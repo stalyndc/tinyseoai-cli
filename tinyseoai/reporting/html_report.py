@@ -5,13 +5,13 @@ from pathlib import Path
 from typing import Dict, Any
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
-import importlib.resources as pkg_resources
 
 
 def _templates_path() -> str:
-    # Resolve the templates folder inside the package
-    pkg = "tinyseoai.reporting.templates"
-    return str(pkg_resources.files(pkg))
+    # Resolve the templates folder relative to this file
+    from pathlib import Path
+    current_file = Path(__file__).resolve()
+    return str(current_file.parent / "templates")
 
 
 def build_html(summary: Dict[str, Any]) -> str:
