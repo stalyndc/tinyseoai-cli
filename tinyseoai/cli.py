@@ -466,19 +466,21 @@ def explain(
     console.print(f"🧠 Saved AI summary → [bold]{out}[/]")
 
 
-# --- NEW: report export (xlsx) ------------------------------------------------
+# --- UPDATED: report export (xlsx) ------------------------------------------------
 from .reporting.excel import write_xlsx
+from .ai.summarizer import summarize_with_ai
 
 @app.command()
 def report(
-    folder: Path = typer.Argument(..., help="Folder containing summary.json (and optionally summary_with_ai.json)"),
+    folder: Path = typer.Argument(..., help="Folder containing summary.json"),
     format: str = typer.Option("xlsx", "--format", "-f", help="Report format (xlsx)"),
     out: Path = typer.Option(None, "--out", "-o", help="Output file path"),
+    ai: bool = typer.Option(False, "--with-ai", help="Generate AI summary on the fly (uses your OpenAI key)"),
 ):
     """
-    Build a client-friendly report. Currently supports: XLSX.
+    Build a client-friendly report (XLSX).
     - Reads summary.json
-    - If summary_with_ai.json exists, merges it under key 'ai_summary'
+    - If summary_with_ai.json exists OR --with-ai is set, merges AI results under 'ai_summary'
     """
     console.rule("[bold green]Build Report[/]")
 
@@ -490,12 +492,27 @@ def report(
     data = json.loads(summary_path.read_text())
 
     ai_path = folder / "summary_with_ai.json"
+    merged_ai = None
+
     if ai_path.exists():
         try:
-            ai_data = json.loads(ai_path.read_text())
-            data["ai_summary"] = ai_data
+            merged_ai = json.loads(ai_path.read_text())
         except Exception:
-            console.print("[yellow]Note:[/] Could not parse summary_with_ai.json, skipping AI section.")
+            console.print("[yellow]Note:[/] Could not parse summary_with_ai.json, skipping cached AI.")
+
+    if ai or merged_ai is None:
+        # Optionally generate AI now
+        try:
+            from .data.models import AuditResult
+            result = AuditResult(**data)
+            merged_ai = summarize_with_ai(result)
+            # also save alongside for reuse
+            (folder / "summary_with_ai.json").write_text(json.dumps(merged_ai, indent=2))
+        except Exception as e:
+            console.print(f"[yellow]AI step skipped:[/] {e}")
+
+    if merged_ai:
+        data["ai_summary"] = merged_ai
 
     if format.lower() != "xlsx":
         console.print("[red]Only xlsx is supported right now.[/]")
