@@ -1,0 +1,31 @@
+{
+  "site": "https://staging.mysite.com/",
+  "pages_scanned": 0,
+  "issues": [
+    {
+      "url": "https://staging.mysite.com/robots.txt",
+      "type": "robots_missing",
+      "severity": "low",
+      "detail": "No robots.txt found"
+    },
+    {
+      "url": "https://staging.mysite.com/",
+      "type": "fetch_error",
+      "severity": "high",
+      "detail": "Request failed"
+    }
+  ],
+  "meta": {
+    "max_pages": 50,
+    "timestamp": "2025-11-11T02:14:43.556175Z",
+    "agent": "tinyseoai/0.2.0",
+    "robots_txt_exists": false,
+    "sitemaps_found": 0,
+    "crawl_delay": null,
+    "total_sitemap_urls": 0,
+    "health_score": 0,
+    "health_grade": "F",
+    "category_scores": {},
+    "top_recommendations": []
+  }
+}

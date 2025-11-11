@@ -1,0 +1,50 @@
+{
+  "site": "https://yahoo.com/",
+  "summary": "The site has a couple of critical issues that need attention, including a missing sitemap and an HTTP error on the homepage. Addressing these will improve site visibility and user experience.",
+  "top_issues": [
+    {
+      "type": "sitemap_missing",
+      "why_it_matters": "A sitemap helps search engines index the site effectively.",
+      "evidence": "Sitemap not found at https://yahoo.com/sitemap.xml"
+    },
+    {
+      "type": "http_error",
+      "why_it_matters": "HTTP errors can prevent users from accessing the site and negatively impact SEO.",
+      "evidence": "HTTP error encountered at https://yahoo.com/"
+    }
+  ],
+  "recommended_actions": [
+    {
+      "action": "Create and submit a sitemap",
+      "impact": "high",
+      "effort": "medium"
+    },
+    {
+      "action": "Fix the HTTP error on the homepage",
+      "impact": "high",
+      "effort": "high"
+    },
+    {
+      "action": "Monitor site health regularly",
+      "impact": "medium",
+      "effort": "low"
+    },
+    {
+      "action": "Implement a 404 error page",
+      "impact": "medium",
+      "effort": "medium"
+    },
+    {
+      "action": "Optimize site loading speed",
+      "impact": "medium",
+      "effort": "high"
+    }
+  ],
+  "quick_wins": [
+    "Check server settings to resolve HTTP errors",
+    "Ensure the sitemap URL is correctly configured",
+    "Add a robots.txt file if missing"
+  ],
+  "risk_items": [],
+  "plan_used": "free"
+}

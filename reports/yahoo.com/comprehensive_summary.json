@@ -1,0 +1,53 @@
+{
+  "site": "https://yahoo.com/",
+  "pages_scanned": 1,
+  "issues": [
+    {
+      "url": "https://yahoo.com/robots.txt",
+      "type": "robots_missing",
+      "severity": "low",
+      "detail": "No robots.txt found"
+    },
+    {
+      "url": "https://yahoo.com/",
+      "type": "http_error",
+      "severity": "high",
+      "detail": "Status 429"
+    }
+  ],
+  "meta": {
+    "max_pages": 50,
+    "timestamp": "2025-11-11T02:19:33.565844Z",
+    "agent": "tinyseoai/0.2.0",
+    "robots_txt_exists": false,
+    "sitemaps_found": 0,
+    "crawl_delay": null,
+    "total_sitemap_urls": 0,
+    "health_score": 70.0,
+    "health_grade": "C",
+    "category_scores": {
+      "other": {
+        "count": 2,
+        "total_impact": 10.0,
+        "avg_impact": 5.0,
+        "avg_effort": 5.0
+      }
+    },
+    "top_recommendations": [
+      {
+        "issue_type": "http_error",
+        "category": "other",
+        "impact": 6.0,
+        "effort": 5,
+        "priority": 6.0
+      },
+      {
+        "issue_type": "robots_missing",
+        "category": "other",
+        "impact": 4.0,
+        "effort": 5,
+        "priority": 4.0
+      }
+    ]
+  }
+}

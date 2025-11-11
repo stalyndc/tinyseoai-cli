@@ -1,0 +1,284 @@
+{
+  "site": "https://example.com/",
+  "pages_scanned": 1,
+  "issues": [
+    {
+      "url": "https://example.com/robots.txt",
+      "type": "robots_missing",
+      "severity": "low",
+      "detail": "No robots.txt found"
+    },
+    {
+      "url": "https://example.com/",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://example.com/",
+      "type": "missing_hsts",
+      "severity": "medium",
+      "detail": "Missing Strict-Transport-Security header. This header enforces HTTPS connections."
+    },
+    {
+      "url": "https://example.com/",
+      "type": "missing_x_content_type_options",
+      "severity": "low",
+      "detail": "Missing X-Content-Type-Options header. Should be set to 'nosniff' to prevent MIME type sniffing."
+    },
+    {
+      "url": "https://example.com/",
+      "type": "missing_clickjacking_protection",
+      "severity": "medium",
+      "detail": "Missing X-Frame-Options or CSP frame-ancestors directive. This protects against clickjacking attacks."
+    },
+    {
+      "url": "https://example.com/",
+      "type": "missing_csp",
+      "severity": "low",
+      "detail": "Missing Content-Security-Policy header. CSP helps prevent XSS and other code injection attacks."
+    },
+    {
+      "url": "https://example.com/",
+      "type": "missing_xss_protection",
+      "severity": "low",
+      "detail": "Missing X-XSS-Protection header. This header enables browser XSS filtering."
+    },
+    {
+      "url": "https://example.com/",
+      "type": "missing_referrer_policy",
+      "severity": "info",
+      "detail": "Missing Referrer-Policy header. This controls how much referrer information is shared."
+    },
+    {
+      "url": "https://example.com/",
+      "type": "missing_permissions_policy",
+      "severity": "info",
+      "detail": "Missing Permissions-Policy header. This controls which browser features can be used."
+    },
+    {
+      "url": "https://example.com/",
+      "type": "missing_charset",
+      "severity": "low",
+      "detail": "No charset meta tag found. Should declare UTF-8."
+    },
+    {
+      "url": "https://example.com/",
+      "type": "missing_og_tag",
+      "severity": "medium",
+      "detail": "Missing required Open Graph title (og:title)"
+    },
+    {
+      "url": "https://example.com/",
+      "type": "missing_og_tag",
+      "severity": "medium",
+      "detail": "Missing required Open Graph type (og:type)"
+    },
+    {
+      "url": "https://example.com/",
+      "type": "missing_og_tag",
+      "severity": "medium",
+      "detail": "Missing required Open Graph image (og:image)"
+    },
+    {
+      "url": "https://example.com/",
+      "type": "missing_og_tag",
+      "severity": "medium",
+      "detail": "Missing required Open Graph URL (og:url)"
+    },
+    {
+      "url": "https://example.com/",
+      "type": "missing_recommended_og_tag",
+      "severity": "low",
+      "detail": "Missing recommended Open Graph description (og:description)"
+    },
+    {
+      "url": "https://example.com/",
+      "type": "missing_recommended_og_tag",
+      "severity": "low",
+      "detail": "Missing recommended Open Graph site name (og:site_name)"
+    },
+    {
+      "url": "https://example.com/",
+      "type": "missing_twitter_card",
+      "severity": "low",
+      "detail": "Missing twitter:card meta tag. This controls how content is displayed when shared on Twitter/X."
+    },
+    {
+      "url": "https://example.com/",
+      "type": "missing_twitter_site",
+      "severity": "info",
+      "detail": "Missing twitter:site meta tag. This should be your Twitter/X username."
+    },
+    {
+      "url": "https://example.com/",
+      "type": "missing_favicon",
+      "severity": "low",
+      "detail": "No favicon found. Favicons improve brand recognition in browser tabs."
+    },
+    {
+      "url": "https://example.com/",
+      "type": "missing_apple_touch_icon",
+      "severity": "info",
+      "detail": "Missing apple-touch-icon for iOS home screen bookmarks"
+    },
+    {
+      "url": "https://example.com/",
+      "type": "missing_canonical",
+      "severity": "medium",
+      "detail": "No canonical tag found. This can cause duplicate content issues."
+    },
+    {
+      "url": "https://example.com/",
+      "type": "thin_content",
+      "severity": "medium",
+      "detail": "Page has only 21 words. Aim for at least 300 words."
+    },
+    {
+      "url": "https://example.com/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'domain' appears 3 times (20.0% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://example.com/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'example' appears 2 times (13.3% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://example.com/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'this' appears 1 times (6.7% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://example.com/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'documentation' appears 1 times (6.7% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://example.com/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'examples' appears 1 times (6.7% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://example.com/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'without' appears 1 times (6.7% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://example.com/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'needing' appears 1 times (6.7% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://example.com/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'permission' appears 1 times (6.7% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://example.com/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'avoid' appears 1 times (6.7% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://example.com/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'operations' appears 1 times (6.7% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://example.com/",
+      "type": "compression_not_optimal",
+      "severity": "info",
+      "detail": "Using gzip compression. Consider Brotli for better compression ratios."
+    }
+  ],
+  "meta": {
+    "max_pages": 2,
+    "timestamp": "2025-11-11T02:55:00.025929Z",
+    "agent": "tinyseoai/0.2.0",
+    "robots_txt_exists": false,
+    "sitemaps_found": 0,
+    "crawl_delay": null,
+    "total_sitemap_urls": 0,
+    "health_score": 0,
+    "health_grade": "F",
+    "category_scores": {
+      "other": {
+        "count": 12,
+        "total_impact": 36.0,
+        "avg_impact": 3.0,
+        "avg_effort": 5.0
+      },
+      "content": {
+        "count": 12,
+        "total_impact": 70.8,
+        "avg_impact": 5.9,
+        "avg_effort": 6.6
+      },
+      "security": {
+        "count": 2,
+        "total_impact": 10.0,
+        "avg_impact": 5.0,
+        "avg_effort": 2.5
+      },
+      "social": {
+        "count": 6,
+        "total_impact": 34.4,
+        "avg_impact": 5.7,
+        "avg_effort": 3.3
+      },
+      "technical": {
+        "count": 1,
+        "total_impact": 7.0,
+        "avg_impact": 7.0,
+        "avg_effort": 4.0
+      }
+    },
+    "top_recommendations": [
+      {
+        "issue_type": "missing_hsts",
+        "category": "security",
+        "impact": 6.0,
+        "effort": 2,
+        "priority": 10.0
+      },
+      {
+        "issue_type": "missing_og_tag",
+        "category": "social",
+        "impact": 7.0,
+        "effort": 4,
+        "priority": 8.8
+      },
+      {
+        "issue_type": "missing_canonical",
+        "category": "technical",
+        "impact": 7.0,
+        "effort": 4,
+        "priority": 8.8
+      },
+      {
+        "issue_type": "meta_description_missing",
+        "category": "content",
+        "impact": 4.8,
+        "effort": 2,
+        "priority": 8.0
+      },
+      {
+        "issue_type": "missing_twitter_card",
+        "category": "social",
+        "impact": 3.2,
+        "effort": 2,
+        "priority": 8.0
+      }
+    ]
+  }
+}

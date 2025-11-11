@@ -1,0 +1,23 @@
+{
+  "site": "https://yahoo.com/",
+  "pages_scanned": 1,
+  "issues": [
+    {
+      "url": "https://yahoo.com/sitemap.xml",
+      "type": "sitemap_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://yahoo.com/",
+      "type": "http_error",
+      "severity": "high",
+      "detail": "Status 429"
+    }
+  ],
+  "meta": {
+    "max_pages": 50,
+    "timestamp": "2025-11-11T02:22:44.108343Z",
+    "agent": "tinyseoai/0.1.0"
+  }
+}

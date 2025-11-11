@@ -1,0 +1,2852 @@
+{
+  "site": "https://competitor.com/",
+  "pages_scanned": 50,
+  "issues": [
+    {
+      "url": "https://competitor.com/",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/",
+      "type": "missing_clickjacking_protection",
+      "severity": "medium",
+      "detail": "Missing X-Frame-Options or CSP frame-ancestors directive. This protects against clickjacking attacks."
+    },
+    {
+      "url": "https://competitor.com/",
+      "type": "missing_csp",
+      "severity": "low",
+      "detail": "Missing Content-Security-Policy header. CSP helps prevent XSS and other code injection attacks."
+    },
+    {
+      "url": "https://competitor.com/",
+      "type": "missing_xss_protection",
+      "severity": "low",
+      "detail": "Missing X-XSS-Protection header. This header enables browser XSS filtering."
+    },
+    {
+      "url": "https://competitor.com/",
+      "type": "missing_referrer_policy",
+      "severity": "info",
+      "detail": "Missing Referrer-Policy header. This controls how much referrer information is shared."
+    },
+    {
+      "url": "https://competitor.com/",
+      "type": "missing_permissions_policy",
+      "severity": "info",
+      "detail": "Missing Permissions-Policy header. This controls which browser features can be used."
+    },
+    {
+      "url": "https://competitor.com/",
+      "type": "missing_recommended_og_tag",
+      "severity": "low",
+      "detail": "Missing recommended Open Graph description (og:description)"
+    },
+    {
+      "url": "https://competitor.com/",
+      "type": "missing_twitter_title",
+      "severity": "info",
+      "detail": "Missing twitter:title. Falls back to og:title if available."
+    },
+    {
+      "url": "https://competitor.com/",
+      "type": "missing_twitter_description",
+      "severity": "info",
+      "detail": "Missing twitter:description. Falls back to og:description if available."
+    },
+    {
+      "url": "https://competitor.com/",
+      "type": "missing_twitter_image",
+      "severity": "medium",
+      "detail": "Missing twitter:image for summary_large_image card type"
+    },
+    {
+      "url": "https://competitor.com/",
+      "type": "missing_twitter_site",
+      "severity": "info",
+      "detail": "Missing twitter:site meta tag. This should be your Twitter/X username."
+    },
+    {
+      "url": "https://competitor.com/",
+      "type": "high_heading_ratio",
+      "severity": "low",
+      "detail": "33.0% of content is headings. Ensure sufficient body content."
+    },
+    {
+      "url": "https://competitor.com/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'ironman' appears 19 times (6.6% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://competitor.com/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'training' appears 18 times (6.3% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://competitor.com/",
+      "type": "images_not_lazy_loaded",
+      "severity": "low",
+      "detail": "27 image(s) not lazy loaded. Consider using loading='lazy' for off-screen images."
+    },
+    {
+      "url": "https://competitor.com/",
+      "type": "images_not_modern_format",
+      "severity": "info",
+      "detail": "27 image(s) not using modern formats (WebP/AVIF). Modern formats can significantly reduce file size."
+    },
+    {
+      "url": "https://competitor.com/",
+      "type": "render_blocking_javascript",
+      "severity": "high",
+      "detail": "3 render-blocking JavaScript file(s) in <head>. Add async or defer attributes, or move scripts to end of <body>."
+    },
+    {
+      "url": "https://competitor.com/",
+      "type": "compression_not_optimal",
+      "severity": "info",
+      "detail": "Using gzip compression. Consider Brotli for better compression ratios."
+    },
+    {
+      "url": "https://competitor.com/",
+      "type": "missing_etag",
+      "severity": "info",
+      "detail": "Missing ETag header. ETags help with cache validation."
+    },
+    {
+      "url": "https://competitor.com/",
+      "type": "too_many_js_files",
+      "severity": "medium",
+      "detail": "49 external JavaScript files. Consider bundling to reduce HTTP requests."
+    },
+    {
+      "url": "https://competitor.com/",
+      "type": "missing_preconnect",
+      "severity": "info",
+      "detail": "Consider adding preconnect hints for external domains: static.cloudflareinsights.com, www.googletagmanager.com. This can improve loading performance."
+    },
+    {
+      "url": "https://competitor.com/sample-page/",
+      "type": "missing_clickjacking_protection",
+      "severity": "medium",
+      "detail": "Missing X-Frame-Options or CSP frame-ancestors directive. This protects against clickjacking attacks."
+    },
+    {
+      "url": "https://competitor.com/sample-page/",
+      "type": "missing_csp",
+      "severity": "low",
+      "detail": "Missing Content-Security-Policy header. CSP helps prevent XSS and other code injection attacks."
+    },
+    {
+      "url": "https://competitor.com/sample-page/",
+      "type": "missing_xss_protection",
+      "severity": "low",
+      "detail": "Missing X-XSS-Protection header. This header enables browser XSS filtering."
+    },
+    {
+      "url": "https://competitor.com/sample-page/",
+      "type": "missing_referrer_policy",
+      "severity": "info",
+      "detail": "Missing Referrer-Policy header. This controls how much referrer information is shared."
+    },
+    {
+      "url": "https://competitor.com/sample-page/",
+      "type": "missing_permissions_policy",
+      "severity": "info",
+      "detail": "Missing Permissions-Policy header. This controls which browser features can be used."
+    },
+    {
+      "url": "https://competitor.com/sample-page/",
+      "type": "mixed_content",
+      "severity": "high",
+      "detail": "Found 1 HTTP resources on HTTPS page. Examples: href=\"http://imcompetitor.wpengine.com/wp-admin/\""
+    },
+    {
+      "url": "https://competitor.com/sample-page/",
+      "type": "missing_twitter_title",
+      "severity": "info",
+      "detail": "Missing twitter:title. Falls back to og:title if available."
+    },
+    {
+      "url": "https://competitor.com/sample-page/",
+      "type": "missing_twitter_description",
+      "severity": "info",
+      "detail": "Missing twitter:description. Falls back to og:description if available."
+    },
+    {
+      "url": "https://competitor.com/sample-page/",
+      "type": "missing_twitter_image",
+      "severity": "medium",
+      "detail": "Missing twitter:image for summary_large_image card type"
+    },
+    {
+      "url": "https://competitor.com/sample-page/",
+      "type": "missing_twitter_site",
+      "severity": "info",
+      "detail": "Missing twitter:site meta tag. This should be your Twitter/X username."
+    },
+    {
+      "url": "https://competitor.com/sample-page/",
+      "type": "thin_content",
+      "severity": "medium",
+      "detail": "Page has only 174 words. Aim for at least 300 words."
+    },
+    {
+      "url": "https://competitor.com/sample-page/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'page' appears 7 times (6.2% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://competitor.com/sample-page/",
+      "type": "images_not_lazy_loaded",
+      "severity": "low",
+      "detail": "6 image(s) not lazy loaded. Consider using loading='lazy' for off-screen images."
+    },
+    {
+      "url": "https://competitor.com/sample-page/",
+      "type": "images_not_modern_format",
+      "severity": "info",
+      "detail": "6 image(s) not using modern formats (WebP/AVIF). Modern formats can significantly reduce file size."
+    },
+    {
+      "url": "https://competitor.com/sample-page/",
+      "type": "render_blocking_javascript",
+      "severity": "high",
+      "detail": "3 render-blocking JavaScript file(s) in <head>. Add async or defer attributes, or move scripts to end of <body>."
+    },
+    {
+      "url": "https://competitor.com/sample-page/",
+      "type": "compression_not_optimal",
+      "severity": "info",
+      "detail": "Using gzip compression. Consider Brotli for better compression ratios."
+    },
+    {
+      "url": "https://competitor.com/sample-page/",
+      "type": "missing_etag",
+      "severity": "info",
+      "detail": "Missing ETag header. ETags help with cache validation."
+    },
+    {
+      "url": "https://competitor.com/sample-page/",
+      "type": "too_many_js_files",
+      "severity": "medium",
+      "detail": "36 external JavaScript files. Consider bundling to reduce HTTP requests."
+    },
+    {
+      "url": "https://competitor.com/sample-page/",
+      "type": "missing_preconnect",
+      "severity": "info",
+      "detail": "Consider adding preconnect hints for external domains: static.cloudflareinsights.com, www.googletagmanager.com. This can improve loading performance."
+    },
+    {
+      "url": "https://competitor.com/about/",
+      "type": "missing_clickjacking_protection",
+      "severity": "medium",
+      "detail": "Missing X-Frame-Options or CSP frame-ancestors directive. This protects against clickjacking attacks."
+    },
+    {
+      "url": "https://competitor.com/about/",
+      "type": "missing_csp",
+      "severity": "low",
+      "detail": "Missing Content-Security-Policy header. CSP helps prevent XSS and other code injection attacks."
+    },
+    {
+      "url": "https://competitor.com/about/",
+      "type": "missing_xss_protection",
+      "severity": "low",
+      "detail": "Missing X-XSS-Protection header. This header enables browser XSS filtering."
+    },
+    {
+      "url": "https://competitor.com/about/",
+      "type": "missing_referrer_policy",
+      "severity": "info",
+      "detail": "Missing Referrer-Policy header. This controls how much referrer information is shared."
+    },
+    {
+      "url": "https://competitor.com/about/",
+      "type": "missing_permissions_policy",
+      "severity": "info",
+      "detail": "Missing Permissions-Policy header. This controls which browser features can be used."
+    },
+    {
+      "url": "https://competitor.com/about/",
+      "type": "mixed_content",
+      "severity": "high",
+      "detail": "Found 15 HTTP resources on HTTPS page. Examples: href=\"http://www.advance.com/\", src=\"http://imcompetitor.wpengine.com/wp-content/uploads/2020/10/IM_blended_logo_large-300x88.png\", src=\"http://imcompetitor.wpengine.com/wp-content/uploads/2020/10/IM_blended_logo_large-300x88.png\""
+    },
+    {
+      "url": "https://competitor.com/about/",
+      "type": "missing_twitter_title",
+      "severity": "info",
+      "detail": "Missing twitter:title. Falls back to og:title if available."
+    },
+    {
+      "url": "https://competitor.com/about/",
+      "type": "missing_twitter_description",
+      "severity": "info",
+      "detail": "Missing twitter:description. Falls back to og:description if available."
+    },
+    {
+      "url": "https://competitor.com/about/",
+      "type": "missing_twitter_image",
+      "severity": "medium",
+      "detail": "Missing twitter:image for summary_large_image card type"
+    },
+    {
+      "url": "https://competitor.com/about/",
+      "type": "missing_twitter_site",
+      "severity": "info",
+      "detail": "Missing twitter:site meta tag. This should be your Twitter/X username."
+    },
+    {
+      "url": "https://competitor.com/about/",
+      "type": "images_not_lazy_loaded",
+      "severity": "low",
+      "detail": "34 image(s) not lazy loaded. Consider using loading='lazy' for off-screen images."
+    },
+    {
+      "url": "https://competitor.com/about/",
+      "type": "images_not_modern_format",
+      "severity": "info",
+      "detail": "34 image(s) not using modern formats (WebP/AVIF). Modern formats can significantly reduce file size."
+    },
+    {
+      "url": "https://competitor.com/about/",
+      "type": "render_blocking_javascript",
+      "severity": "high",
+      "detail": "3 render-blocking JavaScript file(s) in <head>. Add async or defer attributes, or move scripts to end of <body>."
+    },
+    {
+      "url": "https://competitor.com/about/",
+      "type": "compression_not_optimal",
+      "severity": "info",
+      "detail": "Using gzip compression. Consider Brotli for better compression ratios."
+    },
+    {
+      "url": "https://competitor.com/about/",
+      "type": "missing_etag",
+      "severity": "info",
+      "detail": "Missing ETag header. ETags help with cache validation."
+    },
+    {
+      "url": "https://competitor.com/about/",
+      "type": "too_many_js_files",
+      "severity": "medium",
+      "detail": "50 external JavaScript files. Consider bundling to reduce HTTP requests."
+    },
+    {
+      "url": "https://competitor.com/about/",
+      "type": "missing_preconnect",
+      "severity": "info",
+      "detail": "Consider adding preconnect hints for external domains: www.competitor.com, imcompetitor.wpengine.com, static.cloudflareinsights.com. This can improve loading performance."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/category/ironman/",
+      "type": "missing_clickjacking_protection",
+      "severity": "medium",
+      "detail": "Missing X-Frame-Options or CSP frame-ancestors directive. This protects against clickjacking attacks."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/",
+      "type": "missing_csp",
+      "severity": "low",
+      "detail": "Missing Content-Security-Policy header. CSP helps prevent XSS and other code injection attacks."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/",
+      "type": "missing_xss_protection",
+      "severity": "low",
+      "detail": "Missing X-XSS-Protection header. This header enables browser XSS filtering."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/",
+      "type": "missing_referrer_policy",
+      "severity": "info",
+      "detail": "Missing Referrer-Policy header. This controls how much referrer information is shared."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/",
+      "type": "missing_permissions_policy",
+      "severity": "info",
+      "detail": "Missing Permissions-Policy header. This controls which browser features can be used."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/",
+      "type": "missing_twitter_title",
+      "severity": "info",
+      "detail": "Missing twitter:title. Falls back to og:title if available."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/",
+      "type": "missing_twitter_description",
+      "severity": "info",
+      "detail": "Missing twitter:description. Falls back to og:description if available."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/",
+      "type": "missing_twitter_image",
+      "severity": "medium",
+      "detail": "Missing twitter:image for summary_large_image card type"
+    },
+    {
+      "url": "https://competitor.com/category/ironman/",
+      "type": "missing_twitter_site",
+      "severity": "info",
+      "detail": "Missing twitter:site meta tag. This should be your Twitter/X username."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/",
+      "type": "long_sentences",
+      "severity": "low",
+      "detail": "Average sentence length is 31.4 words. Consider shorter sentences for better readability."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'ironman' appears 36 times (8.8% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/",
+      "type": "images_not_lazy_loaded",
+      "severity": "low",
+      "detail": "26 image(s) not lazy loaded. Consider using loading='lazy' for off-screen images."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/",
+      "type": "images_not_modern_format",
+      "severity": "info",
+      "detail": "26 image(s) not using modern formats (WebP/AVIF). Modern formats can significantly reduce file size."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/",
+      "type": "render_blocking_javascript",
+      "severity": "high",
+      "detail": "3 render-blocking JavaScript file(s) in <head>. Add async or defer attributes, or move scripts to end of <body>."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/",
+      "type": "compression_not_optimal",
+      "severity": "info",
+      "detail": "Using gzip compression. Consider Brotli for better compression ratios."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/",
+      "type": "short_cache_duration",
+      "severity": "low",
+      "detail": "Cache duration is only 600 seconds. Consider longer cache for static resources."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/",
+      "type": "missing_etag",
+      "severity": "info",
+      "detail": "Missing ETag header. ETags help with cache validation."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/",
+      "type": "too_many_js_files",
+      "severity": "medium",
+      "detail": "41 external JavaScript files. Consider bundling to reduce HTTP requests."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/",
+      "type": "missing_preconnect",
+      "severity": "info",
+      "detail": "Consider adding preconnect hints for external domains: static.cloudflareinsights.com, www.googletagmanager.com. This can improve loading performance."
+    },
+    {
+      "url": "https://competitor.com/fusion_tb_category/header/",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/fusion_tb_category/header/",
+      "type": "missing_clickjacking_protection",
+      "severity": "medium",
+      "detail": "Missing X-Frame-Options or CSP frame-ancestors directive. This protects against clickjacking attacks."
+    },
+    {
+      "url": "https://competitor.com/fusion_tb_category/header/",
+      "type": "missing_csp",
+      "severity": "low",
+      "detail": "Missing Content-Security-Policy header. CSP helps prevent XSS and other code injection attacks."
+    },
+    {
+      "url": "https://competitor.com/fusion_tb_category/header/",
+      "type": "missing_xss_protection",
+      "severity": "low",
+      "detail": "Missing X-XSS-Protection header. This header enables browser XSS filtering."
+    },
+    {
+      "url": "https://competitor.com/fusion_tb_category/header/",
+      "type": "missing_referrer_policy",
+      "severity": "info",
+      "detail": "Missing Referrer-Policy header. This controls how much referrer information is shared."
+    },
+    {
+      "url": "https://competitor.com/fusion_tb_category/header/",
+      "type": "missing_permissions_policy",
+      "severity": "info",
+      "detail": "Missing Permissions-Policy header. This controls which browser features can be used."
+    },
+    {
+      "url": "https://competitor.com/fusion_tb_category/header/",
+      "type": "missing_recommended_og_tag",
+      "severity": "low",
+      "detail": "Missing recommended Open Graph description (og:description)"
+    },
+    {
+      "url": "https://competitor.com/fusion_tb_category/header/",
+      "type": "missing_twitter_title",
+      "severity": "info",
+      "detail": "Missing twitter:title. Falls back to og:title if available."
+    },
+    {
+      "url": "https://competitor.com/fusion_tb_category/header/",
+      "type": "missing_twitter_description",
+      "severity": "info",
+      "detail": "Missing twitter:description. Falls back to og:description if available."
+    },
+    {
+      "url": "https://competitor.com/fusion_tb_category/header/",
+      "type": "missing_twitter_image",
+      "severity": "medium",
+      "detail": "Missing twitter:image for summary_large_image card type"
+    },
+    {
+      "url": "https://competitor.com/fusion_tb_category/header/",
+      "type": "missing_twitter_site",
+      "severity": "info",
+      "detail": "Missing twitter:site meta tag. This should be your Twitter/X username."
+    },
+    {
+      "url": "https://competitor.com/fusion_tb_category/header/",
+      "type": "canonical_points_elsewhere",
+      "severity": "info",
+      "detail": "Canonical points to different URL: https://competitor.com/"
+    },
+    {
+      "url": "https://competitor.com/fusion_tb_category/header/",
+      "type": "high_heading_ratio",
+      "severity": "low",
+      "detail": "33.0% of content is headings. Ensure sufficient body content."
+    },
+    {
+      "url": "https://competitor.com/fusion_tb_category/header/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'ironman' appears 19 times (6.6% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://competitor.com/fusion_tb_category/header/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'training' appears 18 times (6.3% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://competitor.com/fusion_tb_category/header/",
+      "type": "images_not_lazy_loaded",
+      "severity": "low",
+      "detail": "27 image(s) not lazy loaded. Consider using loading='lazy' for off-screen images."
+    },
+    {
+      "url": "https://competitor.com/fusion_tb_category/header/",
+      "type": "images_not_modern_format",
+      "severity": "info",
+      "detail": "27 image(s) not using modern formats (WebP/AVIF). Modern formats can significantly reduce file size."
+    },
+    {
+      "url": "https://competitor.com/fusion_tb_category/header/",
+      "type": "render_blocking_javascript",
+      "severity": "high",
+      "detail": "3 render-blocking JavaScript file(s) in <head>. Add async or defer attributes, or move scripts to end of <body>."
+    },
+    {
+      "url": "https://competitor.com/fusion_tb_category/header/",
+      "type": "compression_not_optimal",
+      "severity": "info",
+      "detail": "Using gzip compression. Consider Brotli for better compression ratios."
+    },
+    {
+      "url": "https://competitor.com/fusion_tb_category/header/",
+      "type": "missing_etag",
+      "severity": "info",
+      "detail": "Missing ETag header. ETags help with cache validation."
+    },
+    {
+      "url": "https://competitor.com/fusion_tb_category/header/",
+      "type": "too_many_js_files",
+      "severity": "medium",
+      "detail": "49 external JavaScript files. Consider bundling to reduce HTTP requests."
+    },
+    {
+      "url": "https://competitor.com/fusion_tb_category/header/",
+      "type": "missing_preconnect",
+      "severity": "info",
+      "detail": "Consider adding preconnect hints for external domains: static.cloudflareinsights.com, www.googletagmanager.com. This can improve loading performance."
+    },
+    {
+      "url": "https://competitor.com/element_category/elements/",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/element_category/elements/",
+      "type": "missing_clickjacking_protection",
+      "severity": "medium",
+      "detail": "Missing X-Frame-Options or CSP frame-ancestors directive. This protects against clickjacking attacks."
+    },
+    {
+      "url": "https://competitor.com/element_category/elements/",
+      "type": "missing_csp",
+      "severity": "low",
+      "detail": "Missing Content-Security-Policy header. CSP helps prevent XSS and other code injection attacks."
+    },
+    {
+      "url": "https://competitor.com/element_category/elements/",
+      "type": "missing_xss_protection",
+      "severity": "low",
+      "detail": "Missing X-XSS-Protection header. This header enables browser XSS filtering."
+    },
+    {
+      "url": "https://competitor.com/element_category/elements/",
+      "type": "missing_referrer_policy",
+      "severity": "info",
+      "detail": "Missing Referrer-Policy header. This controls how much referrer information is shared."
+    },
+    {
+      "url": "https://competitor.com/element_category/elements/",
+      "type": "missing_permissions_policy",
+      "severity": "info",
+      "detail": "Missing Permissions-Policy header. This controls which browser features can be used."
+    },
+    {
+      "url": "https://competitor.com/element_category/elements/",
+      "type": "missing_recommended_og_tag",
+      "severity": "low",
+      "detail": "Missing recommended Open Graph description (og:description)"
+    },
+    {
+      "url": "https://competitor.com/element_category/elements/",
+      "type": "missing_twitter_title",
+      "severity": "info",
+      "detail": "Missing twitter:title. Falls back to og:title if available."
+    },
+    {
+      "url": "https://competitor.com/element_category/elements/",
+      "type": "missing_twitter_description",
+      "severity": "info",
+      "detail": "Missing twitter:description. Falls back to og:description if available."
+    },
+    {
+      "url": "https://competitor.com/element_category/elements/",
+      "type": "missing_twitter_image",
+      "severity": "medium",
+      "detail": "Missing twitter:image for summary_large_image card type"
+    },
+    {
+      "url": "https://competitor.com/element_category/elements/",
+      "type": "missing_twitter_site",
+      "severity": "info",
+      "detail": "Missing twitter:site meta tag. This should be your Twitter/X username."
+    },
+    {
+      "url": "https://competitor.com/element_category/elements/",
+      "type": "canonical_points_elsewhere",
+      "severity": "info",
+      "detail": "Canonical points to different URL: https://competitor.com/"
+    },
+    {
+      "url": "https://competitor.com/element_category/elements/",
+      "type": "high_heading_ratio",
+      "severity": "low",
+      "detail": "33.0% of content is headings. Ensure sufficient body content."
+    },
+    {
+      "url": "https://competitor.com/element_category/elements/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'ironman' appears 19 times (6.6% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://competitor.com/element_category/elements/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'training' appears 18 times (6.3% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://competitor.com/element_category/elements/",
+      "type": "images_not_lazy_loaded",
+      "severity": "low",
+      "detail": "27 image(s) not lazy loaded. Consider using loading='lazy' for off-screen images."
+    },
+    {
+      "url": "https://competitor.com/element_category/elements/",
+      "type": "images_not_modern_format",
+      "severity": "info",
+      "detail": "27 image(s) not using modern formats (WebP/AVIF). Modern formats can significantly reduce file size."
+    },
+    {
+      "url": "https://competitor.com/element_category/elements/",
+      "type": "render_blocking_javascript",
+      "severity": "high",
+      "detail": "3 render-blocking JavaScript file(s) in <head>. Add async or defer attributes, or move scripts to end of <body>."
+    },
+    {
+      "url": "https://competitor.com/element_category/elements/",
+      "type": "compression_not_optimal",
+      "severity": "info",
+      "detail": "Using gzip compression. Consider Brotli for better compression ratios."
+    },
+    {
+      "url": "https://competitor.com/element_category/elements/",
+      "type": "missing_etag",
+      "severity": "info",
+      "detail": "Missing ETag header. ETags help with cache validation."
+    },
+    {
+      "url": "https://competitor.com/element_category/elements/",
+      "type": "too_many_js_files",
+      "severity": "medium",
+      "detail": "49 external JavaScript files. Consider bundling to reduce HTTP requests."
+    },
+    {
+      "url": "https://competitor.com/element_category/elements/",
+      "type": "missing_preconnect",
+      "severity": "info",
+      "detail": "Consider adding preconnect hints for external domains: static.cloudflareinsights.com, www.googletagmanager.com. This can improve loading performance."
+    },
+    {
+      "url": "https://competitor.com/slide-page/home/",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/slide-page/home/",
+      "type": "missing_clickjacking_protection",
+      "severity": "medium",
+      "detail": "Missing X-Frame-Options or CSP frame-ancestors directive. This protects against clickjacking attacks."
+    },
+    {
+      "url": "https://competitor.com/slide-page/home/",
+      "type": "missing_csp",
+      "severity": "low",
+      "detail": "Missing Content-Security-Policy header. CSP helps prevent XSS and other code injection attacks."
+    },
+    {
+      "url": "https://competitor.com/slide-page/home/",
+      "type": "missing_xss_protection",
+      "severity": "low",
+      "detail": "Missing X-XSS-Protection header. This header enables browser XSS filtering."
+    },
+    {
+      "url": "https://competitor.com/slide-page/home/",
+      "type": "missing_referrer_policy",
+      "severity": "info",
+      "detail": "Missing Referrer-Policy header. This controls how much referrer information is shared."
+    },
+    {
+      "url": "https://competitor.com/slide-page/home/",
+      "type": "missing_permissions_policy",
+      "severity": "info",
+      "detail": "Missing Permissions-Policy header. This controls which browser features can be used."
+    },
+    {
+      "url": "https://competitor.com/slide-page/home/",
+      "type": "missing_recommended_og_tag",
+      "severity": "low",
+      "detail": "Missing recommended Open Graph description (og:description)"
+    },
+    {
+      "url": "https://competitor.com/slide-page/home/",
+      "type": "missing_twitter_title",
+      "severity": "info",
+      "detail": "Missing twitter:title. Falls back to og:title if available."
+    },
+    {
+      "url": "https://competitor.com/slide-page/home/",
+      "type": "missing_twitter_description",
+      "severity": "info",
+      "detail": "Missing twitter:description. Falls back to og:description if available."
+    },
+    {
+      "url": "https://competitor.com/slide-page/home/",
+      "type": "missing_twitter_image",
+      "severity": "medium",
+      "detail": "Missing twitter:image for summary_large_image card type"
+    },
+    {
+      "url": "https://competitor.com/slide-page/home/",
+      "type": "missing_twitter_site",
+      "severity": "info",
+      "detail": "Missing twitter:site meta tag. This should be your Twitter/X username."
+    },
+    {
+      "url": "https://competitor.com/slide-page/home/",
+      "type": "canonical_points_elsewhere",
+      "severity": "info",
+      "detail": "Canonical points to different URL: https://competitor.com/"
+    },
+    {
+      "url": "https://competitor.com/slide-page/home/",
+      "type": "high_heading_ratio",
+      "severity": "low",
+      "detail": "33.0% of content is headings. Ensure sufficient body content."
+    },
+    {
+      "url": "https://competitor.com/slide-page/home/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'ironman' appears 19 times (6.6% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://competitor.com/slide-page/home/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'training' appears 18 times (6.3% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://competitor.com/slide-page/home/",
+      "type": "images_not_lazy_loaded",
+      "severity": "low",
+      "detail": "27 image(s) not lazy loaded. Consider using loading='lazy' for off-screen images."
+    },
+    {
+      "url": "https://competitor.com/slide-page/home/",
+      "type": "images_not_modern_format",
+      "severity": "info",
+      "detail": "27 image(s) not using modern formats (WebP/AVIF). Modern formats can significantly reduce file size."
+    },
+    {
+      "url": "https://competitor.com/slide-page/home/",
+      "type": "render_blocking_javascript",
+      "severity": "high",
+      "detail": "3 render-blocking JavaScript file(s) in <head>. Add async or defer attributes, or move scripts to end of <body>."
+    },
+    {
+      "url": "https://competitor.com/slide-page/home/",
+      "type": "compression_not_optimal",
+      "severity": "info",
+      "detail": "Using gzip compression. Consider Brotli for better compression ratios."
+    },
+    {
+      "url": "https://competitor.com/slide-page/home/",
+      "type": "missing_etag",
+      "severity": "info",
+      "detail": "Missing ETag header. ETags help with cache validation."
+    },
+    {
+      "url": "https://competitor.com/slide-page/home/",
+      "type": "too_many_js_files",
+      "severity": "medium",
+      "detail": "49 external JavaScript files. Consider bundling to reduce HTTP requests."
+    },
+    {
+      "url": "https://competitor.com/slide-page/home/",
+      "type": "missing_preconnect",
+      "severity": "info",
+      "detail": "Consider adding preconnect hints for external domains: static.cloudflareinsights.com, www.googletagmanager.com. This can improve loading performance."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/",
+      "type": "missing_clickjacking_protection",
+      "severity": "medium",
+      "detail": "Missing X-Frame-Options or CSP frame-ancestors directive. This protects against clickjacking attacks."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/",
+      "type": "missing_csp",
+      "severity": "low",
+      "detail": "Missing Content-Security-Policy header. CSP helps prevent XSS and other code injection attacks."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/",
+      "type": "missing_xss_protection",
+      "severity": "low",
+      "detail": "Missing X-XSS-Protection header. This header enables browser XSS filtering."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/",
+      "type": "missing_referrer_policy",
+      "severity": "info",
+      "detail": "Missing Referrer-Policy header. This controls how much referrer information is shared."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/",
+      "type": "missing_permissions_policy",
+      "severity": "info",
+      "detail": "Missing Permissions-Policy header. This controls which browser features can be used."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/",
+      "type": "missing_recommended_og_tag",
+      "severity": "low",
+      "detail": "Missing recommended Open Graph description (og:description)"
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/",
+      "type": "missing_twitter_title",
+      "severity": "info",
+      "detail": "Missing twitter:title. Falls back to og:title if available."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/",
+      "type": "missing_twitter_description",
+      "severity": "info",
+      "detail": "Missing twitter:description. Falls back to og:description if available."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/",
+      "type": "missing_twitter_image",
+      "severity": "medium",
+      "detail": "Missing twitter:image for summary_large_image card type"
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/",
+      "type": "missing_twitter_site",
+      "severity": "info",
+      "detail": "Missing twitter:site meta tag. This should be your Twitter/X username."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/",
+      "type": "long_sentences",
+      "severity": "low",
+      "detail": "Average sentence length is 29.1 words. Consider shorter sentences for better readability."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'ironman' appears 34 times (8.2% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/",
+      "type": "images_not_lazy_loaded",
+      "severity": "low",
+      "detail": "26 image(s) not lazy loaded. Consider using loading='lazy' for off-screen images."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/",
+      "type": "images_not_modern_format",
+      "severity": "info",
+      "detail": "26 image(s) not using modern formats (WebP/AVIF). Modern formats can significantly reduce file size."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/",
+      "type": "render_blocking_javascript",
+      "severity": "high",
+      "detail": "3 render-blocking JavaScript file(s) in <head>. Add async or defer attributes, or move scripts to end of <body>."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/",
+      "type": "compression_not_optimal",
+      "severity": "info",
+      "detail": "Using gzip compression. Consider Brotli for better compression ratios."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/",
+      "type": "short_cache_duration",
+      "severity": "low",
+      "detail": "Cache duration is only 600 seconds. Consider longer cache for static resources."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/",
+      "type": "missing_etag",
+      "severity": "info",
+      "detail": "Missing ETag header. ETags help with cache validation."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/",
+      "type": "too_many_js_files",
+      "severity": "medium",
+      "detail": "41 external JavaScript files. Consider bundling to reduce HTTP requests."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/",
+      "type": "missing_preconnect",
+      "severity": "info",
+      "detail": "Consider adding preconnect hints for external domains: static.cloudflareinsights.com, www.googletagmanager.com. This can improve loading performance."
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/09/Column6_main_small.jpg",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/09/Column6_main_small.jpg",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/07/run-off-bike_small.jpg",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/07/run-off-bike_small.jpg",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/07/Lighthouse-ride-3_thumb_small.jpg",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/07/Lighthouse-ride-3_thumb_small.jpg",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/page/2/",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/page/2/",
+      "type": "missing_clickjacking_protection",
+      "severity": "medium",
+      "detail": "Missing X-Frame-Options or CSP frame-ancestors directive. This protects against clickjacking attacks."
+    },
+    {
+      "url": "https://competitor.com/page/2/",
+      "type": "missing_csp",
+      "severity": "low",
+      "detail": "Missing Content-Security-Policy header. CSP helps prevent XSS and other code injection attacks."
+    },
+    {
+      "url": "https://competitor.com/page/2/",
+      "type": "missing_xss_protection",
+      "severity": "low",
+      "detail": "Missing X-XSS-Protection header. This header enables browser XSS filtering."
+    },
+    {
+      "url": "https://competitor.com/page/2/",
+      "type": "missing_referrer_policy",
+      "severity": "info",
+      "detail": "Missing Referrer-Policy header. This controls how much referrer information is shared."
+    },
+    {
+      "url": "https://competitor.com/page/2/",
+      "type": "missing_permissions_policy",
+      "severity": "info",
+      "detail": "Missing Permissions-Policy header. This controls which browser features can be used."
+    },
+    {
+      "url": "https://competitor.com/page/2/",
+      "type": "missing_recommended_og_tag",
+      "severity": "low",
+      "detail": "Missing recommended Open Graph description (og:description)"
+    },
+    {
+      "url": "https://competitor.com/page/2/",
+      "type": "missing_twitter_title",
+      "severity": "info",
+      "detail": "Missing twitter:title. Falls back to og:title if available."
+    },
+    {
+      "url": "https://competitor.com/page/2/",
+      "type": "missing_twitter_description",
+      "severity": "info",
+      "detail": "Missing twitter:description. Falls back to og:description if available."
+    },
+    {
+      "url": "https://competitor.com/page/2/",
+      "type": "missing_twitter_image",
+      "severity": "medium",
+      "detail": "Missing twitter:image for summary_large_image card type"
+    },
+    {
+      "url": "https://competitor.com/page/2/",
+      "type": "missing_twitter_site",
+      "severity": "info",
+      "detail": "Missing twitter:site meta tag. This should be your Twitter/X username."
+    },
+    {
+      "url": "https://competitor.com/page/2/",
+      "type": "canonical_points_elsewhere",
+      "severity": "info",
+      "detail": "Canonical points to different URL: https://competitor.com/"
+    },
+    {
+      "url": "https://competitor.com/page/2/",
+      "type": "high_heading_ratio",
+      "severity": "low",
+      "detail": "30.6% of content is headings. Ensure sufficient body content."
+    },
+    {
+      "url": "https://competitor.com/page/2/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'ironman' appears 17 times (5.9% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://competitor.com/page/2/",
+      "type": "images_not_lazy_loaded",
+      "severity": "low",
+      "detail": "25 image(s) not lazy loaded. Consider using loading='lazy' for off-screen images."
+    },
+    {
+      "url": "https://competitor.com/page/2/",
+      "type": "images_not_modern_format",
+      "severity": "info",
+      "detail": "25 image(s) not using modern formats (WebP/AVIF). Modern formats can significantly reduce file size."
+    },
+    {
+      "url": "https://competitor.com/page/2/",
+      "type": "render_blocking_javascript",
+      "severity": "high",
+      "detail": "3 render-blocking JavaScript file(s) in <head>. Add async or defer attributes, or move scripts to end of <body>."
+    },
+    {
+      "url": "https://competitor.com/page/2/",
+      "type": "compression_not_optimal",
+      "severity": "info",
+      "detail": "Using gzip compression. Consider Brotli for better compression ratios."
+    },
+    {
+      "url": "https://competitor.com/page/2/",
+      "type": "missing_etag",
+      "severity": "info",
+      "detail": "Missing ETag header. ETags help with cache validation."
+    },
+    {
+      "url": "https://competitor.com/page/2/",
+      "type": "too_many_js_files",
+      "severity": "medium",
+      "detail": "49 external JavaScript files. Consider bundling to reduce HTTP requests."
+    },
+    {
+      "url": "https://competitor.com/page/2/",
+      "type": "missing_preconnect",
+      "severity": "info",
+      "detail": "Consider adding preconnect hints for external domains: static.cloudflareinsights.com, www.googletagmanager.com. This can improve loading performance."
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/08/sweat-rate_small.jpg",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/08/sweat-rate_small.jpg",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/08/Column4_header_small.jpg",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/08/Column4_header_small.jpg",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/09/6_nutrition_rules_small.jpg",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/09/6_nutrition_rules_small.jpg",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/07/Training-on-track_small.jpg",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/07/Training-on-track_small.jpg",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/09/thumb_small.jpg",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/09/thumb_small.jpg",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/2/",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/2/",
+      "type": "missing_clickjacking_protection",
+      "severity": "medium",
+      "detail": "Missing X-Frame-Options or CSP frame-ancestors directive. This protects against clickjacking attacks."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/2/",
+      "type": "missing_csp",
+      "severity": "low",
+      "detail": "Missing Content-Security-Policy header. CSP helps prevent XSS and other code injection attacks."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/2/",
+      "type": "missing_xss_protection",
+      "severity": "low",
+      "detail": "Missing X-XSS-Protection header. This header enables browser XSS filtering."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/2/",
+      "type": "missing_referrer_policy",
+      "severity": "info",
+      "detail": "Missing Referrer-Policy header. This controls how much referrer information is shared."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/2/",
+      "type": "missing_permissions_policy",
+      "severity": "info",
+      "detail": "Missing Permissions-Policy header. This controls which browser features can be used."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/2/",
+      "type": "missing_twitter_title",
+      "severity": "info",
+      "detail": "Missing twitter:title. Falls back to og:title if available."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/2/",
+      "type": "missing_twitter_description",
+      "severity": "info",
+      "detail": "Missing twitter:description. Falls back to og:description if available."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/2/",
+      "type": "missing_twitter_image",
+      "severity": "medium",
+      "detail": "Missing twitter:image for summary_large_image card type"
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/2/",
+      "type": "missing_twitter_site",
+      "severity": "info",
+      "detail": "Missing twitter:site meta tag. This should be your Twitter/X username."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/2/",
+      "type": "long_sentences",
+      "severity": "low",
+      "detail": "Average sentence length is 25.5 words. Consider shorter sentences for better readability."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/2/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'ironman' appears 36 times (9.3% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/2/",
+      "type": "images_not_lazy_loaded",
+      "severity": "low",
+      "detail": "26 image(s) not lazy loaded. Consider using loading='lazy' for off-screen images."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/2/",
+      "type": "images_not_modern_format",
+      "severity": "info",
+      "detail": "26 image(s) not using modern formats (WebP/AVIF). Modern formats can significantly reduce file size."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/2/",
+      "type": "render_blocking_javascript",
+      "severity": "high",
+      "detail": "3 render-blocking JavaScript file(s) in <head>. Add async or defer attributes, or move scripts to end of <body>."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/2/",
+      "type": "compression_not_optimal",
+      "severity": "info",
+      "detail": "Using gzip compression. Consider Brotli for better compression ratios."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/2/",
+      "type": "short_cache_duration",
+      "severity": "low",
+      "detail": "Cache duration is only 600 seconds. Consider longer cache for static resources."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/2/",
+      "type": "missing_etag",
+      "severity": "info",
+      "detail": "Missing ETag header. ETags help with cache validation."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/2/",
+      "type": "too_many_js_files",
+      "severity": "medium",
+      "detail": "40 external JavaScript files. Consider bundling to reduce HTTP requests."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/2/",
+      "type": "missing_preconnect",
+      "severity": "info",
+      "detail": "Consider adding preconnect hints for external domains: static.cloudflareinsights.com, www.googletagmanager.com. This can improve loading performance."
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/06/knee-injury_small.jpg",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/06/knee-injury_small.jpg",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/06/fat_small.jpg",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/06/fat_small.jpg",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/2/",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/2/",
+      "type": "missing_clickjacking_protection",
+      "severity": "medium",
+      "detail": "Missing X-Frame-Options or CSP frame-ancestors directive. This protects against clickjacking attacks."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/2/",
+      "type": "missing_csp",
+      "severity": "low",
+      "detail": "Missing Content-Security-Policy header. CSP helps prevent XSS and other code injection attacks."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/2/",
+      "type": "missing_xss_protection",
+      "severity": "low",
+      "detail": "Missing X-XSS-Protection header. This header enables browser XSS filtering."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/2/",
+      "type": "missing_referrer_policy",
+      "severity": "info",
+      "detail": "Missing Referrer-Policy header. This controls how much referrer information is shared."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/2/",
+      "type": "missing_permissions_policy",
+      "severity": "info",
+      "detail": "Missing Permissions-Policy header. This controls which browser features can be used."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/2/",
+      "type": "missing_recommended_og_tag",
+      "severity": "low",
+      "detail": "Missing recommended Open Graph description (og:description)"
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/2/",
+      "type": "missing_twitter_title",
+      "severity": "info",
+      "detail": "Missing twitter:title. Falls back to og:title if available."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/2/",
+      "type": "missing_twitter_description",
+      "severity": "info",
+      "detail": "Missing twitter:description. Falls back to og:description if available."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/2/",
+      "type": "missing_twitter_image",
+      "severity": "medium",
+      "detail": "Missing twitter:image for summary_large_image card type"
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/2/",
+      "type": "missing_twitter_site",
+      "severity": "info",
+      "detail": "Missing twitter:site meta tag. This should be your Twitter/X username."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/2/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'ironman' appears 34 times (8.7% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/2/",
+      "type": "images_not_lazy_loaded",
+      "severity": "low",
+      "detail": "26 image(s) not lazy loaded. Consider using loading='lazy' for off-screen images."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/2/",
+      "type": "images_not_modern_format",
+      "severity": "info",
+      "detail": "26 image(s) not using modern formats (WebP/AVIF). Modern formats can significantly reduce file size."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/2/",
+      "type": "render_blocking_javascript",
+      "severity": "high",
+      "detail": "3 render-blocking JavaScript file(s) in <head>. Add async or defer attributes, or move scripts to end of <body>."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/2/",
+      "type": "compression_not_optimal",
+      "severity": "info",
+      "detail": "Using gzip compression. Consider Brotli for better compression ratios."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/2/",
+      "type": "short_cache_duration",
+      "severity": "low",
+      "detail": "Cache duration is only 600 seconds. Consider longer cache for static resources."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/2/",
+      "type": "missing_etag",
+      "severity": "info",
+      "detail": "Missing ETag header. ETags help with cache validation."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/2/",
+      "type": "too_many_js_files",
+      "severity": "medium",
+      "detail": "41 external JavaScript files. Consider bundling to reduce HTTP requests."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/2/",
+      "type": "missing_preconnect",
+      "severity": "info",
+      "detail": "Consider adding preconnect hints for external domains: static.cloudflareinsights.com, www.googletagmanager.com. This can improve loading performance."
+    },
+    {
+      "url": "https://competitor.com/page/3/",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/page/3/",
+      "type": "missing_clickjacking_protection",
+      "severity": "medium",
+      "detail": "Missing X-Frame-Options or CSP frame-ancestors directive. This protects against clickjacking attacks."
+    },
+    {
+      "url": "https://competitor.com/page/3/",
+      "type": "missing_csp",
+      "severity": "low",
+      "detail": "Missing Content-Security-Policy header. CSP helps prevent XSS and other code injection attacks."
+    },
+    {
+      "url": "https://competitor.com/page/3/",
+      "type": "missing_xss_protection",
+      "severity": "low",
+      "detail": "Missing X-XSS-Protection header. This header enables browser XSS filtering."
+    },
+    {
+      "url": "https://competitor.com/page/3/",
+      "type": "missing_referrer_policy",
+      "severity": "info",
+      "detail": "Missing Referrer-Policy header. This controls how much referrer information is shared."
+    },
+    {
+      "url": "https://competitor.com/page/3/",
+      "type": "missing_permissions_policy",
+      "severity": "info",
+      "detail": "Missing Permissions-Policy header. This controls which browser features can be used."
+    },
+    {
+      "url": "https://competitor.com/page/3/",
+      "type": "missing_recommended_og_tag",
+      "severity": "low",
+      "detail": "Missing recommended Open Graph description (og:description)"
+    },
+    {
+      "url": "https://competitor.com/page/3/",
+      "type": "missing_twitter_title",
+      "severity": "info",
+      "detail": "Missing twitter:title. Falls back to og:title if available."
+    },
+    {
+      "url": "https://competitor.com/page/3/",
+      "type": "missing_twitter_description",
+      "severity": "info",
+      "detail": "Missing twitter:description. Falls back to og:description if available."
+    },
+    {
+      "url": "https://competitor.com/page/3/",
+      "type": "missing_twitter_image",
+      "severity": "medium",
+      "detail": "Missing twitter:image for summary_large_image card type"
+    },
+    {
+      "url": "https://competitor.com/page/3/",
+      "type": "missing_twitter_site",
+      "severity": "info",
+      "detail": "Missing twitter:site meta tag. This should be your Twitter/X username."
+    },
+    {
+      "url": "https://competitor.com/page/3/",
+      "type": "canonical_points_elsewhere",
+      "severity": "info",
+      "detail": "Canonical points to different URL: https://competitor.com/"
+    },
+    {
+      "url": "https://competitor.com/page/3/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'your' appears 17 times (5.6% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://competitor.com/page/3/",
+      "type": "images_not_lazy_loaded",
+      "severity": "low",
+      "detail": "34 image(s) not lazy loaded. Consider using loading='lazy' for off-screen images."
+    },
+    {
+      "url": "https://competitor.com/page/3/",
+      "type": "images_not_modern_format",
+      "severity": "info",
+      "detail": "34 image(s) not using modern formats (WebP/AVIF). Modern formats can significantly reduce file size."
+    },
+    {
+      "url": "https://competitor.com/page/3/",
+      "type": "render_blocking_javascript",
+      "severity": "high",
+      "detail": "3 render-blocking JavaScript file(s) in <head>. Add async or defer attributes, or move scripts to end of <body>."
+    },
+    {
+      "url": "https://competitor.com/page/3/",
+      "type": "compression_not_optimal",
+      "severity": "info",
+      "detail": "Using gzip compression. Consider Brotli for better compression ratios."
+    },
+    {
+      "url": "https://competitor.com/page/3/",
+      "type": "missing_etag",
+      "severity": "info",
+      "detail": "Missing ETag header. ETags help with cache validation."
+    },
+    {
+      "url": "https://competitor.com/page/3/",
+      "type": "too_many_js_files",
+      "severity": "medium",
+      "detail": "50 external JavaScript files. Consider bundling to reduce HTTP requests."
+    },
+    {
+      "url": "https://competitor.com/page/3/",
+      "type": "missing_preconnect",
+      "severity": "info",
+      "detail": "Consider adding preconnect hints for external domains: static.cloudflareinsights.com, www.googletagmanager.com. This can improve loading performance."
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/05/Gear_Checklist_Main_small.jpg",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/05/Gear_Checklist_Main_small.jpg",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/06/Bevis_2_thumb_small.jpg",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/06/Bevis_2_thumb_small.jpg",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/05/bed_small.jpg",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/05/bed_small.jpg",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/05/9TipsforIM_small.jpg",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/05/9TipsforIM_small.jpg",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/06/Lea_header_small.jpg",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/06/Lea_header_small.jpg",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/05/Ticket-to-health_small.jpg",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/05/Ticket-to-health_small.jpg",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/02/Wahoo_main_small.jpg",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/02/Wahoo_main_small.jpg",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/3/",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/3/",
+      "type": "missing_clickjacking_protection",
+      "severity": "medium",
+      "detail": "Missing X-Frame-Options or CSP frame-ancestors directive. This protects against clickjacking attacks."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/3/",
+      "type": "missing_csp",
+      "severity": "low",
+      "detail": "Missing Content-Security-Policy header. CSP helps prevent XSS and other code injection attacks."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/3/",
+      "type": "missing_xss_protection",
+      "severity": "low",
+      "detail": "Missing X-XSS-Protection header. This header enables browser XSS filtering."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/3/",
+      "type": "missing_referrer_policy",
+      "severity": "info",
+      "detail": "Missing Referrer-Policy header. This controls how much referrer information is shared."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/3/",
+      "type": "missing_permissions_policy",
+      "severity": "info",
+      "detail": "Missing Permissions-Policy header. This controls which browser features can be used."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/3/",
+      "type": "missing_twitter_title",
+      "severity": "info",
+      "detail": "Missing twitter:title. Falls back to og:title if available."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/3/",
+      "type": "missing_twitter_description",
+      "severity": "info",
+      "detail": "Missing twitter:description. Falls back to og:description if available."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/3/",
+      "type": "missing_twitter_image",
+      "severity": "medium",
+      "detail": "Missing twitter:image for summary_large_image card type"
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/3/",
+      "type": "missing_twitter_site",
+      "severity": "info",
+      "detail": "Missing twitter:site meta tag. This should be your Twitter/X username."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/3/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'ironman' appears 24 times (6.4% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/3/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'your' appears 22 times (5.9% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/3/",
+      "type": "images_not_lazy_loaded",
+      "severity": "low",
+      "detail": "26 image(s) not lazy loaded. Consider using loading='lazy' for off-screen images."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/3/",
+      "type": "images_not_modern_format",
+      "severity": "info",
+      "detail": "26 image(s) not using modern formats (WebP/AVIF). Modern formats can significantly reduce file size."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/3/",
+      "type": "render_blocking_javascript",
+      "severity": "high",
+      "detail": "3 render-blocking JavaScript file(s) in <head>. Add async or defer attributes, or move scripts to end of <body>."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/3/",
+      "type": "compression_not_optimal",
+      "severity": "info",
+      "detail": "Using gzip compression. Consider Brotli for better compression ratios."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/3/",
+      "type": "short_cache_duration",
+      "severity": "low",
+      "detail": "Cache duration is only 600 seconds. Consider longer cache for static resources."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/3/",
+      "type": "missing_etag",
+      "severity": "info",
+      "detail": "Missing ETag header. ETags help with cache validation."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/3/",
+      "type": "too_many_js_files",
+      "severity": "medium",
+      "detail": "40 external JavaScript files. Consider bundling to reduce HTTP requests."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/3/",
+      "type": "missing_preconnect",
+      "severity": "info",
+      "detail": "Consider adding preconnect hints for external domains: static.cloudflareinsights.com, www.googletagmanager.com. This can improve loading performance."
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/04/Protein2_small.jpg",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/04/Protein2_small.jpg",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/04/Swim_thumb_small.jpg",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/04/Swim_thumb_small.jpg",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/05/Brittany_header_small.jpg",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/05/Brittany_header_small.jpg",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/3/",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/3/",
+      "type": "missing_clickjacking_protection",
+      "severity": "medium",
+      "detail": "Missing X-Frame-Options or CSP frame-ancestors directive. This protects against clickjacking attacks."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/3/",
+      "type": "missing_csp",
+      "severity": "low",
+      "detail": "Missing Content-Security-Policy header. CSP helps prevent XSS and other code injection attacks."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/3/",
+      "type": "missing_xss_protection",
+      "severity": "low",
+      "detail": "Missing X-XSS-Protection header. This header enables browser XSS filtering."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/3/",
+      "type": "missing_referrer_policy",
+      "severity": "info",
+      "detail": "Missing Referrer-Policy header. This controls how much referrer information is shared."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/3/",
+      "type": "missing_permissions_policy",
+      "severity": "info",
+      "detail": "Missing Permissions-Policy header. This controls which browser features can be used."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/3/",
+      "type": "missing_recommended_og_tag",
+      "severity": "low",
+      "detail": "Missing recommended Open Graph description (og:description)"
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/3/",
+      "type": "missing_twitter_title",
+      "severity": "info",
+      "detail": "Missing twitter:title. Falls back to og:title if available."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/3/",
+      "type": "missing_twitter_description",
+      "severity": "info",
+      "detail": "Missing twitter:description. Falls back to og:description if available."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/3/",
+      "type": "missing_twitter_image",
+      "severity": "medium",
+      "detail": "Missing twitter:image for summary_large_image card type"
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/3/",
+      "type": "missing_twitter_site",
+      "severity": "info",
+      "detail": "Missing twitter:site meta tag. This should be your Twitter/X username."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/3/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'your' appears 22 times (5.8% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/3/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'ironman' appears 22 times (5.8% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/3/",
+      "type": "images_not_lazy_loaded",
+      "severity": "low",
+      "detail": "26 image(s) not lazy loaded. Consider using loading='lazy' for off-screen images."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/3/",
+      "type": "images_not_modern_format",
+      "severity": "info",
+      "detail": "26 image(s) not using modern formats (WebP/AVIF). Modern formats can significantly reduce file size."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/3/",
+      "type": "render_blocking_javascript",
+      "severity": "high",
+      "detail": "3 render-blocking JavaScript file(s) in <head>. Add async or defer attributes, or move scripts to end of <body>."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/3/",
+      "type": "compression_not_optimal",
+      "severity": "info",
+      "detail": "Using gzip compression. Consider Brotli for better compression ratios."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/3/",
+      "type": "short_cache_duration",
+      "severity": "low",
+      "detail": "Cache duration is only 600 seconds. Consider longer cache for static resources."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/3/",
+      "type": "missing_etag",
+      "severity": "info",
+      "detail": "Missing ETag header. ETags help with cache validation."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/3/",
+      "type": "too_many_js_files",
+      "severity": "medium",
+      "detail": "41 external JavaScript files. Consider bundling to reduce HTTP requests."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/3/",
+      "type": "missing_preconnect",
+      "severity": "info",
+      "detail": "Consider adding preconnect hints for external domains: static.cloudflareinsights.com, www.googletagmanager.com. This can improve loading performance."
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/01/wheresgordo-mcafee_1920_small.jpg",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/01/wheresgordo-mcafee_1920_small.jpg",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/01/AWA_small.jpg",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/01/AWA_small.jpg",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/page/4/",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/page/4/",
+      "type": "missing_clickjacking_protection",
+      "severity": "medium",
+      "detail": "Missing X-Frame-Options or CSP frame-ancestors directive. This protects against clickjacking attacks."
+    },
+    {
+      "url": "https://competitor.com/page/4/",
+      "type": "missing_csp",
+      "severity": "low",
+      "detail": "Missing Content-Security-Policy header. CSP helps prevent XSS and other code injection attacks."
+    },
+    {
+      "url": "https://competitor.com/page/4/",
+      "type": "missing_xss_protection",
+      "severity": "low",
+      "detail": "Missing X-XSS-Protection header. This header enables browser XSS filtering."
+    },
+    {
+      "url": "https://competitor.com/page/4/",
+      "type": "missing_referrer_policy",
+      "severity": "info",
+      "detail": "Missing Referrer-Policy header. This controls how much referrer information is shared."
+    },
+    {
+      "url": "https://competitor.com/page/4/",
+      "type": "missing_permissions_policy",
+      "severity": "info",
+      "detail": "Missing Permissions-Policy header. This controls which browser features can be used."
+    },
+    {
+      "url": "https://competitor.com/page/4/",
+      "type": "missing_recommended_og_tag",
+      "severity": "low",
+      "detail": "Missing recommended Open Graph description (og:description)"
+    },
+    {
+      "url": "https://competitor.com/page/4/",
+      "type": "missing_twitter_title",
+      "severity": "info",
+      "detail": "Missing twitter:title. Falls back to og:title if available."
+    },
+    {
+      "url": "https://competitor.com/page/4/",
+      "type": "missing_twitter_description",
+      "severity": "info",
+      "detail": "Missing twitter:description. Falls back to og:description if available."
+    },
+    {
+      "url": "https://competitor.com/page/4/",
+      "type": "missing_twitter_image",
+      "severity": "medium",
+      "detail": "Missing twitter:image for summary_large_image card type"
+    },
+    {
+      "url": "https://competitor.com/page/4/",
+      "type": "missing_twitter_site",
+      "severity": "info",
+      "detail": "Missing twitter:site meta tag. This should be your Twitter/X username."
+    },
+    {
+      "url": "https://competitor.com/page/4/",
+      "type": "canonical_points_elsewhere",
+      "severity": "info",
+      "detail": "Canonical points to different URL: https://competitor.com/"
+    },
+    {
+      "url": "https://competitor.com/page/4/",
+      "type": "images_not_lazy_loaded",
+      "severity": "low",
+      "detail": "34 image(s) not lazy loaded. Consider using loading='lazy' for off-screen images."
+    },
+    {
+      "url": "https://competitor.com/page/4/",
+      "type": "images_not_modern_format",
+      "severity": "info",
+      "detail": "34 image(s) not using modern formats (WebP/AVIF). Modern formats can significantly reduce file size."
+    },
+    {
+      "url": "https://competitor.com/page/4/",
+      "type": "render_blocking_javascript",
+      "severity": "high",
+      "detail": "3 render-blocking JavaScript file(s) in <head>. Add async or defer attributes, or move scripts to end of <body>."
+    },
+    {
+      "url": "https://competitor.com/page/4/",
+      "type": "compression_not_optimal",
+      "severity": "info",
+      "detail": "Using gzip compression. Consider Brotli for better compression ratios."
+    },
+    {
+      "url": "https://competitor.com/page/4/",
+      "type": "missing_etag",
+      "severity": "info",
+      "detail": "Missing ETag header. ETags help with cache validation."
+    },
+    {
+      "url": "https://competitor.com/page/4/",
+      "type": "too_many_js_files",
+      "severity": "medium",
+      "detail": "50 external JavaScript files. Consider bundling to reduce HTTP requests."
+    },
+    {
+      "url": "https://competitor.com/page/4/",
+      "type": "missing_preconnect",
+      "severity": "info",
+      "detail": "Consider adding preconnect hints for external domains: static.cloudflareinsights.com, www.googletagmanager.com. This can improve loading performance."
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/01/header_small.jpg",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/01/header_small.jpg",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/01/Maurten_Swim3_small.jpg",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2023/01/Maurten_Swim3_small.jpg",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2022/11/Sitting_small.jpg",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2022/11/Sitting_small.jpg",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2022/12/fall_running_small.jpg",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2022/12/fall_running_small.jpg",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2022/11/open-water_small.jpg",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2022/11/open-water_small.jpg",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2022/11/corbin-winter_small.jpg",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2022/11/corbin-winter_small.jpg",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2022/11/pro-church-media-ZBlGrPvGiHg-unsplash_small.jpg",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2022/11/pro-church-media-ZBlGrPvGiHg-unsplash_small.jpg",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/4/",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/4/",
+      "type": "missing_clickjacking_protection",
+      "severity": "medium",
+      "detail": "Missing X-Frame-Options or CSP frame-ancestors directive. This protects against clickjacking attacks."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/4/",
+      "type": "missing_csp",
+      "severity": "low",
+      "detail": "Missing Content-Security-Policy header. CSP helps prevent XSS and other code injection attacks."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/4/",
+      "type": "missing_xss_protection",
+      "severity": "low",
+      "detail": "Missing X-XSS-Protection header. This header enables browser XSS filtering."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/4/",
+      "type": "missing_referrer_policy",
+      "severity": "info",
+      "detail": "Missing Referrer-Policy header. This controls how much referrer information is shared."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/4/",
+      "type": "missing_permissions_policy",
+      "severity": "info",
+      "detail": "Missing Permissions-Policy header. This controls which browser features can be used."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/4/",
+      "type": "missing_twitter_title",
+      "severity": "info",
+      "detail": "Missing twitter:title. Falls back to og:title if available."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/4/",
+      "type": "missing_twitter_description",
+      "severity": "info",
+      "detail": "Missing twitter:description. Falls back to og:description if available."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/4/",
+      "type": "missing_twitter_image",
+      "severity": "medium",
+      "detail": "Missing twitter:image for summary_large_image card type"
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/4/",
+      "type": "missing_twitter_site",
+      "severity": "info",
+      "detail": "Missing twitter:site meta tag. This should be your Twitter/X username."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/4/",
+      "type": "long_sentences",
+      "severity": "low",
+      "detail": "Average sentence length is 26.1 words. Consider shorter sentences for better readability."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/4/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'ironman' appears 32 times (7.8% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/4/",
+      "type": "images_not_lazy_loaded",
+      "severity": "low",
+      "detail": "26 image(s) not lazy loaded. Consider using loading='lazy' for off-screen images."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/4/",
+      "type": "images_not_modern_format",
+      "severity": "info",
+      "detail": "26 image(s) not using modern formats (WebP/AVIF). Modern formats can significantly reduce file size."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/4/",
+      "type": "render_blocking_javascript",
+      "severity": "high",
+      "detail": "3 render-blocking JavaScript file(s) in <head>. Add async or defer attributes, or move scripts to end of <body>."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/4/",
+      "type": "compression_not_optimal",
+      "severity": "info",
+      "detail": "Using gzip compression. Consider Brotli for better compression ratios."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/4/",
+      "type": "short_cache_duration",
+      "severity": "low",
+      "detail": "Cache duration is only 600 seconds. Consider longer cache for static resources."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/4/",
+      "type": "missing_etag",
+      "severity": "info",
+      "detail": "Missing ETag header. ETags help with cache validation."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/4/",
+      "type": "too_many_js_files",
+      "severity": "medium",
+      "detail": "41 external JavaScript files. Consider bundling to reduce HTTP requests."
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/4/",
+      "type": "missing_preconnect",
+      "severity": "info",
+      "detail": "Consider adding preconnect hints for external domains: static.cloudflareinsights.com, www.googletagmanager.com. This can improve loading performance."
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2022/12/1706_training_after_illness_small.jpg",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2022/12/1706_training_after_illness_small.jpg",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/4/",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/4/",
+      "type": "missing_clickjacking_protection",
+      "severity": "medium",
+      "detail": "Missing X-Frame-Options or CSP frame-ancestors directive. This protects against clickjacking attacks."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/4/",
+      "type": "missing_csp",
+      "severity": "low",
+      "detail": "Missing Content-Security-Policy header. CSP helps prevent XSS and other code injection attacks."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/4/",
+      "type": "missing_xss_protection",
+      "severity": "low",
+      "detail": "Missing X-XSS-Protection header. This header enables browser XSS filtering."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/4/",
+      "type": "missing_referrer_policy",
+      "severity": "info",
+      "detail": "Missing Referrer-Policy header. This controls how much referrer information is shared."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/4/",
+      "type": "missing_permissions_policy",
+      "severity": "info",
+      "detail": "Missing Permissions-Policy header. This controls which browser features can be used."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/4/",
+      "type": "missing_recommended_og_tag",
+      "severity": "low",
+      "detail": "Missing recommended Open Graph description (og:description)"
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/4/",
+      "type": "missing_twitter_title",
+      "severity": "info",
+      "detail": "Missing twitter:title. Falls back to og:title if available."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/4/",
+      "type": "missing_twitter_description",
+      "severity": "info",
+      "detail": "Missing twitter:description. Falls back to og:description if available."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/4/",
+      "type": "missing_twitter_image",
+      "severity": "medium",
+      "detail": "Missing twitter:image for summary_large_image card type"
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/4/",
+      "type": "missing_twitter_site",
+      "severity": "info",
+      "detail": "Missing twitter:site meta tag. This should be your Twitter/X username."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/4/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'ironman' appears 30 times (7.2% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/4/",
+      "type": "images_not_lazy_loaded",
+      "severity": "low",
+      "detail": "20 image(s) not lazy loaded. Consider using loading='lazy' for off-screen images."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/4/",
+      "type": "images_not_modern_format",
+      "severity": "info",
+      "detail": "20 image(s) not using modern formats (WebP/AVIF). Modern formats can significantly reduce file size."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/4/",
+      "type": "render_blocking_javascript",
+      "severity": "high",
+      "detail": "3 render-blocking JavaScript file(s) in <head>. Add async or defer attributes, or move scripts to end of <body>."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/4/",
+      "type": "compression_not_optimal",
+      "severity": "info",
+      "detail": "Using gzip compression. Consider Brotli for better compression ratios."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/4/",
+      "type": "short_cache_duration",
+      "severity": "low",
+      "detail": "Cache duration is only 600 seconds. Consider longer cache for static resources."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/4/",
+      "type": "missing_etag",
+      "severity": "info",
+      "detail": "Missing ETag header. ETags help with cache validation."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/4/",
+      "type": "too_many_js_files",
+      "severity": "medium",
+      "detail": "40 external JavaScript files. Consider bundling to reduce HTTP requests."
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/4/",
+      "type": "missing_preconnect",
+      "severity": "info",
+      "detail": "Consider adding preconnect hints for external domains: static.cloudflareinsights.com, www.googletagmanager.com. This can improve loading performance."
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2022/09/Destination_header_small.jpg",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2022/09/Destination_header_small.jpg",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2022/09/NorthCarolina_header_small.jpg",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/wp-content/uploads/2022/09/NorthCarolina_header_small.jpg",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/page/5/",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://competitor.com/page/5/",
+      "type": "missing_clickjacking_protection",
+      "severity": "medium",
+      "detail": "Missing X-Frame-Options or CSP frame-ancestors directive. This protects against clickjacking attacks."
+    },
+    {
+      "url": "https://competitor.com/page/5/",
+      "type": "missing_csp",
+      "severity": "low",
+      "detail": "Missing Content-Security-Policy header. CSP helps prevent XSS and other code injection attacks."
+    },
+    {
+      "url": "https://competitor.com/page/5/",
+      "type": "missing_xss_protection",
+      "severity": "low",
+      "detail": "Missing X-XSS-Protection header. This header enables browser XSS filtering."
+    },
+    {
+      "url": "https://competitor.com/page/5/",
+      "type": "missing_referrer_policy",
+      "severity": "info",
+      "detail": "Missing Referrer-Policy header. This controls how much referrer information is shared."
+    },
+    {
+      "url": "https://competitor.com/page/5/",
+      "type": "missing_permissions_policy",
+      "severity": "info",
+      "detail": "Missing Permissions-Policy header. This controls which browser features can be used."
+    },
+    {
+      "url": "https://competitor.com/page/5/",
+      "type": "missing_recommended_og_tag",
+      "severity": "low",
+      "detail": "Missing recommended Open Graph description (og:description)"
+    },
+    {
+      "url": "https://competitor.com/page/5/",
+      "type": "missing_twitter_title",
+      "severity": "info",
+      "detail": "Missing twitter:title. Falls back to og:title if available."
+    },
+    {
+      "url": "https://competitor.com/page/5/",
+      "type": "missing_twitter_description",
+      "severity": "info",
+      "detail": "Missing twitter:description. Falls back to og:description if available."
+    },
+    {
+      "url": "https://competitor.com/page/5/",
+      "type": "missing_twitter_image",
+      "severity": "medium",
+      "detail": "Missing twitter:image for summary_large_image card type"
+    },
+    {
+      "url": "https://competitor.com/page/5/",
+      "type": "missing_twitter_site",
+      "severity": "info",
+      "detail": "Missing twitter:site meta tag. This should be your Twitter/X username."
+    },
+    {
+      "url": "https://competitor.com/page/5/",
+      "type": "canonical_points_elsewhere",
+      "severity": "info",
+      "detail": "Canonical points to different URL: https://competitor.com/"
+    },
+    {
+      "url": "https://competitor.com/page/5/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'training' appears 18 times (5.9% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://competitor.com/page/5/",
+      "type": "images_not_lazy_loaded",
+      "severity": "low",
+      "detail": "34 image(s) not lazy loaded. Consider using loading='lazy' for off-screen images."
+    },
+    {
+      "url": "https://competitor.com/page/5/",
+      "type": "images_not_modern_format",
+      "severity": "info",
+      "detail": "34 image(s) not using modern formats (WebP/AVIF). Modern formats can significantly reduce file size."
+    },
+    {
+      "url": "https://competitor.com/page/5/",
+      "type": "render_blocking_javascript",
+      "severity": "high",
+      "detail": "3 render-blocking JavaScript file(s) in <head>. Add async or defer attributes, or move scripts to end of <body>."
+    },
+    {
+      "url": "https://competitor.com/page/5/",
+      "type": "compression_not_optimal",
+      "severity": "info",
+      "detail": "Using gzip compression. Consider Brotli for better compression ratios."
+    },
+    {
+      "url": "https://competitor.com/page/5/",
+      "type": "missing_etag",
+      "severity": "info",
+      "detail": "Missing ETag header. ETags help with cache validation."
+    },
+    {
+      "url": "https://competitor.com/page/5/",
+      "type": "too_many_js_files",
+      "severity": "medium",
+      "detail": "50 external JavaScript files. Consider bundling to reduce HTTP requests."
+    },
+    {
+      "url": "https://competitor.com/page/5/",
+      "type": "missing_preconnect",
+      "severity": "info",
+      "detail": "Consider adding preconnect hints for external domains: static.cloudflareinsights.com, www.googletagmanager.com. This can improve loading performance."
+    },
+    {
+      "url": "https://competitor.com/",
+      "type": "duplicate_title",
+      "severity": "low",
+      "detail": "articles - competitor"
+    },
+    {
+      "url": "https://competitor.com/fusion_tb_category/header/",
+      "type": "duplicate_title",
+      "severity": "low",
+      "detail": "articles - competitor"
+    },
+    {
+      "url": "https://competitor.com/element_category/elements/",
+      "type": "duplicate_title",
+      "severity": "low",
+      "detail": "articles - competitor"
+    },
+    {
+      "url": "https://competitor.com/slide-page/home/",
+      "type": "duplicate_title",
+      "severity": "low",
+      "detail": "articles - competitor"
+    },
+    {
+      "url": "https://competitor.com/page/2/",
+      "type": "duplicate_title",
+      "severity": "low",
+      "detail": "articles - competitor"
+    },
+    {
+      "url": "https://competitor.com/page/3/",
+      "type": "duplicate_title",
+      "severity": "low",
+      "detail": "articles - competitor"
+    },
+    {
+      "url": "https://competitor.com/page/4/",
+      "type": "duplicate_title",
+      "severity": "low",
+      "detail": "articles - competitor"
+    },
+    {
+      "url": "https://competitor.com/page/5/",
+      "type": "duplicate_title",
+      "severity": "low",
+      "detail": "articles - competitor"
+    },
+    {
+      "url": "https://competitor.com/",
+      "type": "duplicate_content",
+      "severity": "high",
+      "detail": "Exact duplicate of 3 other page(s): https://competitor.com/fusion_tb_category/header/, https://competitor.com/element_category/elements/, https://competitor.com/slide-page/home/"
+    },
+    {
+      "url": "https://competitor.com/fusion_tb_category/header/",
+      "type": "duplicate_content",
+      "severity": "high",
+      "detail": "Exact duplicate of 3 other page(s): https://competitor.com/, https://competitor.com/element_category/elements/, https://competitor.com/slide-page/home/"
+    },
+    {
+      "url": "https://competitor.com/element_category/elements/",
+      "type": "duplicate_content",
+      "severity": "high",
+      "detail": "Exact duplicate of 3 other page(s): https://competitor.com/, https://competitor.com/fusion_tb_category/header/, https://competitor.com/slide-page/home/"
+    },
+    {
+      "url": "https://competitor.com/slide-page/home/",
+      "type": "duplicate_content",
+      "severity": "high",
+      "detail": "Exact duplicate of 3 other page(s): https://competitor.com/, https://competitor.com/fusion_tb_category/header/, https://competitor.com/element_category/elements/"
+    },
+    {
+      "url": "https://competitor.com/",
+      "type": "near_duplicate_content",
+      "severity": "medium",
+      "detail": "Near-duplicate (100.0% similar) to: https://competitor.com/fusion_tb_category/header/"
+    },
+    {
+      "url": "https://competitor.com/",
+      "type": "near_duplicate_content",
+      "severity": "medium",
+      "detail": "Near-duplicate (100.0% similar) to: https://competitor.com/element_category/elements/"
+    },
+    {
+      "url": "https://competitor.com/",
+      "type": "near_duplicate_content",
+      "severity": "medium",
+      "detail": "Near-duplicate (100.0% similar) to: https://competitor.com/slide-page/home/"
+    },
+    {
+      "url": "https://competitor.com/category/ironman/",
+      "type": "near_duplicate_content",
+      "severity": "medium",
+      "detail": "Near-duplicate (91.5% similar) to: https://competitor.com/author/imcompetitor/"
+    },
+    {
+      "url": "https://competitor.com/fusion_tb_category/header/",
+      "type": "near_duplicate_content",
+      "severity": "medium",
+      "detail": "Near-duplicate (100.0% similar) to: https://competitor.com/element_category/elements/"
+    },
+    {
+      "url": "https://competitor.com/fusion_tb_category/header/",
+      "type": "near_duplicate_content",
+      "severity": "medium",
+      "detail": "Near-duplicate (100.0% similar) to: https://competitor.com/slide-page/home/"
+    },
+    {
+      "url": "https://competitor.com/element_category/elements/",
+      "type": "near_duplicate_content",
+      "severity": "medium",
+      "detail": "Near-duplicate (100.0% similar) to: https://competitor.com/slide-page/home/"
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/2/",
+      "type": "near_duplicate_content",
+      "severity": "medium",
+      "detail": "Near-duplicate (90.0% similar) to: https://competitor.com/author/imcompetitor/page/2/"
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/3/",
+      "type": "near_duplicate_content",
+      "severity": "medium",
+      "detail": "Near-duplicate (90.0% similar) to: https://competitor.com/author/imcompetitor/page/3/"
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/4/",
+      "type": "near_duplicate_content",
+      "severity": "medium",
+      "detail": "Near-duplicate (90.0% similar) to: https://competitor.com/author/imcompetitor/page/4/"
+    },
+    {
+      "url": "https://competitor.com/category/ironman/page/3/",
+      "type": "orphan_page",
+      "severity": "medium",
+      "detail": "Page has no internal links pointing to it (orphan page)"
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/4/",
+      "type": "orphan_page",
+      "severity": "medium",
+      "detail": "Page has no internal links pointing to it (orphan page)"
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/page/2/",
+      "type": "orphan_page",
+      "severity": "medium",
+      "detail": "Page has no internal links pointing to it (orphan page)"
+    },
+    {
+      "url": "https://competitor.com/category/ironman/",
+      "type": "orphan_page",
+      "severity": "medium",
+      "detail": "Page has no internal links pointing to it (orphan page)"
+    },
+    {
+      "url": "https://competitor.com/author/imcompetitor/",
+      "type": "orphan_page",
+      "severity": "medium",
+      "detail": "Page has no internal links pointing to it (orphan page)"
+    },
+    {
+      "url": "https://competitor.com/sample-page/",
+      "type": "orphan_page",
+      "severity": "medium",
+      "detail": "Page has no internal links pointing to it (orphan page)"
+    },
+    {
+      "url": "https://competitor.com/about/",
+      "type": "orphan_page",
+      "severity": "medium",
+      "detail": "Page has no internal links pointing to it (orphan page)"
+    },
+    {
+      "url": "https://competitor.com/page/2/",
+      "type": "orphan_page",
+      "severity": "medium",
+      "detail": "Page has no internal links pointing to it (orphan page)"
+    },
+    {
+      "url": "https://competitor.com/fusion_tb_category/header/",
+      "type": "orphan_page",
+      "severity": "medium",
+      "detail": "Page has no internal links pointing to it (orphan page)"
+    },
+    {
+      "url": "https://competitor.com/page/3/",
+      "type": "orphan_page",
+      "severity": "medium",
+      "detail": "Page has no internal links pointing to it (orphan page)"
+    }
+  ],
+  "meta": {
+    "max_pages": 50,
+    "timestamp": "2025-11-11T02:16:03.561909Z",
+    "agent": "tinyseoai/0.2.0",
+    "robots_txt_exists": true,
+    "sitemaps_found": 1,
+    "crawl_delay": 10.0,
+    "total_sitemap_urls": 8,
+    "health_score": 0,
+    "health_grade": "F",
+    "category_scores": {
+      "content": {
+        "count": 125,
+        "total_impact": 758.0000000000002,
+        "avg_impact": 6.1,
+        "avg_effort": 3.5
+      },
+      "other": {
+        "count": 290,
+        "total_impact": 857.0999999999999,
+        "avg_impact": 3.0,
+        "avg_effort": 4.6
+      },
+      "security": {
+        "count": 18,
+        "total_impact": 72.0,
+        "avg_impact": 4.0,
+        "avg_effort": 3.0
+      },
+      "performance": {
+        "count": 18,
+        "total_impact": 194.40000000000006,
+        "avg_impact": 10.8,
+        "avg_effort": 6.0
+      },
+      "links": {
+        "count": 10,
+        "total_impact": 60.0,
+        "avg_impact": 6.0,
+        "avg_effort": 8.0
+      }
+    },
+    "top_recommendations": [
+      {
+        "issue_type": "title_missing",
+        "category": "content",
+        "impact": 8.0,
+        "effort": 2,
+        "priority": 10.0
+      },
+      {
+        "issue_type": "render_blocking_javascript",
+        "category": "performance",
+        "impact": 10.8,
+        "effort": 6,
+        "priority": 9.0
+      },
+      {
+        "issue_type": "meta_description_missing",
+        "category": "content",
+        "impact": 4.8,
+        "effort": 2,
+        "priority": 8.0
+      },
+      {
+        "issue_type": "duplicate_title",
+        "category": "content",
+        "impact": 3.2,
+        "effort": 2,
+        "priority": 8.0
+      },
+      {
+        "issue_type": "duplicate_content",
+        "category": "content",
+        "impact": 12.0,
+        "effort": 8,
+        "priority": 7.5
+      }
+    ]
+  }
+}

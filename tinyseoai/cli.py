@@ -19,6 +19,15 @@ from .utils.io import ensure_dir, write_json
 from .audit.engine import audit_site, DEFAULT_MAX_PAGES
 from .audit.engine_v2 import comprehensive_audit
 
+try:
+    from .agents.coordinator import MultiAgentCoordinator
+    _MULTI_AGENT_AVAILABLE = True
+    _MULTI_AGENT_IMPORT_ERROR: Exception | None = None
+except ModuleNotFoundError as exc:
+    MultiAgentCoordinator = None  # type: ignore[assignment]
+    _MULTI_AGENT_AVAILABLE = False
+    _MULTI_AGENT_IMPORT_ERROR = exc
+
 app = typer.Typer(help="TinySEO AI — Local SEO Audit Agent (Enhanced)")
 console = Console()
 
@@ -167,6 +176,163 @@ def audit_full(
     console.print(f"📁 Saved: [bold]{out_json}[/]")
 
 
+@app.command("audit-ai")
+def audit_ai(
+    url: str = typer.Argument(..., help="Website to audit (e.g., https://example.com)"),
+    pages: int = typer.Option(DEFAULT_MAX_PAGES, "--pages", "-p", help="Max pages to scan"),
+    out: Path = typer.Option(Path("reports"), "--out", "-o", help="Output folder"),
+    no_fixes: bool = typer.Option(False, "--no-fixes", help="Skip code fix generation"),
+):
+    """
+    🤖 AI-Powered Multi-Agent SEO Audit
+
+    Runs comprehensive audit with specialized AI agents:
+    - Orchestrator Agent (coordinates analysis)
+    - Technical SEO Agent (security, robots.txt, HTTPS)
+    - Content Quality Agent (titles, meta, headings)
+    - Performance Agent (speed, images, Core Web Vitals)
+    - Link Analysis Agent (broken links, site architecture)
+    - Fix Generator Agent (production-ready code fixes)
+
+    Requires: OPENAI_API_KEY environment variable
+    """
+    cfg = get_config()
+
+    if not _MULTI_AGENT_AVAILABLE:
+        console.print("[red]Optional AI agent stack not installed.[/]")
+        console.print(
+            "Install LangChain dependencies to run this command:\n"
+            "  pip install \"langchain>=0.1\" \"langchain-openai>=0.0.5\" \"langchain-anthropic>=0.1\"\n"
+            "or run: pip install -r requirements.txt"
+        )
+        if _MULTI_AGENT_IMPORT_ERROR:
+            console.print(f"[dim]Import error: {_MULTI_AGENT_IMPORT_ERROR}[/]")
+        raise typer.Exit(code=1)
+
+    # Check for API key
+    if not cfg.openai_api_key:
+        console.print("[red]Error:[/] OPENAI_API_KEY not found")
+        console.print("\nTo use AI agents, add your OpenAI API key to .env file:")
+        console.print("  echo 'OPENAI_API_KEY=sk-...' >> .env")
+        console.print("\nOr set as environment variable:")
+        console.print("  export OPENAI_API_KEY='sk-...'")
+        console.print("\nVerify configuration:")
+        console.print("  python test_env_config.py")
+        raise typer.Exit(code=1)
+
+    plan = cfg.plan
+    if plan == "free" and pages > DEFAULT_MAX_PAGES:
+        console.print(f"[yellow]Free plan limit {DEFAULT_MAX_PAGES} pages — using {DEFAULT_MAX_PAGES}.[/]")
+        pages = DEFAULT_MAX_PAGES
+
+    console.rule(f"[bold magenta]🤖 TinySEO AI — Multi-Agent Analysis[/]  [white]({plan.upper()} mode)")
+    console.print("[cyan]Initializing AI agents...[/]\n")
+
+    # Phase 1: Run comprehensive audit
+    console.print("📊 [bold]Phase 1:[/] Running comprehensive SEO audit...")
+    result: AuditResult = asyncio.run(
+        comprehensive_audit(url, max_pages=pages, enable_all_checks=True)
+    )
+
+    # Save base audit results
+    slug = urlparse(result.site).netloc.replace(":", "_")
+    target_dir = out / slug
+    ensure_dir(target_dir)
+    out_json = target_dir / "comprehensive_summary.json"
+    write_json(out_json, json.loads(result.model_dump_json()))
+
+    console.print(f"✅ Audit complete: {len(result.issues)} issues found\n")
+
+    # Phase 2: Multi-agent analysis
+    console.print("🤖 [bold]Phase 2:[/] Deploying specialist AI agents...")
+
+    coordinator = MultiAgentCoordinator(
+        openai_api_key=cfg.openai_api_key,
+        anthropic_api_key=cfg.anthropic_api_key,
+    )
+
+    try:
+        agent_analysis = asyncio.run(
+            coordinator.analyze_with_agents(result, enable_fix_generation=not no_fixes)
+        )
+
+        # Save agent analysis
+        agent_json = target_dir / "agent_analysis.json"
+        with open(agent_json, "w") as f:
+            json.dump(agent_analysis, f, indent=2)
+
+        console.print(f"\n✅ Multi-agent analysis complete!\n")
+
+        # Display results
+        # Summary table
+        summary_table = Table(title=f"🎯 Analysis Summary — {result.site}")
+        summary_table.add_column("Metric", style="cyan")
+        summary_table.add_column("Value", style="white")
+        summary_table.add_row("Pages Scanned", str(result.pages_scanned))
+        summary_table.add_row("Issues Found", str(len(result.issues)))
+        summary_table.add_row("Health Score", f"{result.meta.get('health_score', 0)}/100")
+        summary_table.add_row("Agents Deployed", str(len(agent_analysis.get('specialist_analysis', {}))))
+        summary_table.add_row("Total Tokens Used", str(agent_analysis.get('total_tokens', 0)))
+        summary_table.add_row("Avg Confidence", f"{agent_analysis.get('average_confidence', 0):.1%}")
+        console.print(summary_table)
+
+        # Key insights
+        insights = agent_analysis.get('key_insights', [])
+        if insights:
+            console.print("\n💡 [bold]Key Insights:[/]")
+            for i, insight in enumerate(insights[:5], 1):
+                console.print(f"  {i}. {insight}")
+
+        # Top recommendations
+        top_recs = agent_analysis.get('top_recommendations', [])
+        if top_recs:
+            rec_table = Table(title="\n🔧 Top Priority Recommendations")
+            rec_table.add_column("Priority", style="yellow")
+            rec_table.add_column("Recommendation", style="white")
+            rec_table.add_column("Impact", style="green")
+            rec_table.add_column("Effort", style="blue")
+
+            for rec in top_recs[:5]:
+                priority_score = rec.get('impact', 0) / max(rec.get('effort', 1), 0.1)
+                rec_table.add_row(
+                    f"{priority_score:.1f}",
+                    rec.get('title', 'N/A')[:50],
+                    f"{rec.get('impact', 0):.1f}",
+                    f"{rec.get('effort', 0):.1f}",
+                )
+
+            console.print(rec_table)
+
+        # Chain of thought summary
+        cot_summary = agent_analysis.get('chain_of_thought_summary', [])
+        if cot_summary:
+            console.print("\n🧠 [bold]Agent Reasoning Summary:[/]")
+            for cot in cot_summary:
+                console.print(
+                    f"  • {cot['agent']}: {cot['steps']} reasoning steps "
+                    f"({cot['confidence']:.1%} confidence, {cot['reasoning_time_ms']:.0f}ms)"
+                )
+
+        console.print(f"\n📁 Results saved:")
+        console.print(f"  • Audit: [bold]{out_json}[/]")
+        console.print(f"  • AI Analysis: [bold]{agent_json}[/]")
+
+        # Show agent stats
+        stats = coordinator.get_agent_stats()
+        console.print(f"\n📊 [bold]Agent Performance:[/]")
+        for agent_name, agent_stats in stats.items():
+            console.print(
+                f"  • {agent_name}: {agent_stats['tasks_completed']} tasks, "
+                f"avg {agent_stats['average_task_time_ms']:.0f}ms"
+            )
+
+    except Exception as e:
+        console.print(f"\n[red]❌ Agent analysis failed:[/] {e}")
+        console.print("\nBase audit results were saved successfully.")
+        console.print("Run with --help for more information.")
+        raise typer.Exit(code=1)
+
+
 @app.command()
 def config(
     show: bool = typer.Option(False, "--show", help="Print current config"),
@@ -254,7 +420,7 @@ from .ai.summarizer import summarize_with_ai
 
 @app.command()
 def report(
-    folder: Path = typer.Argument(..., help="Folder containing summary.json"),
+    src: Path = typer.Argument(..., help="Folder containing summary.json OR path to summary.json"),
     format: str = typer.Option("xlsx", "--format", "-f", help="Report format: xlsx|pdf"),
     out: Path = typer.Option(None, "--out", "-o", help="Output file path"),
     ai: bool = typer.Option(False, "--with-ai", help="Generate AI summary on the fly (uses your OpenAI key)"),
@@ -266,10 +432,16 @@ def report(
     """
     console.rule("[bold green]Build Report[/]")
 
-    summary_path = folder / "summary.json"
+    # Accept either a folder (containing summary.json) or a direct summary.json path
+    summary_path = src
+    if summary_path.is_dir():
+        summary_path = summary_path / "summary.json"
     if not summary_path.exists():
-        console.print(f"[red]Missing:[/] {summary_path}")
+        console.print(f"[red]Missing report input:[/] {summary_path}")
+        console.print("Hint: run 'tinyseoai audit <url>' or 'tinyseoai audit-report <url>' first.")
         raise typer.Exit(code=2)
+
+    folder = summary_path.parent
 
     data = json.loads(summary_path.read_text())
 

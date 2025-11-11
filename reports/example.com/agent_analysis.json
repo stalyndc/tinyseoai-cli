@@ -1,0 +1,156 @@
+{
+  "session_id": "session_1762829700.033636",
+  "site_url": "https://example.com/",
+  "total_tasks": 3,
+  "completed_tasks": 3,
+  "total_tokens": 0,
+  "total_cost_usd": 0.0,
+  "orchestration": {
+    "insights": [
+      "Critical: Site health score is 0/100 - immediate action required",
+      "Indexability issues found: 2 problems may prevent proper indexing"
+    ],
+    "recommendations": [
+      {
+        "title": "Deploy Technical Seo Agent",
+        "description": "Analyze and fix 2 issues in technical_seo category",
+        "priority": "low",
+        "impact": 4.0,
+        "effort": 3.0,
+        "agent": "technical_seo",
+        "issue_count": 2
+      },
+      {
+        "title": "Deploy Content Quality Agent",
+        "description": "Analyze and fix 3 issues in content_quality category",
+        "priority": "medium",
+        "impact": 6.0,
+        "effort": 3.0,
+        "agent": "content_quality",
+        "issue_count": 3
+      }
+    ],
+    "confidence": 0.9357142857142857
+  },
+  "specialist_analysis": {
+    "technical_seo": {
+      "success": true,
+      "insights": [
+        "Missing robots.txt file - search engines may not crawl your site efficiently",
+        "No XML sitemaps detected - adding sitemaps helps search engines discover all pages"
+      ],
+      "recommendations": [
+        {
+          "title": "Create robots.txt File",
+          "description": "Add robots.txt to guide search engine crawlers and reference sitemaps",
+          "priority": "high",
+          "impact": 7.0,
+          "effort": 2.0,
+          "category": "crawlability"
+        },
+        {
+          "title": "Add XML Sitemap",
+          "description": "Create and submit XML sitemap to help search engines discover all pages",
+          "priority": "high",
+          "impact": 8.0,
+          "effort": 3.0,
+          "category": "crawlability"
+        }
+      ],
+      "confidence": 0.9357142857142857,
+      "execution_time_ms": 20721.769094467163
+    },
+    "content_quality": {
+      "success": true,
+      "insights": [
+        "Found 1 meta description issues - improve click-through rates with better descriptions"
+      ],
+      "recommendations": [
+        {
+          "title": "Write Compelling Meta Descriptions",
+          "description": "Add/improve 1 meta descriptions to boost click-through rates",
+          "priority": "medium",
+          "impact": 6.5,
+          "effort": 4.0,
+          "category": "content"
+        }
+      ],
+      "confidence": 0.9357142857142857,
+      "execution_time_ms": 17499.977350234985
+    }
+  },
+  "all_recommendations": [
+    {
+      "title": "Create robots.txt File",
+      "description": "Add robots.txt to guide search engine crawlers and reference sitemaps",
+      "priority": "high",
+      "impact": 7.0,
+      "effort": 2.0,
+      "category": "crawlability"
+    },
+    {
+      "title": "Add XML Sitemap",
+      "description": "Create and submit XML sitemap to help search engines discover all pages",
+      "priority": "high",
+      "impact": 8.0,
+      "effort": 3.0,
+      "category": "crawlability"
+    },
+    {
+      "title": "Write Compelling Meta Descriptions",
+      "description": "Add/improve 1 meta descriptions to boost click-through rates",
+      "priority": "medium",
+      "impact": 6.5,
+      "effort": 4.0,
+      "category": "content"
+    }
+  ],
+  "key_insights": [
+    "Missing robots.txt file - search engines may not crawl your site efficiently",
+    "No XML sitemaps detected - adding sitemaps helps search engines discover all pages",
+    "Found 1 meta description issues - improve click-through rates with better descriptions"
+  ],
+  "chain_of_thought_summary": [
+    {
+      "agent": "technical_seo",
+      "goal": "Analyze technical SEO issues and provide actionable recommendations",
+      "steps": 7,
+      "confidence": 0.9357142857142857,
+      "reasoning_time_ms": 20721.59504890442
+    },
+    {
+      "agent": "content_quality",
+      "goal": "Analyze content quality issues and provide optimization recommendations",
+      "steps": 7,
+      "confidence": 0.9357142857142857,
+      "reasoning_time_ms": 17499.82237815857
+    }
+  ],
+  "top_recommendations": [
+    {
+      "title": "Create robots.txt File",
+      "description": "Add robots.txt to guide search engine crawlers and reference sitemaps",
+      "priority": "high",
+      "impact": 7.0,
+      "effort": 2.0,
+      "category": "crawlability"
+    },
+    {
+      "title": "Add XML Sitemap",
+      "description": "Create and submit XML sitemap to help search engines discover all pages",
+      "priority": "high",
+      "impact": 8.0,
+      "effort": 3.0,
+      "category": "crawlability"
+    },
+    {
+      "title": "Write Compelling Meta Descriptions",
+      "description": "Add/improve 1 meta descriptions to boost click-through rates",
+      "priority": "medium",
+      "impact": 6.5,
+      "effort": 4.0,
+      "category": "content"
+    }
+  ],
+  "average_confidence": 0.9357142857142857
+}

@@ -1,0 +1,500 @@
+{
+  "site": "https://google.com/",
+  "pages_scanned": 50,
+  "issues": [
+    {
+      "url": "https://google.com/robots.txt",
+      "type": "robots_missing",
+      "severity": "low",
+      "detail": "No robots.txt found"
+    },
+    {
+      "url": "https://google.com/preferences",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://google.com/preferences",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://google.com/advanced_search",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://google.com/intl/en/policies/privacy/",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://google.com/intl/en/policies/privacy/",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://google.com/intl/en/about.html",
+      "type": "title_too_long",
+      "severity": "low",
+      "detail": "77"
+    },
+    {
+      "url": "https://google.com/intl/en/ads/",
+      "type": "title_too_long",
+      "severity": "low",
+      "detail": "64"
+    },
+    {
+      "url": "https://google.com/intl/en/policies/terms/",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://google.com/intl/en/policies/terms/",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://google.com/url",
+      "type": "http_error",
+      "severity": "high",
+      "detail": "Status 404"
+    },
+    {
+      "url": "https://google.com/intl/en/home/campaigns/search-ads/",
+      "type": "http_error",
+      "severity": "high",
+      "detail": "Status 404"
+    },
+    {
+      "url": "https://google.com/intl/en/home/tools/performance-planner/",
+      "type": "http_error",
+      "severity": "high",
+      "detail": "Status 404"
+    },
+    {
+      "url": "https://google.com/intl/en/home/campaigns/demand-gen/",
+      "type": "http_error",
+      "severity": "high",
+      "detail": "Status 404"
+    },
+    {
+      "url": "https://google.com/intl/en/home/resources/",
+      "type": "http_error",
+      "severity": "high",
+      "detail": "Status 404"
+    },
+    {
+      "url": "https://google.com/intl/en/home/tools/experiments/",
+      "type": "http_error",
+      "severity": "high",
+      "detail": "Status 404"
+    },
+    {
+      "url": "https://google.com/intl/en/home/growth-formula/",
+      "type": "http_error",
+      "severity": "high",
+      "detail": "Status 404"
+    },
+    {
+      "url": "https://google.com/intl/en/home/measurement/conversion-tracking/",
+      "type": "http_error",
+      "severity": "high",
+      "detail": "Status 404"
+    },
+    {
+      "url": "https://google.com/intl/en/home/campaigns/shopping-ads/",
+      "type": "http_error",
+      "severity": "high",
+      "detail": "Status 404"
+    },
+    {
+      "url": "https://google.com/intl/en/home/privacy/",
+      "type": "http_error",
+      "severity": "high",
+      "detail": "Status 404"
+    },
+    {
+      "url": "https://google.com/intl/en/home/how-it-works/",
+      "type": "http_error",
+      "severity": "high",
+      "detail": "Status 404"
+    },
+    {
+      "url": "https://google.com/intl/en/home/tools/recommendations/",
+      "type": "http_error",
+      "severity": "high",
+      "detail": "Status 404"
+    },
+    {
+      "url": "https://google.com/intl/en/home/tools/audience-insights/",
+      "type": "http_error",
+      "severity": "high",
+      "detail": "Status 404"
+    },
+    {
+      "url": "https://google.com/intl/en/home/tools/ads-editor/",
+      "type": "http_error",
+      "severity": "high",
+      "detail": "Status 404"
+    },
+    {
+      "url": "https://google.com/intl/en/home/tools/insights-finder/",
+      "type": "http_error",
+      "severity": "high",
+      "detail": "Status 404"
+    },
+    {
+      "url": "https://google.com/intl/en/home/cost-tool/",
+      "type": "http_error",
+      "severity": "high",
+      "detail": "Status 404"
+    },
+    {
+      "url": "https://google.com/intl/en/home/grow-my-app/",
+      "type": "http_error",
+      "severity": "high",
+      "detail": "Status 404"
+    },
+    {
+      "url": "https://google.com/intl/en/home/campaigns/ai-powered-ad-solutions/",
+      "type": "http_error",
+      "severity": "high",
+      "detail": "Status 404"
+    },
+    {
+      "url": "https://google.com/intl/en/home/campaigns/performance-max/",
+      "type": "http_error",
+      "severity": "high",
+      "detail": "Status 404"
+    },
+    {
+      "url": "https://google.com/intl/en/home/tools/manager-accounts/",
+      "type": "http_error",
+      "severity": "high",
+      "detail": "Status 404"
+    },
+    {
+      "url": "https://google.com/intl/en/home/goals/",
+      "type": "http_error",
+      "severity": "high",
+      "detail": "Status 404"
+    },
+    {
+      "url": "https://google.com/intl/en/home/tools/mobile-app/",
+      "type": "http_error",
+      "severity": "high",
+      "detail": "Status 404"
+    },
+    {
+      "url": "https://google.com/intl/en/home/campaigns/display-ads/",
+      "type": "http_error",
+      "severity": "high",
+      "detail": "Status 404"
+    },
+    {
+      "url": "https://google.com/intl/en/home/campaigns/video-ads/",
+      "type": "http_error",
+      "severity": "high",
+      "detail": "Status 404"
+    },
+    {
+      "url": "https://google.com/intl/en/home/partners/become-a-partner/",
+      "type": "http_error",
+      "severity": "high",
+      "detail": "Status 404"
+    },
+    {
+      "url": "https://google.com/intl/en/home/partners/work-with-a-partner/",
+      "type": "http_error",
+      "severity": "high",
+      "detail": "Status 404"
+    },
+    {
+      "url": "https://google.com/intl/en/home/campaigns/app-ads/",
+      "type": "http_error",
+      "severity": "high",
+      "detail": "Status 404"
+    },
+    {
+      "url": "https://google.com/intl/en/home/",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://google.com/intl/en/home/tools/keyword-planner/",
+      "type": "http_error",
+      "severity": "high",
+      "detail": "Status 404"
+    },
+    {
+      "url": "https://google.com/intl/en/home/tools/google-analytics/",
+      "type": "http_error",
+      "severity": "high",
+      "detail": "Status 404"
+    },
+    {
+      "url": "https://google.com/intl/en/home/tools/api/",
+      "type": "http_error",
+      "severity": "high",
+      "detail": "Status 404"
+    },
+    {
+      "url": "https://google.com/intl/en/home/tools/reach-planner/",
+      "type": "http_error",
+      "severity": "high",
+      "detail": "Status 404"
+    },
+    {
+      "url": "http://google.com/advanced_search",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "http://google.com/intl/en/about.html",
+      "type": "title_too_long",
+      "severity": "low",
+      "detail": "77"
+    },
+    {
+      "url": "http://google.com/intl/en/ads/",
+      "type": "title_too_long",
+      "severity": "low",
+      "detail": "64"
+    },
+    {
+      "url": "http://google.com/intl/en/policies/terms/",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "http://google.com/intl/en/policies/terms/",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "http://google.com/preferences",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "http://google.com/preferences",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "http://google.com/intl/en/policies/privacy/",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "http://google.com/intl/en/policies/privacy/",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://google.com/",
+      "type": "duplicate_title",
+      "severity": "low",
+      "detail": "google"
+    },
+    {
+      "url": "https://google.com/webhp",
+      "type": "duplicate_title",
+      "severity": "low",
+      "detail": "google"
+    },
+    {
+      "url": "http://google.com/",
+      "type": "duplicate_title",
+      "severity": "low",
+      "detail": "google"
+    },
+    {
+      "url": "https://google.com/intl/en/home/",
+      "type": "duplicate_title",
+      "severity": "low",
+      "detail": "google"
+    },
+    {
+      "url": "https://google.com/advanced_search",
+      "type": "duplicate_title",
+      "severity": "low",
+      "detail": "google advanced search"
+    },
+    {
+      "url": "http://google.com/advanced_search",
+      "type": "duplicate_title",
+      "severity": "low",
+      "detail": "google advanced search"
+    },
+    {
+      "url": "https://google.com/services/",
+      "type": "duplicate_title",
+      "severity": "low",
+      "detail": "get listed on google - google business profile"
+    },
+    {
+      "url": "http://google.com/services/",
+      "type": "duplicate_title",
+      "severity": "low",
+      "detail": "get listed on google - google business profile"
+    },
+    {
+      "url": "https://google.com/intl/en/about.html",
+      "type": "duplicate_title",
+      "severity": "low",
+      "detail": "about google: our products, technology and company information - about google"
+    },
+    {
+      "url": "http://google.com/intl/en/about.html",
+      "type": "duplicate_title",
+      "severity": "low",
+      "detail": "about google: our products, technology and company information - about google"
+    },
+    {
+      "url": "https://google.com/intl/en/ads/",
+      "type": "duplicate_title",
+      "severity": "low",
+      "detail": "google ads - get customers and sell more with online advertising"
+    },
+    {
+      "url": "http://google.com/intl/en/ads/",
+      "type": "duplicate_title",
+      "severity": "low",
+      "detail": "google ads - get customers and sell more with online advertising"
+    },
+    {
+      "url": "https://google.com/",
+      "type": "duplicate_meta_description",
+      "severity": "low",
+      "detail": "search the world's information, including webpages, images, videos and more. google has many special features to help yo"
+    },
+    {
+      "url": "https://google.com/webhp",
+      "type": "duplicate_meta_description",
+      "severity": "low",
+      "detail": "search the world's information, including webpages, images, videos and more. google has many special features to help yo"
+    },
+    {
+      "url": "http://google.com/",
+      "type": "duplicate_meta_description",
+      "severity": "low",
+      "detail": "search the world's information, including webpages, images, videos and more. google has many special features to help yo"
+    },
+    {
+      "url": "https://google.com/services/",
+      "type": "duplicate_meta_description",
+      "severity": "low",
+      "detail": "list your business on google with a free business profile. turn people who find you on search & maps into new customers."
+    },
+    {
+      "url": "http://google.com/services/",
+      "type": "duplicate_meta_description",
+      "severity": "low",
+      "detail": "list your business on google with a free business profile. turn people who find you on search & maps into new customers."
+    },
+    {
+      "url": "https://google.com/intl/en/about.html",
+      "type": "duplicate_meta_description",
+      "severity": "low",
+      "detail": "learn more about google. explore our innovative ai products and services, and discover how we're using technology to hel"
+    },
+    {
+      "url": "http://google.com/intl/en/about.html",
+      "type": "duplicate_meta_description",
+      "severity": "low",
+      "detail": "learn more about google. explore our innovative ai products and services, and discover how we're using technology to hel"
+    },
+    {
+      "url": "https://google.com/intl/en/ads/",
+      "type": "duplicate_meta_description",
+      "severity": "low",
+      "detail": "discover how online advertising with google ads can help grow your business. get customers and sell more with our digita"
+    },
+    {
+      "url": "http://google.com/intl/en/ads/",
+      "type": "duplicate_meta_description",
+      "severity": "low",
+      "detail": "discover how online advertising with google ads can help grow your business. get customers and sell more with our digita"
+    }
+  ],
+  "meta": {
+    "max_pages": 50,
+    "timestamp": "2025-11-11T02:18:17.318706Z",
+    "agent": "tinyseoai/0.2.0",
+    "robots_txt_exists": false,
+    "sitemaps_found": 0,
+    "crawl_delay": null,
+    "total_sitemap_urls": 0,
+    "health_score": 78.1,
+    "health_grade": "C",
+    "category_scores": {
+      "other": {
+        "count": 32,
+        "total_impact": 190.0,
+        "avg_impact": 5.9,
+        "avg_effort": 5.0
+      },
+      "content": {
+        "count": 40,
+        "total_impact": 177.59999999999982,
+        "avg_impact": 4.4,
+        "avg_effort": 1.9
+      }
+    },
+    "top_recommendations": [
+      {
+        "issue_type": "title_missing",
+        "category": "content",
+        "impact": 8.0,
+        "effort": 2,
+        "priority": 10.0
+      },
+      {
+        "issue_type": "meta_description_missing",
+        "category": "content",
+        "impact": 4.8,
+        "effort": 2,
+        "priority": 8.0
+      },
+      {
+        "issue_type": "title_too_long",
+        "category": "content",
+        "impact": 4.8,
+        "effort": 1,
+        "priority": 8.0
+      },
+      {
+        "issue_type": "duplicate_title",
+        "category": "content",
+        "impact": 3.2,
+        "effort": 2,
+        "priority": 8.0
+      },
+      {
+        "issue_type": "duplicate_meta_description",
+        "category": "content",
+        "impact": 3.2,
+        "effort": 2,
+        "priority": 8.0
+      }
+    ]
+  }
+}
