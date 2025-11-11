@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import base64
 from datetime import datetime
+from importlib import resources as importlib_resources
 from pathlib import Path
 from typing import Any
 
@@ -34,8 +35,8 @@ def _font_base64() -> str | None:
             pass
     try:
         font_pkg = "tinyseoai.reporting.fonts"
-        font_path = pkg_resources.files(font_pkg) / "WorkSans-Regular.ttf"
-        with pkg_resources.as_file(font_path) as f:
+        font_path = importlib_resources.files(font_pkg) / "WorkSans-Regular.ttf"
+        with importlib_resources.as_file(font_path) as f:
             return base64.b64encode(Path(f).read_bytes()).decode("ascii")
     except Exception:
         return None

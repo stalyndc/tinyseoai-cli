@@ -116,6 +116,7 @@ ignore = [
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**/*.py" = ["S101"]  # assert allowed in tests
+"tinyseoai/cli.py" = ["B008", "B904"]  # Typer defaults and Exit usage are intentional
 
 # ==================== Bandit Configuration ====================
 [tool.bandit]
