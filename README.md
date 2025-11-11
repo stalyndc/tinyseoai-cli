@@ -1,35 +1,15 @@
-# =  TinySEO AI - Autonomous SEO Audit Agent
+# TinySEO AI - Autonomous SEO Audit Agent
 
 [![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
-[![Rust](https://img.shields.io/badge/rust-1.70+-orange.svg)](https://www.rust-lang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-**TinySEO AI** is an autonomous SEO audit agent that combines traditional rule-based checks with advanced AI-powered multi-agent analysis. Now with **three powerful interfaces**: CLI, Interactive TUI, and Native Desktop App!
-
-## ( What's New: Rust-Powered UIs
-
-We've added **two new beautiful interfaces** to enhance your SEO workflow:
-
-### =   Interactive TUI (Terminal UI)
-- Real-time dashboard with live progress tracking
-- Beautiful colored output with tables and charts
-- Vim-style keyboard navigation
-- Perfect for terminal users and SSH access
-
-### >  Tauri Desktop App
-- Native desktop application for Windows, macOS, Linux
-- Modern web UI with native performance
-- Lightweight (~3MB vs 150MB for Electron)
-- Three audit modes: Basic, Full, AI-Powered
-
-**[=  See UI Guide](UI_GUIDE.md)** | **[  Quick Start](RUST_UI_QUICKSTART.md)**
+**TinySEO AI** is an autonomous SEO audit agent that combines traditional rule-based checks with advanced AI-powered multi-agent analysis. The project now focuses entirely on the Python CLI experience for a leaner, easier-to-maintain toolchain.
 
 ---
 
-## =  Table of Contents
+## Table of Contents
 
 - [Features](#features)
-- [User Interfaces](#user-interfaces)
 - [Installation](#installation)
 - [Quick Start](#quick-start)
 - [Usage Examples](#usage-examples)
@@ -40,321 +20,170 @@ We've added **two new beautiful interfaces** to enhance your SEO workflow:
 
 ---
 
-## <  Features
+## Features
 
 ### Core Capabilities
 
--   **Autonomous SEO Audits** - Comprehensive website analysis
-- >  **Multi-Agent AI System** - 5 specialized AI agents working together
-- =  **Multiple Report Formats** - JSON, Excel, PDF
-- =
- **Deep Analysis** - Technical SEO, content, performance, links
-- <  **Website Crawler** - Efficient multi-page analysis
-- =  **AI Recommendations** - Actionable insights with priority levels
-- =   **Code Fix Generation** - Ready-to-use code snippets
+- **Autonomous SEO Audits** – Crawl a site and capture issues across technical, content, and performance dimensions.
+- **Multi-Agent AI System** – Five specialized AI agents generate insights and prioritized recommendations.
+- **Multiple Report Formats** – Export JSON summaries plus Excel/PDF reports for stakeholders.
+- **Deep Analysis** – Robots.txt, sitemaps, Core Web Vitals heuristics, link structure, and more.
+- **Code Fix Generation** – Ready-to-apply snippets for common SEO problems.
 
 ### SEO Checks
 
-- =  Meta tags (title, description, OG tags)
-- =$ Content quality and readability
-- =  Internal and external link analysis
-- =   Image optimization and alt text
--   Performance metrics
-- =  Security headers and HTTPS
-- =  Mobile responsiveness
-- =   Sitemap and robots.txt
-- <   Schema markup validation
+- Meta tags (title, description, Open Graph)
+- Content quality and readability signals
+- Internal/external link analysis
+- Image optimization and alt text
+- Performance metrics and blocking assets
+- Security headers and HTTPS verification
+- Mobile responsiveness heuristics
+- Sitemap and robots.txt validation
+- Structured data/schema checks
 
 ---
 
-## =   User Interfaces
+## Installation
 
-### Option 1: Interactive TUI (Terminal UI) =  
-
-**Perfect for**: Terminal users, SSH access, CI/CD pipelines
-
-```bash
-./tinyseoai-ui https://example.com
-```
-
-**Features:**
-- Real-time progress tracking
-- Interactive keyboard navigation
-- Colored output with emoji
-- Three tabs: Overview, Issues, Analysis
-
-**Preview:**
-```
-                         TinySEO AI                        
-           =  TinySEO AI - Interactive Dashboard           
-               Analyzing: https://example.com              
-                                                          $
-  Progress:                      80% (16/20 pages)        
-                                                          $
-  [=  Overview] [    Issues] [=  Analysis]                
-                                                           
-```
-
-**[<  Learn More](UI_GUIDE.md#interactive-tui)** | **[  Quick Start](RUST_UI_QUICKSTART.md)**
-
----
-
-### Option 2: Tauri Desktop App > 
-
-**Perfect for**: Desktop users, visual preference, modern UI
-
-```bash
-cd tauri-ui
-npm run tauri:dev
-```
-
-**Features:**
-- Native desktop application
-- Modern, beautiful web UI
-- Three audit modes (Basic/Full/AI)
-- Real-time results display
-- Small bundle size (~3MB)
-
-**[<  Learn More](UI_GUIDE.md#tauri-desktop-app)** | **[  Quick Start](RUST_UI_QUICKSTART.md)**
-
----
-
-### Option 3: Original CLI ( 
-
-**Perfect for**: Automation, scripts, power users
-
-```bash
-tinyseoai audit-ai https://example.com
-```
-
-**Features:**
-- JSON output for processing
-- Scriptable and pipe-friendly
-- Multiple command modes
-- Export to various formats
-
----
-
-## =  Installation
-
-### Quick Install (CLI Only)
+### Quick Install (CLI)
 
 ```bash
 pip install tinyseoai
 ```
 
-### Full Install (All UIs)
-
-#### Prerequisites
-
-```bash
-# Install Rust (for TUI and Tauri)
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-source $HOME/.cargo/env
-
-# Install Node.js (for Tauri only)
-curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-sudo apt-get install -y nodejs
-```
-
-#### Build Interactive TUI
+### From Source
 
 ```bash
 git clone https://github.com/stalyndc/tinyseoai-cli.git
 cd tinyseoai-cli
-
-# Build TUI
-cd rust-ui
-cargo build --release
-cd ..
-
-# Make launcher executable
-chmod +x tinyseoai-ui
+python -m venv .venv && source .venv/bin/activate
+pip install -e ".[dev,ai]"
 ```
 
-#### Set up Tauri App
-
-```bash
-cd tauri-ui
-npm install
-
-# Development mode
-npm run tauri:dev
-
-# Or build for production
-npm run tauri:build
-```
-
-### System Requirements
+### Requirements
 
 - **Python**: 3.12+
-- **Rust**: 1.70+ (for TUI/Tauri)
-- **Node.js**: 18+ (for Tauri only)
+- **Playwright browsers** (optional, only for integration tests)
+- **OpenAI / Anthropic API keys** for AI-powered commands
 - **RAM**: 2GB recommended
-- **Disk**: 1GB for dependencies
-
-**[=  Detailed Installation Guide](UI_GUIDE.md#installation)**
+- **Disk**: ~1GB for dependencies
 
 ---
 
-## =  Quick Start
+## Quick Start
 
-### Using Interactive TUI
-
-```bash
-# Single site audit
-./tinyseoai-ui https://example.com
-
-# Navigate with keyboard
-# Tab: Switch tabs |   : Navigate | q: Quit
-```
-
-### Using Tauri Desktop App
+### Basic audit
 
 ```bash
-cd tauri-ui
-npm run tauri:dev
-
-# In the app:
-# 1. Enter URL
-# 2. Select mode (Basic/Full/AI)
-# 3. Click "Run SEO Audit"
-```
-
-### Using CLI
-
-```bash
-# Basic audit (fast)
 tinyseoai audit https://example.com
-
-# Full audit (comprehensive)
-tinyseoai audit-full https://example.com
-
-# AI-powered audit (smart)
-tinyseoai audit-ai https://example.com
-
-# Generate report
-tinyseoai report results.json
 ```
 
-**[=  See Full Quick Start Guide](RUST_UI_QUICKSTART.md)**
+### Comprehensive audit
+
+```bash
+tinyseoai audit-full https://example.com --pages 100
+```
+
+### AI-powered analysis
+
+```bash
+export OPENAI_API_KEY=sk-your-key
+tinyseoai audit-ai https://example.com --pages 75
+```
+
+### Generate reports
+
+```bash
+tinyseoai report reports/example.com/summary.json --format pdf
+tinyseoai report reports/example.com/summary.json --format xlsx
+```
 
 ---
 
-## =  Usage Examples
+## Usage Examples
 
-### Example 1: Quick Site Check (TUI)
+### Example 1: Quick CLI health check
 
 ```bash
-./tinyseoai-ui https://myblog.com
+tinyseoai audit https://myblog.com --pages 25
 ```
 
-**Output:**
-- Real-time progress bar
-- Live metrics (pages, issues, score)
-- Interactive issue browser
-- AI analysis summary
-
-### Example 2: Full Audit with Report (CLI)
+### Example 2: AI-first audit with fixes
 
 ```bash
-# Run audit
-tinyseoai audit-ai https://mystore.com
-
-# Generate PDF report
-tinyseoai report audit_results.json --format pdf
-
-# Generate Excel report
-tinyseoai report audit_results.json --format excel
+tinyseoai audit-ai https://store.example --pages 80 --out reports/prod
 ```
 
-### Example 3: Desktop App Workflow (Tauri)
-
-1. Launch app: `npm run tauri:dev`
-2. Enter URL: `https://mywebsite.com`
-3. Select "AI-Powered" mode
-4. Click "Run SEO Audit"
-5. View results in beautiful UI
-6. Copy recommendations
-
-### Example 4: Batch Audits (CLI)
+### Example 3: Batch audits
 
 ```bash
-#!/bin/bash
-for site in site1.com site2.com site3.com; do
-    tinyseoai audit https://$site --output-json > ${site}_audit.json
+#!/usr/bin/env bash
+for site in acme.com shop.example docs.example; do
+  tinyseoai audit-full "https://$site" --pages 60 --out reports
 done
 ```
 
-### Example 5: CI/CD Integration (TUI)
+### Example 4: CI integration
 
 ```yaml
 # .github/workflows/seo-audit.yml
 name: SEO Audit
-on: [push]
+on:
+  schedule:
+    - cron: "0 6 * * 1"
 jobs:
   audit:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Run SEO Audit
-        run: |
-          cargo build --release
-          ./tinyseoai-ui https://staging.example.com
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install tinyseoai
+      - run: tinyseoai audit https://staging.example.com --pages 40 --out reports
 ```
 
 ---
 
-## >  Multi-Agent AI System
+## Multi-Agent AI System
 
-TinySEO AI uses **five specialized AI agents** that collaborate to provide comprehensive analysis:
+TinySEO AI relies on **five specialized AI agents** that collaborate to provide comprehensive analysis:
 
-### 1. <  Technical SEO Agent
+### 1. Technical SEO Agent
 - SSL/TLS configuration
 - Security headers
 - Robots.txt analysis
 - Sitemap validation
 
-### 2. =  Content Quality Agent
+### 2. Content Quality Agent
 - Title and meta optimization
 - Heading structure
 - Content readability
 - Keyword usage
 
-### 3.   Performance Agent
+### 3. Performance Agent
 - Page load speed
 - Core Web Vitals
 - Image optimization
 - Resource minification
 
-### 4. =  Link Analysis Agent
+### 4. Link Analysis Agent
 - Broken link detection
 - Internal linking structure
 - External link quality
 - Anchor text optimization
 
-### 5. =   Fix Generator Agent
+### 5. Fix Generator Agent
 - Generates production-ready code
 - Provides implementation steps
 - Priority recommendations
 
-**[=  Learn More About Agents](AGENTS_README.md)**
+**[Learn More About Agents](docs/AGENTS_README.md)**
 
 ---
 
-## =  Output Examples
-
-### TUI Dashboard
-
-```
-                        Metrics                        
-  Pages Scanned       15                              
-  Total Issues        27                              
-  Critical Issues     5     Fix these first!          
-  Warnings            12                              
-  Health Score        73%                             
-                                                       
-```
+## Output Examples
 
 ### CLI JSON Output
 
@@ -382,262 +211,130 @@ TinySEO AI uses **five specialized AI agents** that collaborate to provide compr
 
 ---
 
-## =  Documentation
+## Documentation
 
-### Quick Access
-
-- **[<  UI Guide](UI_GUIDE.md)** - Complete guide to all interfaces
-- **[  Quick Start](RUST_UI_QUICKSTART.md)** - Get running in 60 seconds
-- **[>  Agents Guide](AGENTS_README.md)** - Multi-agent system details
-- **[=  Quick Start](QUICK_START.md)** - Original CLI guide
-- **[=' Environment Setup](ENV_SETUP_SUMMARY.md)** - Configuration
-
-### Guides by Use Case
-
-**For Terminal Users:**
-- [Interactive TUI Guide](UI_GUIDE.md#interactive-tui)
-- [TUI Quick Start](RUST_UI_QUICKSTART.md)
-- [Keyboard Shortcuts](UI_GUIDE.md#keyboard-shortcuts)
-
-**For Desktop Users:**
-- [Tauri App Guide](UI_GUIDE.md#tauri-desktop-app)
-- [Building Desktop Apps](RUST_UI_QUICKSTART.md#tauri-desktop-app)
-- [Customization](UI_GUIDE.md#customization)
-
-**For Developers:**
-- [CLI Reference](QUICK_START.md)
-- [API Integration](AGENTS_README.md)
-- [Contributing Guide](#contributing)
+- **[Quick Start](docs/QUICK_START.md)** – Step-by-step CLI walkthrough.
+- **[Agents Guide](docs/AGENTS_README.md)** – Deep dive into the multi-agent system.
+- **[Environment Setup](docs/ENV_SETUP_SUMMARY.md)** – Recommended tooling for contributors.
+- **[Bug Fix Log](docs/BUGFIXES.md)** – Recent fixes and hardening notes.
+- **[Upgrade Notes](docs/UPGRADE_PYTHON.md)** – Python compatibility guidance.
 
 ---
 
-## <  Screenshots
-
-### Interactive TUI
-![TUI Overview](https://via.placeholder.com/800x400?text=TUI+Dashboard)
-
-### Tauri Desktop App
-![Tauri App](https://via.placeholder.com/800x400?text=Tauri+Desktop+App)
-
-### CLI Output
-```
-=  TinySEO AI - SEO Audit Report
-PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP
-
-=  Audit Summary
-                                                 
-URL: https://example.com
-Pages Scanned: 15
-Health Score: 73% = 
-
-    Critical Issues (5)
-                                                 
-1. Missing Meta Description (5 pages)
-2. Broken Internal Links (3 links)
-3. Large Unoptimized Images (8 images)
-...
-```
-
----
-
-## =   Configuration
+## Configuration
 
 ### Environment Variables
 
-Create `.env` file:
+Create a `.env` file:
 
 ```bash
-# API Keys (for AI mode)
 OPENAI_API_KEY=sk-...
 ANTHROPIC_API_KEY=sk-ant-...
-
-# Optional: LangSmith Tracking
-LANGCHAIN_API_KEY=ls__...
-LANGCHAIN_PROJECT=tinyseoai
+TINYSEOAI_AGENT_PLAN=premium
 ```
 
-### TUI Configuration
+### Config File
 
-Colors and styling can be customized in `rust-ui/src/ui.rs`:
+The CLI stores preferences at `~/.config/tinyseoai/config.json`. Edit it to change defaults such as plan, output directories, or agent settings.
 
-```rust
-// Change colors
-.fg(Color::Cyan)     // Header color
-.fg(Color::Green)    // Success color
-.fg(Color::Red)      // Error color
-```
-
-### Tauri Configuration
-
-Edit `tauri-ui/index.html` for UI styling:
-
-```css
-/* Customize gradient */
-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-```
-
----
-
-## >  Contributing
-
-We welcome contributions! Here's how:
-
-### Reporting Issues
-
-1. Check [existing issues](https://github.com/stalyndc/tinyseoai-cli/issues)
-2. Create new issue with:
-   - Clear description
-   - Steps to reproduce
-   - Expected vs actual behavior
-   - Screenshots (if applicable)
-
-### Contributing Code
+### Pre-commit and Tests
 
 ```bash
-# 1. Fork the repository
-git clone https://github.com/YOUR_USERNAME/tinyseoai-cli.git
-
-# 2. Create feature branch
-git checkout -b feature/amazing-feature
-
-# 3. Make changes and test
-cd rust-ui
-cargo build --release
-./target/release/tinyseoai-tui https://example.com
-
-# 4. Commit and push
-git commit -am "Add amazing feature"
-git push origin feature/amazing-feature
-
-# 5. Create Pull Request
-```
-
-### Development Setup
-
-```bash
-# Install pre-commit hooks
 pip install pre-commit
 pre-commit install
-
-# Run tests
-pytest
-
-# Rust tests
-cd rust-ui && cargo test
+pytest --maxfail=1 --disable-warnings -q
 ```
 
 ---
 
-## =  Roadmap
+## Contributing
+
+1. Fork the repository and create a feature branch.
+2. Install dependencies with `pip install -e ".[dev,ai]"`.
+3. Run `ruff check tinyseoai`, `black tinyseoai`, and `pytest` before opening a PR.
+4. Document user-facing changes in `README.md` or `docs/` as appropriate.
+
+---
+
+## Roadmap
 
 - [x] Python CLI with basic audits
 - [x] Multi-agent AI system
 - [x] Excel and PDF reports
-- [x] Interactive TUI (Terminal UI)
-- [x] Tauri Desktop App
 - [ ] Browser extension
 - [ ] Cloud-based dashboard
 - [ ] Team collaboration features
 - [ ] Historical tracking
 - [ ] Competitor analysis
-- [ ] Mobile app
+- [ ] Mobile app companion
 
 ---
 
-## <  Support
+## Support
 
-### Getting Help
-
-- =  **Documentation**: See links above
-- =  **Bug Reports**: [GitHub Issues](https://github.com/stalyndc/tinyseoai-cli/issues)
-- =  **Discussions**: [GitHub Discussions](https://github.com/stalyndc/tinyseoai-cli/discussions)
-- =  **Email**: support@tinyseoai.com
+- **Documentation** – See the guides listed above.
+- **Bug reports** – [GitHub Issues](https://github.com/stalyndc/tinyseoai-cli/issues).
+- **Questions** – [GitHub Discussions](https://github.com/stalyndc/tinyseoai-cli/discussions).
+- **Email** – support@tinyseoai.com.
 
 ### Troubleshooting
 
-**Common issues:**
-
-1. **TUI not building**: Install Rust with `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
-2. **CLI not found**: Ensure Python package is installed with `pip install tinyseoai`
-3. **Tauri errors**: Install Node.js 18+ and required system libraries
-
-**[=  Full Troubleshooting Guide](UI_GUIDE.md#troubleshooting)**
+1. **CLI not found** – Ensure Python scripts directory is on PATH.
+2. **Playwright errors** – Install browsers with `playwright install chromium`.
+3. **AI commands fail** – Confirm `OPENAI_API_KEY` or `ANTHROPIC_API_KEY` is set.
 
 ---
 
-## =  Performance
+## Performance
 
-| Interface | Startup Time | Memory Usage | Bundle Size |
-|-----------|--------------|--------------|-------------|
-| CLI | < 1s | ~50MB | N/A |
-| Interactive TUI | < 2s | ~30MB | 8MB binary |
-| Tauri Desktop | ~3s | ~80MB | ~3MB |
-
-**All interfaces** run the same powerful audit engine under the hood!
+| Mode | Startup Time | Memory Usage | Notes |
+|------|--------------|--------------|-------|
+| CLI audit | < 1s | ~50 MB | Pure Python, fast startup |
+| AI audit | < 2s | ~65 MB | Includes LangChain + LLM clients |
+| Report generation | < 1s | ~40 MB | Generates Excel/PDF outputs |
 
 ---
 
-## <  Why TinySEO AI?
+## Why TinySEO AI?
 
 ### vs Traditional SEO Tools
 
-  **Autonomous** - AI agents work independently
-  **Open Source** - Full transparency
-  **Local First** - Your data stays private
-  **Multiple Interfaces** - Use what you prefer
-  **Developer Friendly** - Scriptable and automatable
+- **Autonomous** – Multi-agent AI digs deeper than simple rule checks.
+- **Open Source** – Inspect, extend, and self-host.
+- **Local First** – Crawl sites privately without external services.
+- **Automation Friendly** – Scriptable CLI plus JSON/Excel/PDF outputs.
 
 ### vs Other CLI Tools
 
-  **AI-Powered** - Not just rules, smart analysis
-  **Beautiful UIs** - Not just text output
-  **Code Generation** - Get actual fixes
-  **Multi-Agent** - Specialized experts collaborating
-  **Modern Stack** - Rust + Python performance
+- **AI Recommendations** – Prioritized fixes, not just warnings.
+- **Code Generation** – Concrete snippets for developers.
+- **Modern Stack** – Async crawler, Pydantic models, Rich CLI UX.
+- **Active Roadmap** – Regular bug fixes and feature drops.
 
 ---
 
-## =  License
+## License
 
-MIT License - see [LICENSE](LICENSE) file for details.
+MIT License - see [LICENSE](LICENSE) for details.
 
 ---
 
-## =O Acknowledgments
+## Acknowledgments
 
 Built with amazing open-source tools:
 
-- **[Ratatui](https://ratatui.rs)** - TUI framework
-- **[Tauri](https://tauri.app)** - Desktop app framework
-- **[LangChain](https://langchain.com)** - AI orchestration
-- **[Typer](https://typer.tiangolo.com)** - CLI framework
-- **[Rich](https://rich.readthedocs.io)** - Terminal formatting
+- **[LangChain](https://langchain.com)** – AI orchestration.
+- **[Typer](https://typer.tiangolo.com)** – CLI framework.
+- **[Rich](https://rich.readthedocs.io)** – Terminal formatting.
+- **[Playwright](https://playwright.dev)** – Browser automation for reports.
 
 ---
 
-## =  Get Started Now!
-
-Choose your interface and start auditing:
+## Get Started Now!
 
 ```bash
-# Interactive TUI (Terminal)
-./tinyseoai-ui https://your-site.com
-
-# Desktop App
-cd tauri-ui && npm run tauri:dev
-
-# Classic CLI
+pip install tinyseoai
 tinyseoai audit-ai https://your-site.com
 ```
 
-**Happy Auditing! < **
-
----
-
-<div align="center">
-
-Made with d  by the TinySEO AI Team
-
-[Website](https://tinyseoai.com) " [Documentation](UI_GUIDE.md) " [GitHub](https://github.com/stalyndc/tinyseoai-cli)
-
-</div>
+Happy auditing!
