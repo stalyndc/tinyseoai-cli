@@ -78,7 +78,7 @@ jobs:
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -e ".[dev]"
+          pip install -e ".[dev,ai]"
 
       - name: Run tests with coverage
         run: |
@@ -178,7 +178,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -e ".[dev]"
+          pip install -e ".[dev,ai]"
 
       - name: Install Playwright browsers
         run: playwright install chromium
