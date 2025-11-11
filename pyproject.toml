@@ -55,6 +55,7 @@ dev = [
     "black>=24.0",
     "isort>=5.13",
     "pre-commit>=3.6",
+    "faker>=22.0",
 ]
 build = ["pyinstaller>=6.10"]
 ai = [

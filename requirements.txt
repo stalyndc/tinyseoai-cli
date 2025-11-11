@@ -41,8 +41,8 @@ semantic-kernel>=0.9.0       # Agent planning & memory
 instructor>=0.5.0            # Structured outputs from LLMs
 
 # --- SEO & Web Tools ---
-lighthouse>=0.3.0            # Performance scoring
-py-lighthouse>=0.2.0         # Python Lighthouse wrapper
+# lighthouse>=0.3.0            # Performance scoring - temporarily disabled due to compatibility issues
+# py-lighthouse>=0.2.0         # Python Lighthouse wrapper - package not available
 
 # --- Memory & Vector Storage ---
 chromadb>=0.4.22             # Vector database
