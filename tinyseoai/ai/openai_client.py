@@ -61,8 +61,11 @@ def call_ai_json(
     max_output_tokens: Optional[int] = None,
 ) -> Dict[str, Any]:
     """
-    Calls OpenAI Responses API and returns parsed JSON.
+    Calls OpenAI Chat Completions API and returns parsed JSON.
     Uses a cheap model for 'free' plan and a stronger one for 'premium'.
+
+    BUGFIX: Changed from non-existent 'responses' API to standard 'chat.completions' API.
+    See: BUGFIXES.md #1
     """
     client = get_client()
     models = resolve_models()
@@ -71,11 +74,11 @@ def call_ai_json(
     cfg = get_config()
     out_tokens = max_output_tokens or cfg.max_output_tokens
 
-    # Use the Responses API with JSON response format
+    # Use the Chat Completions API with JSON response format
     try:
-        resp = client.responses.create(
+        resp = client.chat.completions.create(
             model=model,
-            input=[
+            messages=[
                 {
                     "role": "system",
                     "content": system
@@ -88,27 +91,21 @@ def call_ai_json(
                 },
             ],
             temperature=temperature,
-            max_output_tokens=out_tokens,
-            # Newer SDKs use the `text.format` field instead of `response_format`
-            # to enforce JSON output in the Responses API.
-            text={"format": {"type": "json_object"}},
+            max_tokens=out_tokens,
+            response_format={"type": "json_object"},
         )
     except Exception as e:
         raise AIError(f"OpenAI request failed: {e}")
 
-    # Extract text from the first output (SDK v1+)
-    try:
-        txt = resp.output_text  # convenience property
-    except Exception:
-        # Fallback if SDK variant differs
-        try:
-            txt = resp.choices[0].message["content"][0]["text"]
-        except Exception as e:
-            raise AIError(f"Could not read model output: {e}")
-
+    # Extract text from the response
     import json
 
     try:
+        txt = resp.choices[0].message.content
+        if not txt:
+            raise AIError("OpenAI returned empty response")
         return json.loads(txt)
-    except Exception as e:
-        raise AIError(f"Model did not return valid JSON: {e}\nRaw: {txt[:400]}")
+    except (IndexError, AttributeError, KeyError) as e:
+        raise AIError(f"Could not parse OpenAI response structure: {e}")
+    except json.JSONDecodeError as e:
+        raise AIError(f"Model did not return valid JSON: {e}\nRaw: {txt[:400] if txt else 'None'}")

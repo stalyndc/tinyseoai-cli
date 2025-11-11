@@ -16,6 +16,7 @@ from rich.table import Table
 from .config import get_config, save_config
 from .data.models import Issue, AuditResult
 from .utils.io import ensure_dir, write_json
+from .utils.url import validate_url, URLValidationError
 from .audit.engine import audit_site, DEFAULT_MAX_PAGES
 from .audit.engine_v2 import comprehensive_audit
 
@@ -41,6 +42,13 @@ def audit(
     """
     Crawl and run basic SEO checks. Writes JSON to reports/<slug>/summary.json
     """
+    # BUGFIX: Validate URL to prevent SSRF attacks (See: BUGFIXES.md #2)
+    try:
+        url = validate_url(url)
+    except URLValidationError as e:
+        console.print(f"[red]Invalid URL:[/] {e}")
+        raise typer.Exit(code=1)
+
     cfg = get_config()
     plan = cfg.plan
     if plan == "free" and pages > DEFAULT_MAX_PAGES:
@@ -90,6 +98,13 @@ def audit_full(
     """
     Comprehensive SEO audit with all checks (security, performance, content quality, etc.)
     """
+    # BUGFIX: Validate URL to prevent SSRF attacks (See: BUGFIXES.md #2)
+    try:
+        url = validate_url(url)
+    except URLValidationError as e:
+        console.print(f"[red]Invalid URL:[/] {e}")
+        raise typer.Exit(code=1)
+
     cfg = get_config()
     plan = cfg.plan
     if plan == "free" and pages > DEFAULT_MAX_PAGES:
@@ -196,6 +211,13 @@ def audit_ai(
 
     Requires: OPENAI_API_KEY environment variable
     """
+    # BUGFIX: Validate URL to prevent SSRF attacks (See: BUGFIXES.md #2)
+    try:
+        url = validate_url(url)
+    except URLValidationError as e:
+        console.print(f"[red]Invalid URL:[/] {e}")
+        raise typer.Exit(code=1)
+
     cfg = get_config()
 
     if not _MULTI_AGENT_AVAILABLE:
@@ -496,6 +518,13 @@ def audit_report(
     Crawl -> explain (AI) -> export report in one shot.
     Writes to reports/<slug>/{summary.json, summary_with_ai.json, <slug>-report.(pdf|xlsx)}
     """
+    # BUGFIX: Validate URL to prevent SSRF attacks (See: BUGFIXES.md #2)
+    try:
+        url = validate_url(url)
+    except URLValidationError as e:
+        console.print(f"[red]Invalid URL:[/] {e}")
+        raise typer.Exit(code=1)
+
     console.rule("[bold green]Audit → Explain → Report[/]")
 
     # 1) audit

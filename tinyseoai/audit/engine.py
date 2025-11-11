@@ -69,6 +69,7 @@ async def audit_site(seed_url: str, max_pages: int = DEFAULT_MAX_PAGES) -> Audit
     issues: list[Issue] = []
 
     # --- robots.txt & sitemap checks (best-effort) ---
+    # BUGFIX: Use specific exception handling (See: BUGFIXES.md #4)
     site_root = f"{origin.scheme}://{origin.netloc}"
     try:
         rob = await httpx.AsyncClient(headers=headers, http2=True).get(f"{site_root}/robots.txt", timeout=10.0)
@@ -83,9 +84,9 @@ async def audit_site(seed_url: str, max_pages: int = DEFAULT_MAX_PAGES) -> Audit
                 sm = await httpx.AsyncClient(headers=headers, http2=True).get(f"{site_root}/sitemap.xml", timeout=10.0, follow_redirects=True)
                 if sm.status_code >= 400:
                     issues.append(Issue(url=site_root + "/sitemap.xml", type="sitemap_missing", severity="low"))
-    except Exception:
-        # If everything fails, just note robots missing (non-fatal)
-        issues.append(Issue(url=site_root + "/robots.txt", type="robots_check_error", severity="low"))
+    except (httpx.HTTPError, httpx.TimeoutException, OSError) as e:
+        # Network errors are expected for some sites
+        issues.append(Issue(url=site_root + "/robots.txt", type="robots_check_error", severity="low", detail=str(e)[:100]))
 
     async with httpx.AsyncClient(headers=headers, http2=True) as client:
         while to_visit and len(pages) < max_pages:
@@ -136,12 +137,15 @@ async def audit_site(seed_url: str, max_pages: int = DEFAULT_MAX_PAGES) -> Audit
                 issues.extend(_check_noindex(url, noindex))
 
                 # Extract and queue internal links
+                # BUGFIX: Cap queue size to prevent unbounded memory growth
+                # See: BUGFIXES.md #6
                 links = extract_links(html, url)
                 page.links = set()
                 for link in links:
                     if same_host(link, host):
                         page.links.add(link)
-                        if link not in visited and len(visited) + len(to_visit) < max_pages * 3:
+                        # Only add to queue if we haven't visited and queue isn't full
+                        if link not in visited and len(to_visit) < max_pages:
                             to_visit.append(link)
 
                 # Quick broken-link check for internal links (sampled)
