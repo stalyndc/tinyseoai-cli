@@ -3,6 +3,7 @@ from __future__ import annotations
 import asyncio
 import json
 import sys
+from collections import deque
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -16,8 +17,9 @@ from .config import get_config, save_config
 from .data.models import Issue, AuditResult
 from .utils.io import ensure_dir, write_json
 from .audit.engine import audit_site, DEFAULT_MAX_PAGES
+from .audit.engine_v2 import comprehensive_audit
 
-app = typer.Typer(help="TinySEO AI — Local SEO Audit Agent (MVP)")
+app = typer.Typer(help="TinySEO AI — Local SEO Audit Agent (Enhanced)")
 console = Console()
 
 
@@ -65,6 +67,102 @@ def audit(
         for iss in top:
             it.add_row(iss.type, iss.severity, iss.url)
         console.print(it)
+
+    console.print(f"📁 Saved: [bold]{out_json}[/]")
+
+
+@app.command("audit-full")
+def audit_full(
+    url: str = typer.Argument(..., help="Website to audit (e.g., https://example.com)"),
+    pages: int = typer.Option(DEFAULT_MAX_PAGES, "--pages", "-p", help="Max pages to scan"),
+    out: Path = typer.Option(Path("reports"), "--out", "-o", help="Output folder"),
+    fast: bool = typer.Option(False, "--fast", help="Skip comprehensive checks for faster audit"),
+):
+    """
+    Comprehensive SEO audit with all checks (security, performance, content quality, etc.)
+    """
+    cfg = get_config()
+    plan = cfg.plan
+    if plan == "free" and pages > DEFAULT_MAX_PAGES:
+        console.print(f"[yellow]Free plan limit {DEFAULT_MAX_PAGES} pages — using {DEFAULT_MAX_PAGES}.[/]")
+        pages = DEFAULT_MAX_PAGES
+
+    console.rule(f"[bold green]TinySEO AI — Comprehensive Audit[/]  [white]({plan.upper()} mode)")
+
+    if not fast:
+        console.print("[cyan]Running full audit with all checks (security, performance, content, links)...[/]")
+
+    result: AuditResult = asyncio.run(
+        comprehensive_audit(url, max_pages=pages, enable_all_checks=not fast)
+    )
+
+    # Prepare output path
+    slug = urlparse(result.site).netloc.replace(":", "_")
+    target_dir = out / slug
+    ensure_dir(target_dir)
+    out_json = target_dir / "comprehensive_summary.json"
+    write_json(out_json, json.loads(result.model_dump_json()))
+
+    # Pretty print summary with health score
+    table = Table(title=f"Comprehensive Audit — {result.site}")
+    table.add_column("Metric", style="cyan")
+    table.add_column("Value", style="white")
+    table.add_row("Pages scanned", str(result.pages_scanned))
+    table.add_row("Total issues", str(len(result.issues)))
+
+    # Show health score if available
+    if "health_score" in result.meta:
+        health_score = result.meta["health_score"]
+        health_grade = result.meta.get("health_grade", "?")
+        score_color = "green" if health_score >= 80 else "yellow" if health_score >= 60 else "red"
+        table.add_row("Health Score", f"[{score_color}]{health_score}/100 (Grade: {health_grade})[/{score_color}]")
+
+    if "robots_txt_exists" in result.meta:
+        table.add_row("Robots.txt", "✓ Found" if result.meta["robots_txt_exists"] else "✗ Missing")
+
+    if "sitemaps_found" in result.meta:
+        table.add_row("Sitemaps", str(result.meta["sitemaps_found"]))
+
+    console.print(table)
+
+    # Show issues by severity
+    severity_counts = {"high": 0, "medium": 0, "low": 0, "info": 0}
+    for issue in result.issues:
+        severity_counts[issue.severity] += 1
+
+    if any(severity_counts.values()):
+        sev_table = Table(title="Issues by Severity")
+        sev_table.add_column("Severity", style="bold")
+        sev_table.add_column("Count", style="white")
+
+        if severity_counts["high"] > 0:
+            sev_table.add_row("[red]High[/]", str(severity_counts["high"]))
+        if severity_counts["medium"] > 0:
+            sev_table.add_row("[yellow]Medium[/]", str(severity_counts["medium"]))
+        if severity_counts["low"] > 0:
+            sev_table.add_row("[blue]Low[/]", str(severity_counts["low"]))
+        if severity_counts["info"] > 0:
+            sev_table.add_row("[dim]Info[/]", str(severity_counts["info"]))
+
+        console.print(sev_table)
+
+    # Show top recommendations if available
+    if "top_recommendations" in result.meta and result.meta["top_recommendations"]:
+        rec_table = Table(title="Top Priority Fixes")
+        rec_table.add_column("Issue Type", style="magenta")
+        rec_table.add_column("Impact", style="red")
+        rec_table.add_column("Effort", style="yellow")
+        rec_table.add_column("Priority", style="green")
+
+        for rec in result.meta["top_recommendations"][:5]:
+            rec_table.add_row(
+                rec["issue_type"].replace("_", " ").title(),
+                f"{rec['impact']:.1f}",
+                f"{rec['effort']:.1f}",
+                f"{rec['priority']:.1f}"
+            )
+
+        console.print(rec_table)
 
     console.print(f"📁 Saved: [bold]{out_json}[/]")
 

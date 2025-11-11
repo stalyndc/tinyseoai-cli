@@ -13,6 +13,7 @@ import httpx
 from ..data.models import Issue, AuditResult
 from ..utils.url import normalize_url, same_host
 from .crawler import fetch_page, extract_meta, extract_links
+from bs4 import BeautifulSoup
 
 # Constants
 DEFAULT_MAX_PAGES = 50
@@ -67,6 +68,25 @@ async def audit_site(seed_url: str, max_pages: int = DEFAULT_MAX_PAGES) -> Audit
     pages: list[Page] = []
     issues: list[Issue] = []
 
+    # --- robots.txt & sitemap checks (best-effort) ---
+    site_root = f"{origin.scheme}://{origin.netloc}"
+    try:
+        rob = await httpx.AsyncClient(headers=headers, http2=True).get(f"{site_root}/robots.txt", timeout=10.0)
+        if rob.status_code >= 400:
+            issues.append(Issue(url=site_root + "/robots.txt", type="robots_missing", severity="low"))
+        else:
+            # parse simple "Sitemap:" lines
+            text = rob.text.lower()
+            has_sitemap_hint = "sitemap:" in text
+            if not has_sitemap_hint:
+                # also check direct /sitemap.xml
+                sm = await httpx.AsyncClient(headers=headers, http2=True).get(f"{site_root}/sitemap.xml", timeout=10.0, follow_redirects=True)
+                if sm.status_code >= 400:
+                    issues.append(Issue(url=site_root + "/sitemap.xml", type="sitemap_missing", severity="low"))
+    except Exception:
+        # If everything fails, just note robots missing (non-fatal)
+        issues.append(Issue(url=site_root + "/robots.txt", type="robots_check_error", severity="low"))
+
     async with httpx.AsyncClient(headers=headers, http2=True) as client:
         while to_visit and len(pages) < max_pages:
             url = to_visit.popleft()
@@ -99,6 +119,17 @@ async def audit_site(seed_url: str, max_pages: int = DEFAULT_MAX_PAGES) -> Audit
                 page.meta_desc = meta_desc
                 page.noindex = noindex
 
+                # Image alt checks (missing or empty)
+                try:
+                    soup = BeautifulSoup(html, "lxml")
+                    for img in soup.find_all("img"):
+                        alt = (img.get("alt") or "").strip()
+                        src = (img.get("src") or "").strip()
+                        if alt == "":
+                            issues.append(Issue(url=url, type="img_alt_missing", severity="low", detail=src[:120]))
+                except Exception:
+                    pass
+
                 # Run basic SEO checks
                 issues.extend(_check_title(url, title))
                 issues.extend(_check_meta_description(url, meta_desc))
@@ -121,6 +152,7 @@ async def audit_site(seed_url: str, max_pages: int = DEFAULT_MAX_PAGES) -> Audit
 
     # Post-crawl checks
     issues.extend(_check_duplicate_titles(pages))
+    issues.extend(_check_duplicate_meta_descriptions(pages))
 
     return AuditResult(
         site=seed_url,
@@ -206,4 +238,30 @@ def _check_duplicate_titles(pages: list[Page]) -> list[Issue]:
                     Issue(url=url, type="duplicate_title", severity="low", detail=title_text[:80])
                 )
 
+    return issues
+
+
+def _check_duplicate_meta_descriptions(pages: list[Page]) -> list[Issue]:
+    """Check for duplicate meta descriptions across pages."""
+    issues = []
+    mds: dict[str, list[str]] = {}
+    
+    for page in pages:
+        if page.meta_desc:
+            key = page.meta_desc.strip().lower()
+            if key:
+                mds.setdefault(key, []).append(page.url)
+    
+    for desc, urls in mds.items():
+        if len(urls) > 1:
+            for url in urls:
+                issues.append(
+                    Issue(
+                        url=url, 
+                        type="duplicate_meta_description", 
+                        severity="low", 
+                        detail=(desc[:120] + ("…" if len(desc) > 120 else ""))
+                    )
+                )
+    
     return issues
