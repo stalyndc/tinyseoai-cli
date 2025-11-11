@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TinySEO AI - SEO Audit Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .input-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input[type="url"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e1e8ed;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        input[type="url"]:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .mode-selector {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .mode-btn {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #e1e8ed;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .mode-btn:hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+
+        .mode-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .audit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .audit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .audit-btn:active {
+            transform: translateY(0);
+        }
+
+        .audit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .results-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            flex: 1;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .results-section.visible {
+            display: block;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .status-success {
+            background: #10b981;
+            color: white;
+        }
+
+        .status-error {
+            background: #ef4444;
+            color: white;
+        }
+
+        .output-box {
+            background: #f8f9fa;
+            border: 1px solid #e1e8ed;
+            border-radius: 8px;
+            padding: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .error-message {
+            background: #fee;
+            border: 1px solid #fcc;
+            color: #c00;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .installation-warning {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            color: #856404;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 TinySEO AI</h1>
+            <p class="subtitle">Professional SEO Audit Dashboard</p>
+        </header>
+
+        <div id="cliWarning" class="installation-warning" style="display: none;">
+            ⚠️ TinySEO CLI is not installed. Please install it first to use this interface.
+        </div>
+
+        <div class="input-section">
+            <div class="form-group">
+                <label for="urlInput">Website URL</label>
+                <input
+                    type="url"
+                    id="urlInput"
+                    placeholder="https://example.com"
+                    value="https://example.com"
+                />
+            </div>
+
+            <div class="form-group">
+                <label>Audit Mode</label>
+                <div class="mode-selector">
+                    <button class="mode-btn active" data-mode="basic">
+                        ⚡ Basic<br><small>Fast scan</small>
+                    </button>
+                    <button class="mode-btn" data-mode="full">
+                        🔍 Full<br><small>Comprehensive</small>
+                    </button>
+                    <button class="mode-btn" data-mode="ai">
+                        🤖 AI-Powered<br><small>Smart analysis</small>
+                    </button>
+                </div>
+            </div>
+
+            <button class="audit-btn" id="runAudit">
+                🚀 Run SEO Audit
+            </button>
+        </div>
+
+        <div class="results-section" id="resultsSection">
+            <div id="loadingState" class="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>Running audit... This may take a few moments.</p>
+            </div>
+
+            <div id="resultsContent"></div>
+        </div>
+    </div>
+
+    <script>
+        const { invoke } = window.__TAURI__.core;
+
+        let selectedMode = 'basic';
+
+        // Check if CLI is installed
+        async function checkCLI() {
+            try {
+                const installed = await invoke('check_cli_installed');
+                if (!installed) {
+                    document.getElementById('cliWarning').style.display = 'block';
+                    document.getElementById('runAudit').disabled = true;
+                }
+            } catch (e) {
+                console.error('Error checking CLI:', e);
+            }
+        }
+
+        // Mode selection
+        document.querySelectorAll('.mode-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                selectedMode = btn.dataset.mode;
+            });
+        });
+
+        // Run audit
+        document.getElementById('runAudit').addEventListener('click', async () => {
+            const url = document.getElementById('urlInput').value.trim();
+
+            if (!url) {
+                alert('Please enter a URL');
+                return;
+            }
+
+            // Show loading
+            const resultsSection = document.getElementById('resultsSection');
+            const loadingState = document.getElementById('loadingState');
+            const resultsContent = document.getElementById('resultsContent');
+
+            resultsSection.classList.add('visible');
+            loadingState.style.display = 'block';
+            resultsContent.innerHTML = '';
+
+            document.getElementById('runAudit').disabled = true;
+
+            try {
+                const result = await invoke('run_audit', { url, mode: selectedMode });
+
+                // Hide loading
+                loadingState.style.display = 'none';
+
+                // Show results
+                let html = `
+                    <h2>Audit Results</h2>
+                    <div class="status-badge status-${result.status}">
+                        ${result.status === 'success' ? '✅ Success' : '❌ Failed'}
+                    </div>
+                    <p><strong>URL:</strong> ${result.url}</p>
+                    <p><strong>Mode:</strong> ${selectedMode.toUpperCase()}</p>
+                    <h3>Output:</h3>
+                    <div class="output-box">${result.output}</div>
+                `;
+
+                if (result.error) {
+                    html += `
+                        <div class="error-message">
+                            <strong>Error:</strong><br>
+                            ${result.error}
+                        </div>
+                    `;
+                }
+
+                resultsContent.innerHTML = html;
+            } catch (error) {
+                loadingState.style.display = 'none';
+                resultsContent.innerHTML = `
+                    <div class="error-message">
+                        <strong>Error:</strong><br>
+                        ${error}
+                    </div>
+                `;
+            } finally {
+                document.getElementById('runAudit').disabled = false;
+            }
+        });
+
+        // Check CLI on load
+        checkCLI();
+    </script>
+</body>
+</html>
