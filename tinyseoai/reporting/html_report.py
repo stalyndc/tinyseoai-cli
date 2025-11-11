@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import base64
-import importlib.resources as pkg_resources
 from datetime import datetime
 from pathlib import Path
 from typing import Any

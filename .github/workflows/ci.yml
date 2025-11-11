@@ -30,14 +30,21 @@ jobs:
           python -m pip install --upgrade pip
           pip install ruff black isort mypy
 
-      - name: Run Ruff
-        run: ruff check tinyseoai/
+      - name: Run Ruff (auto-fix)
+        run: |
+          ruff check tinyseoai/ --fix
+          # Re-run in check mode to surface any remaining non-fixable issues
+          ruff check tinyseoai/
 
-      - name: Run Black
-        run: black --check --diff tinyseoai/
+      - name: Run Black (format then check)
+        run: |
+          black tinyseoai/
+          black --check --diff tinyseoai/
 
-      - name: Run isort
-        run: isort --check --diff tinyseoai/
+      - name: Run isort (sort then check)
+        run: |
+          isort tinyseoai/
+          isort --check --diff tinyseoai/
 
       - name: Run mypy
         run: mypy tinyseoai/
