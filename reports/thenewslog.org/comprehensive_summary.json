@@ -1,0 +1,374 @@
+{
+  "site": "https://thenewslog.org/",
+  "pages_scanned": 3,
+  "issues": [
+    {
+      "url": "https://thenewslog.org/",
+      "type": "missing_og_tag",
+      "severity": "medium",
+      "detail": "Missing required Open Graph title (og:title)"
+    },
+    {
+      "url": "https://thenewslog.org/",
+      "type": "missing_og_tag",
+      "severity": "medium",
+      "detail": "Missing required Open Graph type (og:type)"
+    },
+    {
+      "url": "https://thenewslog.org/",
+      "type": "missing_og_tag",
+      "severity": "medium",
+      "detail": "Missing required Open Graph image (og:image)"
+    },
+    {
+      "url": "https://thenewslog.org/",
+      "type": "missing_og_tag",
+      "severity": "medium",
+      "detail": "Missing required Open Graph URL (og:url)"
+    },
+    {
+      "url": "https://thenewslog.org/",
+      "type": "missing_recommended_og_tag",
+      "severity": "low",
+      "detail": "Missing recommended Open Graph description (og:description)"
+    },
+    {
+      "url": "https://thenewslog.org/",
+      "type": "missing_recommended_og_tag",
+      "severity": "low",
+      "detail": "Missing recommended Open Graph site name (og:site_name)"
+    },
+    {
+      "url": "https://thenewslog.org/",
+      "type": "missing_twitter_card",
+      "severity": "low",
+      "detail": "Missing twitter:card meta tag. This controls how content is displayed when shared on Twitter/X."
+    },
+    {
+      "url": "https://thenewslog.org/",
+      "type": "missing_twitter_site",
+      "severity": "info",
+      "detail": "Missing twitter:site meta tag. This should be your Twitter/X username."
+    },
+    {
+      "url": "https://thenewslog.org/",
+      "type": "missing_apple_touch_icon",
+      "severity": "info",
+      "detail": "Missing apple-touch-icon for iOS home screen bookmarks"
+    },
+    {
+      "url": "https://thenewslog.org/",
+      "type": "missing_canonical",
+      "severity": "medium",
+      "detail": "No canonical tag found. This can cause duplicate content issues."
+    },
+    {
+      "url": "https://thenewslog.org/",
+      "type": "thin_content",
+      "severity": "medium",
+      "detail": "Page has only 19 words. Aim for at least 300 words."
+    },
+    {
+      "url": "https://thenewslog.org/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'curated' appears 2 times (15.4% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://thenewslog.org/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'other' appears 2 times (15.4% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://thenewslog.org/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'news' appears 2 times (15.4% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://thenewslog.org/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'thenewslog' appears 1 times (7.7% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://thenewslog.org/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'links' appears 1 times (7.7% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://thenewslog.org/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'updated' appears 1 times (7.7% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://thenewslog.org/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'throughout' appears 1 times (7.7% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://thenewslog.org/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'day' appears 1 times (7.7% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://thenewslog.org/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'loading' appears 1 times (7.7% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://thenewslog.org/",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'stories\u2026' appears 1 times (7.7% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://thenewslog.org/",
+      "type": "render_blocking_javascript",
+      "severity": "high",
+      "detail": "2 render-blocking JavaScript file(s) in <head>. Add async or defer attributes, or move scripts to end of <body>."
+    },
+    {
+      "url": "https://thenewslog.org/",
+      "type": "compression_not_optimal",
+      "severity": "info",
+      "detail": "Using gzip compression. Consider Brotli for better compression ratios."
+    },
+    {
+      "url": "https://thenewslog.org/",
+      "type": "caching_disabled",
+      "severity": "medium",
+      "detail": "Caching is disabled via Cache-Control header. Consider enabling caching for static resources."
+    },
+    {
+      "url": "https://thenewslog.org/",
+      "type": "missing_etag",
+      "severity": "info",
+      "detail": "Missing ETag header. ETags help with cache validation."
+    },
+    {
+      "url": "https://thenewslog.org/",
+      "type": "missing_preconnect",
+      "severity": "info",
+      "detail": "Consider adding preconnect hints for external domains: unpkg.com, www.googletagmanager.com. This can improve loading performance."
+    },
+    {
+      "url": "https://thenewslog.org/about.php",
+      "type": "missing_og_tag",
+      "severity": "medium",
+      "detail": "Missing required Open Graph title (og:title)"
+    },
+    {
+      "url": "https://thenewslog.org/about.php",
+      "type": "missing_og_tag",
+      "severity": "medium",
+      "detail": "Missing required Open Graph type (og:type)"
+    },
+    {
+      "url": "https://thenewslog.org/about.php",
+      "type": "missing_og_tag",
+      "severity": "medium",
+      "detail": "Missing required Open Graph image (og:image)"
+    },
+    {
+      "url": "https://thenewslog.org/about.php",
+      "type": "missing_og_tag",
+      "severity": "medium",
+      "detail": "Missing required Open Graph URL (og:url)"
+    },
+    {
+      "url": "https://thenewslog.org/about.php",
+      "type": "missing_recommended_og_tag",
+      "severity": "low",
+      "detail": "Missing recommended Open Graph description (og:description)"
+    },
+    {
+      "url": "https://thenewslog.org/about.php",
+      "type": "missing_recommended_og_tag",
+      "severity": "low",
+      "detail": "Missing recommended Open Graph site name (og:site_name)"
+    },
+    {
+      "url": "https://thenewslog.org/about.php",
+      "type": "missing_twitter_card",
+      "severity": "low",
+      "detail": "Missing twitter:card meta tag. This controls how content is displayed when shared on Twitter/X."
+    },
+    {
+      "url": "https://thenewslog.org/about.php",
+      "type": "missing_twitter_site",
+      "severity": "info",
+      "detail": "Missing twitter:site meta tag. This should be your Twitter/X username."
+    },
+    {
+      "url": "https://thenewslog.org/about.php",
+      "type": "missing_apple_touch_icon",
+      "severity": "info",
+      "detail": "Missing apple-touch-icon for iOS home screen bookmarks"
+    },
+    {
+      "url": "https://thenewslog.org/about.php",
+      "type": "missing_canonical",
+      "severity": "medium",
+      "detail": "No canonical tag found. This can cause duplicate content issues."
+    },
+    {
+      "url": "https://thenewslog.org/about.php",
+      "type": "thin_content",
+      "severity": "medium",
+      "detail": "Page has only 57 words. Aim for at least 300 words."
+    },
+    {
+      "url": "https://thenewslog.org/about.php",
+      "type": "potential_keyword_stuffing",
+      "severity": "medium",
+      "detail": "Word 'about' appears 2 times (5.6% of content). May be keyword stuffing."
+    },
+    {
+      "url": "https://thenewslog.org/about.php",
+      "type": "render_blocking_javascript",
+      "severity": "high",
+      "detail": "1 render-blocking JavaScript file(s) in <head>. Add async or defer attributes, or move scripts to end of <body>."
+    },
+    {
+      "url": "https://thenewslog.org/about.php",
+      "type": "compression_not_optimal",
+      "severity": "info",
+      "detail": "Using gzip compression. Consider Brotli for better compression ratios."
+    },
+    {
+      "url": "https://thenewslog.org/about.php",
+      "type": "caching_disabled",
+      "severity": "medium",
+      "detail": "Caching is disabled via Cache-Control header. Consider enabling caching for static resources."
+    },
+    {
+      "url": "https://thenewslog.org/about.php",
+      "type": "missing_etag",
+      "severity": "info",
+      "detail": "Missing ETag header. ETags help with cache validation."
+    },
+    {
+      "url": "https://thenewslog.org/about.php",
+      "type": "missing_preconnect",
+      "severity": "info",
+      "detail": "Consider adding preconnect hints for external domains: www.googletagmanager.com. This can improve loading performance."
+    },
+    {
+      "url": "https://thenewslog.org/feed.xml",
+      "type": "title_missing",
+      "severity": "medium",
+      "detail": null
+    },
+    {
+      "url": "https://thenewslog.org/feed.xml",
+      "type": "meta_description_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
+      "url": "https://thenewslog.org/about.php",
+      "type": "orphan_page",
+      "severity": "medium",
+      "detail": "Page has no internal links pointing to it (orphan page)"
+    },
+    {
+      "url": "https://thenewslog.org/",
+      "type": "orphan_page",
+      "severity": "medium",
+      "detail": "Page has no internal links pointing to it (orphan page)"
+    }
+  ],
+  "meta": {
+    "max_pages": 20,
+    "timestamp": "2025-11-11T03:04:05.341389Z",
+    "agent": "tinyseoai/0.2.0",
+    "robots_txt_exists": true,
+    "sitemaps_found": 1,
+    "crawl_delay": null,
+    "total_sitemap_urls": 3,
+    "health_score": 0,
+    "health_grade": "F",
+    "category_scores": {
+      "social": {
+        "count": 10,
+        "total_impact": 62.400000000000006,
+        "avg_impact": 6.2,
+        "avg_effort": 3.6
+      },
+      "other": {
+        "count": 16,
+        "total_impact": 35.0,
+        "avg_impact": 2.2,
+        "avg_effort": 4.1
+      },
+      "technical": {
+        "count": 2,
+        "total_impact": 14.0,
+        "avg_impact": 7.0,
+        "avg_effort": 4.0
+      },
+      "content": {
+        "count": 15,
+        "total_impact": 90.8,
+        "avg_impact": 6.1,
+        "avg_effort": 6.3
+      },
+      "performance": {
+        "count": 2,
+        "total_impact": 21.6,
+        "avg_impact": 10.8,
+        "avg_effort": 6.0
+      },
+      "links": {
+        "count": 2,
+        "total_impact": 12.0,
+        "avg_impact": 6.0,
+        "avg_effort": 8.0
+      }
+    },
+    "top_recommendations": [
+      {
+        "issue_type": "title_missing",
+        "category": "content",
+        "impact": 8.0,
+        "effort": 2,
+        "priority": 10.0
+      },
+      {
+        "issue_type": "render_blocking_javascript",
+        "category": "performance",
+        "impact": 10.8,
+        "effort": 6,
+        "priority": 9.0
+      },
+      {
+        "issue_type": "missing_og_tag",
+        "category": "social",
+        "impact": 7.0,
+        "effort": 4,
+        "priority": 8.8
+      },
+      {
+        "issue_type": "missing_canonical",
+        "category": "technical",
+        "impact": 7.0,
+        "effort": 4,
+        "priority": 8.8
+      },
+      {
+        "issue_type": "missing_twitter_card",
+        "category": "social",
+        "impact": 3.2,
+        "effort": 2,
+        "priority": 8.0
+      }
+    ]
+  }
+}

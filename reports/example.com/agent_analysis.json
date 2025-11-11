@@ -1,5 +1,5 @@
 {
-  "session_id": "session_1762829700.033636",
+  "session_id": "session_1762830117.335061",
   "site_url": "https://example.com/",
   "total_tasks": 3,
   "completed_tasks": 3,
@@ -58,7 +58,7 @@
         }
       ],
       "confidence": 0.9357142857142857,
-      "execution_time_ms": 20721.769094467163
+      "execution_time_ms": 14736.919641494751
     },
     "content_quality": {
       "success": true,
@@ -76,7 +76,7 @@
         }
       ],
       "confidence": 0.9357142857142857,
-      "execution_time_ms": 17499.977350234985
+      "execution_time_ms": 18003.27467918396
     }
   },
   "all_recommendations": [
@@ -116,14 +116,14 @@
       "goal": "Analyze technical SEO issues and provide actionable recommendations",
       "steps": 7,
       "confidence": 0.9357142857142857,
-      "reasoning_time_ms": 20721.59504890442
+      "reasoning_time_ms": 14736.754417419434
     },
     {
       "agent": "content_quality",
       "goal": "Analyze content quality issues and provide optimization recommendations",
       "steps": 7,
       "confidence": 0.9357142857142857,
-      "reasoning_time_ms": 17499.82237815857
+      "reasoning_time_ms": 18003.140449523926
     }
   ],
   "top_recommendations": [

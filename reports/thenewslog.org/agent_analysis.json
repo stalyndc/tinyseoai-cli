@@ -1,0 +1,213 @@
+{
+  "session_id": "session_1762830245.345821",
+  "site_url": "https://thenewslog.org/",
+  "total_tasks": 5,
+  "completed_tasks": 5,
+  "total_tokens": 0,
+  "total_cost_usd": 0.0,
+  "orchestration": {
+    "insights": [
+      "Critical: Site health score is 0/100 - immediate action required",
+      "Found 2 high-severity issues requiring immediate attention",
+      "Indexability issues found: 2 problems may prevent proper indexing"
+    ],
+    "recommendations": [
+      {
+        "title": "Deploy Technical Seo Agent",
+        "description": "Analyze and fix 2 issues in technical_seo category",
+        "priority": "low",
+        "impact": 4.0,
+        "effort": 3.0,
+        "agent": "technical_seo",
+        "issue_count": 2
+      },
+      {
+        "title": "Deploy Content Quality Agent",
+        "description": "Analyze and fix 4 issues in content_quality category",
+        "priority": "medium",
+        "impact": 6.0,
+        "effort": 3.0,
+        "agent": "content_quality",
+        "issue_count": 4
+      }
+    ],
+    "confidence": 0.9357142857142857
+  },
+  "specialist_analysis": {
+    "technical_seo": {
+      "success": true,
+      "insights": [],
+      "recommendations": [],
+      "confidence": 0.9357142857142857,
+      "execution_time_ms": 14947.418689727783
+    },
+    "content_quality": {
+      "success": true,
+      "insights": [
+        "Content Alert: 1 title tag issues - titles are critical for rankings",
+        "Found 1 meta description issues - improve click-through rates with better descriptions"
+      ],
+      "recommendations": [
+        {
+          "title": "Optimize Title Tags",
+          "description": "Fix 1 title tag issues - ensure unique, descriptive titles on all pages",
+          "priority": "high",
+          "impact": 8.5,
+          "effort": 3.0,
+          "category": "content"
+        },
+        {
+          "title": "Write Compelling Meta Descriptions",
+          "description": "Add/improve 1 meta descriptions to boost click-through rates",
+          "priority": "medium",
+          "impact": 6.5,
+          "effort": 4.0,
+          "category": "content"
+        }
+      ],
+      "confidence": 0.9357142857142857,
+      "execution_time_ms": 15963.483333587646
+    },
+    "performance": {
+      "success": true,
+      "insights": [
+        "Critical: 2 render-blocking resources - deferring these can improve Core Web Vitals"
+      ],
+      "recommendations": [
+        {
+          "title": "Defer Render-Blocking Resources",
+          "description": "Defer 2 render-blocking resources to improve initial page load",
+          "priority": "high",
+          "impact": 8.0,
+          "effort": 5.0,
+          "category": "performance"
+        }
+      ],
+      "confidence": 0.9357142857142857,
+      "execution_time_ms": 19856.07671737671
+    },
+    "link_analysis": {
+      "success": true,
+      "insights": [
+        "Architecture Issue: 2 orphan pages - these pages have no internal links and may not be crawled"
+      ],
+      "recommendations": [
+        {
+          "title": "Connect Orphan Pages",
+          "description": "Add internal links to 2 orphan pages to improve crawlability",
+          "priority": "medium",
+          "impact": 6.0,
+          "effort": 4.0,
+          "category": "site-architecture"
+        }
+      ],
+      "confidence": 0.9357142857142857,
+      "execution_time_ms": 18624.587297439575
+    }
+  },
+  "all_recommendations": [
+    {
+      "title": "Optimize Title Tags",
+      "description": "Fix 1 title tag issues - ensure unique, descriptive titles on all pages",
+      "priority": "high",
+      "impact": 8.5,
+      "effort": 3.0,
+      "category": "content"
+    },
+    {
+      "title": "Write Compelling Meta Descriptions",
+      "description": "Add/improve 1 meta descriptions to boost click-through rates",
+      "priority": "medium",
+      "impact": 6.5,
+      "effort": 4.0,
+      "category": "content"
+    },
+    {
+      "title": "Defer Render-Blocking Resources",
+      "description": "Defer 2 render-blocking resources to improve initial page load",
+      "priority": "high",
+      "impact": 8.0,
+      "effort": 5.0,
+      "category": "performance"
+    },
+    {
+      "title": "Connect Orphan Pages",
+      "description": "Add internal links to 2 orphan pages to improve crawlability",
+      "priority": "medium",
+      "impact": 6.0,
+      "effort": 4.0,
+      "category": "site-architecture"
+    }
+  ],
+  "key_insights": [
+    "Content Alert: 1 title tag issues - titles are critical for rankings",
+    "Found 1 meta description issues - improve click-through rates with better descriptions",
+    "Critical: 2 render-blocking resources - deferring these can improve Core Web Vitals",
+    "Architecture Issue: 2 orphan pages - these pages have no internal links and may not be crawled"
+  ],
+  "chain_of_thought_summary": [
+    {
+      "agent": "technical_seo",
+      "goal": "Analyze technical SEO issues and provide actionable recommendations",
+      "steps": 7,
+      "confidence": 0.9357142857142857,
+      "reasoning_time_ms": 14947.24178314209
+    },
+    {
+      "agent": "content_quality",
+      "goal": "Analyze content quality issues and provide optimization recommendations",
+      "steps": 7,
+      "confidence": 0.9357142857142857,
+      "reasoning_time_ms": 15963.355779647827
+    },
+    {
+      "agent": "performance",
+      "goal": "Analyze performance issues and provide speed optimization recommendations",
+      "steps": 7,
+      "confidence": 0.9357142857142857,
+      "reasoning_time_ms": 19855.98134994507
+    },
+    {
+      "agent": "link_analysis",
+      "goal": "Analyze link structure and provide architecture optimization recommendations",
+      "steps": 7,
+      "confidence": 0.9357142857142857,
+      "reasoning_time_ms": 18624.47738647461
+    }
+  ],
+  "top_recommendations": [
+    {
+      "title": "Optimize Title Tags",
+      "description": "Fix 1 title tag issues - ensure unique, descriptive titles on all pages",
+      "priority": "high",
+      "impact": 8.5,
+      "effort": 3.0,
+      "category": "content"
+    },
+    {
+      "title": "Write Compelling Meta Descriptions",
+      "description": "Add/improve 1 meta descriptions to boost click-through rates",
+      "priority": "medium",
+      "impact": 6.5,
+      "effort": 4.0,
+      "category": "content"
+    },
+    {
+      "title": "Defer Render-Blocking Resources",
+      "description": "Defer 2 render-blocking resources to improve initial page load",
+      "priority": "high",
+      "impact": 8.0,
+      "effort": 5.0,
+      "category": "performance"
+    },
+    {
+      "title": "Connect Orphan Pages",
+      "description": "Add internal links to 2 orphan pages to improve crawlability",
+      "priority": "medium",
+      "impact": 6.0,
+      "effort": 4.0,
+      "category": "site-architecture"
+    }
+  ],
+  "average_confidence": 0.9357142857142857
+}
