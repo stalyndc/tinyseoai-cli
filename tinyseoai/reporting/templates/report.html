@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Overview</h2>
+<table class="kvs">
+  <tr><th>Site</th><td><a href="{{ site }}">{{ site }}</a></td></tr>
+  <tr><th>Pages scanned</th><td>{{ pages_scanned }}</td></tr>
+  <tr><th>Issues found</th><td>{{ issues|length }}</td></tr>
+  <tr><th>Timestamp</th><td>{{ meta.timestamp }}</td></tr>
+</table>
+
+{% if ai %}
+  <h2>AI Executive Summary</h2>
+  <p>{{ ai.summary }}</p>
+
+  {% if ai.top_issues %}
+    <h3>Top issues</h3>
+    <table class="tbl">
+      <thead>
+        <tr><th>Type</th><th>Why it matters</th><th>Evidence</th></tr>
+      </thead>
+      <tbody>
+      {% for it in ai.top_issues %}
+        <tr>
+          <td>{{ it.type }}</td>
+          <td>{{ it.why_it_matters }}</td>
+          <td class="muted">{{ it.evidence }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+
+  {% if ai.recommended_actions %}
+    <h3>Recommended actions</h3>
+    <table class="tbl">
+      <thead>
+        <tr><th>Action</th><th>Impact</th><th>Effort</th></tr>
+      </thead>
+      <tbody>
+      {% for step in ai.recommended_actions %}
+        <tr>
+          <td>{{ step.action }}</td>
+          <td><span class="pill {{ step.impact }}">{{ step.impact|capitalize }}</span></td>
+          <td><span class="pill {{ step.effort }}">{{ step.effort|capitalize }}</span></td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+
+  {% if ai.quick_wins %}
+    <h3>Quick wins</h3>
+    <ul>
+      {% for q in ai.quick_wins %}<li>{{ q }}</li>{% endfor %}
+    </ul>
+  {% endif %}
+{% endif %}
+
+<h2>All Issues</h2>
+<table class="tbl">
+  <thead>
+    <tr><th>Type</th><th>Severity</th><th>URL</th><th>Detail</th></tr>
+  </thead>
+  <tbody>
+  {% for it in issues %}
+    <tr>
+      <td>{{ it.type }}</td>
+      <td><span class="pill {{ it.severity }}">{{ it.severity|capitalize }}</span></td>
+      <td class="muted">{{ it.url }}</td>
+      <td class="muted">{{ it.detail or "" }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
