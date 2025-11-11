@@ -202,8 +202,8 @@
     }
   ],
   "meta": {
-    "max_pages": 50,
-    "timestamp": "2025-11-11T03:01:57.330029Z",
+    "max_pages": 3,
+    "timestamp": "2025-11-11T23:37:10.035940Z",
     "agent": "tinyseoai/0.2.0",
     "robots_txt_exists": false,
     "sitemaps_found": 0,
