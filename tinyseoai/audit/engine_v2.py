@@ -169,11 +169,14 @@ async def comprehensive_audit(
                 all_issues.extend(page_issues)
 
                 # Extract links for crawling
+                # BUGFIX: Cap queue size to prevent unbounded memory growth
+                # See: BUGFIXES.md #6
                 links = extract_links(html, url)
                 for link in links:
                     if same_host(link, host):
                         page.links.add(link)
-                        if link not in visited and len(visited) + len(to_visit) < max_pages * 3:
+                        # Only add to queue if we haven't visited and queue isn't full
+                        if link not in visited and len(to_visit) < max_pages:
                             to_visit.append(link)
 
             pages.append(page)

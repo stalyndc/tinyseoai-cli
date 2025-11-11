@@ -51,16 +51,65 @@ def _cfg_path() -> Path:
 
 
 def get_config() -> AppConfig:
+    """
+    Load application configuration from disk or create default.
+
+    BUGFIX: Improved exception handling and logging.
+    See: BUGFIXES.md #4
+    """
     p = _cfg_path()
     if p.exists():
         try:
             return AppConfig(**json.loads(p.read_text()))
-        except Exception:
-            pass
+        except (json.JSONDecodeError, ValueError) as e:
+            # Config file is corrupted, log warning and recreate
+            import sys
+            print(f"Warning: Config file corrupted ({e}), recreating with defaults", file=sys.stderr)
+
+    # Create new config file
     cfg = AppConfig()
-    p.write_text(cfg.model_dump_json(indent=2))
+    try:
+        p.write_text(cfg.model_dump_json(indent=2))
+    except (IOError, OSError) as e:
+        # Can't write config, but continue with default in-memory config
+        import sys
+        print(f"Warning: Cannot write config file ({e}), using defaults", file=sys.stderr)
+
     return cfg
 
 
 def save_config(cfg: AppConfig) -> None:
-    _cfg_path().write_text(cfg.model_dump_json(indent=2))
+    """
+    Save configuration to disk atomically.
+
+    BUGFIX: Use atomic write to prevent corruption from concurrent access.
+    See: BUGFIXES.md #5
+    """
+    import tempfile
+    import os
+
+    p = _cfg_path()
+    content = cfg.model_dump_json(indent=2)
+
+    # Write to temporary file first
+    fd, temp_path = tempfile.mkstemp(
+        dir=p.parent,
+        prefix=".config_",
+        suffix=".tmp"
+    )
+    try:
+        os.write(fd, content.encode('utf-8'))
+        os.close(fd)
+        # Atomic rename (POSIX guarantees atomicity)
+        os.replace(temp_path, p)
+    except Exception:
+        # Clean up temp file on error
+        try:
+            os.close(fd)
+        except Exception:
+            pass
+        try:
+            os.unlink(temp_path)
+        except Exception:
+            pass
+        raise

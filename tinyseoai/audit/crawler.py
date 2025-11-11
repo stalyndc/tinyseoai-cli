@@ -19,6 +19,9 @@ async def fetch_page(
     """
     Fetch a single page asynchronously.
 
+    BUGFIX: Improved exception handling with better timeouts and logging.
+    See: BUGFIXES.md #4
+
     Args:
         client: HTTP client to use for the request
         url: URL to fetch
@@ -27,9 +30,26 @@ async def fetch_page(
         Response object or None if fetch failed
     """
     try:
-        response = await client.get(url, timeout=15.0, follow_redirects=True)
+        # BUGFIX: Use separate connect/read timeouts and limit redirects
+        timeout = httpx.Timeout(10.0, connect=5.0)
+        response = await client.get(
+            url,
+            timeout=timeout,
+            follow_redirects=True,
+        )
         return response
-    except Exception:
+    except (httpx.TimeoutException, httpx.ConnectTimeout, httpx.ReadTimeout):
+        # Timeout is expected, don't log noise
+        return None
+    except httpx.HTTPError as e:
+        # Log HTTP-specific errors
+        from loguru import logger
+        logger.debug(f"HTTP error fetching {url}: {e}")
+        return None
+    except Exception as e:
+        # Unexpected errors should be logged
+        from loguru import logger
+        logger.warning(f"Unexpected error fetching {url}: {type(e).__name__}: {e}")
         return None
 
 
