@@ -100,6 +100,7 @@ def audit_full(
     pages: int = typer.Option(DEFAULT_MAX_PAGES, "--pages", "-p", help="Max pages to scan"),
     out: Path = typer.Option(Path("reports"), "--out", "-o", help="Output folder"),
     fast: bool = typer.Option(False, "--fast", help="Skip comprehensive checks for faster audit"),
+    no_progress: bool = typer.Option(False, "--no-progress", help="Disable progress bar"),
 ):
     """
     Comprehensive SEO audit with all checks (security, performance, content quality, etc.)
@@ -123,7 +124,7 @@ def audit_full(
         console.print("[cyan]Running full audit with all checks (security, performance, content, links)...[/]")
 
     result: AuditResult = asyncio.run(
-        comprehensive_audit(url, max_pages=pages, enable_all_checks=not fast)
+        comprehensive_audit(url, max_pages=pages, enable_all_checks=not fast, show_progress=not no_progress)
     )
 
     # Prepare output path
@@ -203,6 +204,7 @@ def audit_ai(
     pages: int = typer.Option(DEFAULT_MAX_PAGES, "--pages", "-p", help="Max pages to scan"),
     out: Path = typer.Option(Path("reports"), "--out", "-o", help="Output folder"),
     no_fixes: bool = typer.Option(False, "--no-fixes", help="Skip code fix generation"),
+    no_progress: bool = typer.Option(False, "--no-progress", help="Disable progress bar"),
 ):
     """
     🤖 AI-Powered Multi-Agent SEO Audit
@@ -259,7 +261,7 @@ def audit_ai(
     # Phase 1: Run comprehensive audit
     console.print("📊 [bold]Phase 1:[/] Running comprehensive SEO audit...")
     result: AuditResult = asyncio.run(
-        comprehensive_audit(url, max_pages=pages, enable_all_checks=True)
+        comprehensive_audit(url, max_pages=pages, enable_all_checks=True, show_progress=not no_progress)
     )
 
     # Save base audit results

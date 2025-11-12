@@ -16,7 +16,7 @@ async def test_comprehensive_audit_example_com():
     max_pages = 5  # Small number for faster testing
 
     # Act
-    result = await comprehensive_audit(url, max_pages=max_pages, enable_all_checks=True)
+    result = await comprehensive_audit(url, max_pages=max_pages, enable_all_checks=True, show_progress=False)
 
     # Assert
     assert result is not None
@@ -51,7 +51,7 @@ async def test_fast_audit_mode():
     max_pages = 3
 
     # Act
-    result = await comprehensive_audit(url, max_pages=max_pages, enable_all_checks=False)
+    result = await comprehensive_audit(url, max_pages=max_pages, enable_all_checks=False, show_progress=False)
 
     # Assert
     assert result is not None
@@ -73,7 +73,7 @@ async def test_audit_with_https_site():
     max_pages = 5
 
     # Act
-    result = await comprehensive_audit(url, max_pages=max_pages, enable_all_checks=True)
+    result = await comprehensive_audit(url, max_pages=max_pages, enable_all_checks=True, show_progress=False)
 
     # Assert
     assert result is not None
@@ -99,7 +99,7 @@ async def test_audit_categorizes_issues():
     max_pages = 3
 
     # Act
-    result = await comprehensive_audit(url, max_pages=max_pages, enable_all_checks=True)
+    result = await comprehensive_audit(url, max_pages=max_pages, enable_all_checks=True, show_progress=False)
 
     # Assert
     if "category_scores" in result.meta:
@@ -125,7 +125,7 @@ async def test_audit_generates_recommendations():
     max_pages = 5
 
     # Act
-    result = await comprehensive_audit(url, max_pages=max_pages, enable_all_checks=True)
+    result = await comprehensive_audit(url, max_pages=max_pages, enable_all_checks=True, show_progress=False)
 
     # Assert
     if "top_recommendations" in result.meta:

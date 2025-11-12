@@ -12,6 +12,7 @@ from urllib.parse import urlparse
 
 import httpx
 from loguru import logger
+from rich.progress import Progress, SpinnerColumn, TextColumn, BarColumn, TaskProgressColumn
 
 from ..data.models import AuditResult, Issue
 from ..data.scoring import HealthScoreCalculator, prioritize_issues
@@ -29,6 +30,25 @@ from .robots import RobotsAnalyzer, discover_sitemaps
 # Constants
 DEFAULT_MAX_PAGES = 50
 USER_AGENT = "TinySEOAI/0.2 (+https://tinyseoai.com; cli) python-httpx"
+
+
+class _DummyProgress:
+    """Dummy progress context manager for when progress is disabled."""
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *args):
+        pass
+
+    def add_task(self, *args, **kwargs):
+        return None
+
+    def update(self, *args, **kwargs):
+        pass
+
+    def advance(self, *args, **kwargs):
+        pass
 
 
 class EnhancedPage:
@@ -57,7 +77,10 @@ class EnhancedPage:
 
 
 async def comprehensive_audit(
-    seed_url: str, max_pages: int = DEFAULT_MAX_PAGES, enable_all_checks: bool = True
+    seed_url: str,
+    max_pages: int = DEFAULT_MAX_PAGES,
+    enable_all_checks: bool = True,
+    show_progress: bool = True
 ) -> AuditResult:
     """
     Comprehensive SEO audit using all available check modules.
@@ -66,6 +89,7 @@ async def comprehensive_audit(
         seed_url: Starting URL to audit
         max_pages: Maximum pages to crawl
         enable_all_checks: If False, only run basic checks (faster)
+        show_progress: If True, display progress bar during crawl
 
     Returns:
         Enhanced AuditResult with all findings and scores
@@ -121,71 +145,104 @@ async def comprehensive_audit(
                     to_visit.append(sitemap_url)
 
         crawl_count = 0
-        while to_visit and crawl_count < max_pages:
-            url = to_visit.popleft()
-            if url in visited:
-                continue
-            visited.add(url)
 
-            # Check robots.txt permission
-            if robots_exists and not robots_analyzer.can_fetch(url):
-                logger.debug(f"Skipping {url} (disallowed by robots.txt)")
-                continue
-
-            # Fetch page
-            resp = await fetch_page(client, url)
-            if resp is None:
-                all_issues.append(
-                    Issue(url=url, type="fetch_error", severity="high", detail="Request failed")
-                )
-                continue
-
-            status = resp.status_code
-            response_headers = dict(resp.headers)
-            html = (
-                resp.text
-                if resp.headers.get("content-type", "").startswith("text/html")
-                else ""
+        # Create progress bar context (or dummy context if disabled)
+        progress_context = (
+            Progress(
+                SpinnerColumn(),
+                TextColumn("[progress.description]{task.description}"),
+                BarColumn(),
+                TaskProgressColumn(),
+                TextColumn("[cyan]{task.fields[current_url]}"),
             )
+            if show_progress
+            else _DummyProgress()
+        )
 
-            page = EnhancedPage(
-                url=url, status=status, html=html, headers=response_headers
-            )
+        with progress_context as progress:
+            crawl_task = progress.add_task(
+                "[cyan]Crawling pages...",
+                total=max_pages,
+                current_url=""
+            ) if show_progress else None
 
-            # Check for HTTP errors
-            if status >= 400:
-                all_issues.append(
-                    Issue(url=url, type="http_error", severity="high", detail=f"Status {status}")
+            while to_visit and crawl_count < max_pages:
+                url = to_visit.popleft()
+                if url in visited:
+                    continue
+                visited.add(url)
+
+                # Check robots.txt permission
+                if robots_exists and not robots_analyzer.can_fetch(url):
+                    logger.debug(f"Skipping {url} (disallowed by robots.txt)")
+                    continue
+
+                # Update progress bar with current URL
+                if show_progress:
+                    short_url = url if len(url) <= 50 else url[:47] + "..."
+                    progress.update(crawl_task, current_url=short_url)
+
+                # Fetch page
+                resp = await fetch_page(client, url)
+                if resp is None:
+                    all_issues.append(
+                        Issue(url=url, type="fetch_error", severity="high", detail="Request failed")
+                    )
+                    if show_progress:
+                        progress.advance(crawl_task)
+                    crawl_count += 1
+                    continue
+
+                status = resp.status_code
+                response_headers = dict(resp.headers)
+                html = (
+                    resp.text
+                    if resp.headers.get("content-type", "").startswith("text/html")
+                    else ""
                 )
-            else:
-                # Extract basic metadata
-                title, meta_desc, noindex = extract_meta(html)
-                page.title = title
-                page.meta_desc = meta_desc
-                page.noindex = noindex
 
-                # Run comprehensive checks on this page
-                page_issues = await _run_page_checks(
-                    page, site_root, enable_all_checks, client
+                page = EnhancedPage(
+                    url=url, status=status, html=html, headers=response_headers
                 )
-                all_issues.extend(page_issues)
 
-                # Extract links for crawling
-                # BUGFIX: Cap queue size to prevent unbounded memory growth
-                # See: BUGFIXES.md #6
-                links = extract_links(html, url)
-                for link in links:
-                    if same_host(link, host):
-                        page.links.add(link)
-                        # Only add to queue if we haven't visited and queue isn't full
-                        if link not in visited and len(to_visit) < max_pages:
-                            to_visit.append(link)
+                # Check for HTTP errors
+                if status >= 400:
+                    all_issues.append(
+                        Issue(url=url, type="http_error", severity="high", detail=f"Status {status}")
+                    )
+                else:
+                    # Extract basic metadata
+                    title, meta_desc, noindex = extract_meta(html)
+                    page.title = title
+                    page.meta_desc = meta_desc
+                    page.noindex = noindex
 
-            pages.append(page)
-            crawl_count += 1
+                    # Run comprehensive checks on this page
+                    page_issues = await _run_page_checks(
+                        page, site_root, enable_all_checks, client
+                    )
+                    all_issues.extend(page_issues)
 
-            if crawl_count % 10 == 0:
-                logger.info(f"Crawled {crawl_count}/{max_pages} pages...")
+                    # Extract links for crawling
+                    # BUGFIX: Cap queue size to prevent unbounded memory growth
+                    # See: BUGFIXES.md #6
+                    links = extract_links(html, url)
+                    for link in links:
+                        if same_host(link, host):
+                            page.links.add(link)
+                            # Only add to queue if we haven't visited and queue isn't full
+                            if link not in visited and len(to_visit) < max_pages:
+                                to_visit.append(link)
+
+                pages.append(page)
+                crawl_count += 1
+
+                # Update progress bar
+                if show_progress:
+                    progress.advance(crawl_task)
+                elif crawl_count % 10 == 0:
+                    # Keep old logging behavior when progress is disabled
+                    logger.info(f"Crawled {crawl_count}/{max_pages} pages...")
 
     logger.info("Phase 3: Running post-crawl analysis...")
 
