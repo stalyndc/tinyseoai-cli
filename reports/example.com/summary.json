@@ -3,6 +3,12 @@
   "pages_scanned": 1,
   "issues": [
     {
+      "url": "https://example.com/robots.txt",
+      "type": "robots_missing",
+      "severity": "low",
+      "detail": null
+    },
+    {
       "url": "https://example.com/",
       "type": "meta_description_missing",
       "severity": "low",
@@ -11,7 +17,7 @@
   ],
   "meta": {
     "max_pages": 50,
-    "timestamp": "2025-11-11T01:35:29.265000Z",
+    "timestamp": "2025-11-11T23:55:26.802408Z",
     "agent": "tinyseoai/0.1.0"
   }
 }

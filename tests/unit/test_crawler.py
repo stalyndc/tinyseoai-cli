@@ -24,8 +24,9 @@ async def test_fetch_page_success(mock_httpx_client, mock_response, sample_html)
     assert response is not None
     assert response.status_code == 200
     assert response.text == sample_html
+    # Check that the correct timeout configuration was used
     mock_httpx_client.get.assert_called_once_with(
-        url, timeout=15.0, follow_redirects=True
+        url, timeout=httpx.Timeout(10.0, connect=5.0), follow_redirects=True
     )
 
 
