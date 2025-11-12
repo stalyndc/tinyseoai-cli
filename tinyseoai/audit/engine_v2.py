@@ -16,6 +16,7 @@ from rich.progress import Progress, SpinnerColumn, TextColumn, BarColumn, TaskPr
 
 from ..data.models import AuditResult, Issue
 from ..data.scoring import HealthScoreCalculator, prioritize_issues
+from ..utils.rate_limiter import RateLimiter
 from ..utils.url import normalize_url, same_host
 from .checks.content import ContentAnalyzer, DuplicateContentDetector
 from .checks.indexability import IndexabilityChecker, check_pagination
@@ -111,6 +112,7 @@ async def comprehensive_audit(
     # Phase 1: Analyze robots.txt
     logger.info("Phase 1: Analyzing robots.txt...")
     robots_analyzer = RobotsAnalyzer(site_root)
+    rate_limiter = RateLimiter(requests_per_second=2.0)
 
     async with httpx.AsyncClient(headers=headers, http2=True) as client:
         robots_exists = await robots_analyzer.fetch_and_parse(client)
@@ -124,6 +126,10 @@ async def comprehensive_audit(
                     detail="No robots.txt found",
                 )
             )
+
+        # Update rate limiter if robots.txt specifies crawl delay
+        if robots_analyzer.crawl_delay:
+            rate_limiter.set_crawl_delay(robots_analyzer.crawl_delay)
 
         # Discover sitemaps if enabled
         sitemap_urls = []
@@ -181,6 +187,9 @@ async def comprehensive_audit(
                 if show_progress:
                     short_url = url if len(url) <= 50 else url[:47] + "..."
                     progress.update(crawl_task, current_url=short_url)
+
+                # Respect politeness policies before each request
+                await rate_limiter.wait()
 
                 # Fetch page
                 resp = await fetch_page(client, url)

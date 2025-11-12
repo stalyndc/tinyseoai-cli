@@ -28,6 +28,7 @@
 - **Multi-Agent AI System** – Five specialized AI agents generate insights and prioritized recommendations.
 - **Multiple Report Formats** – Export JSON summaries plus Excel/PDF reports for stakeholders.
 - **Deep Analysis** – Robots.txt, sitemaps, Core Web Vitals heuristics, link structure, and more.
+- **Polite Crawling** – Built-in rate limiter honors robots.txt crawl-delay to avoid hammering servers.
 - **Code Fix Generation** – Ready-to-apply snippets for common SEO problems.
 
 ### SEO Checks
@@ -238,6 +239,10 @@ TINYSEOAI_AGENT_PLAN=premium
 ### Config File
 
 The CLI stores preferences at `~/.config/tinyseoai/config.json`. Edit it to change defaults such as plan, output directories, or agent settings.
+
+### Crawling Rate Limits
+
+The crawler now enforces a polite default of **2 requests per second** and automatically slows down further if a site's `robots.txt` defines a `crawl-delay`. This behavior is handled by `tinyseoai.utils.rate_limiter.RateLimiter` and keeps audits from overwhelming origin servers.
 
 ### Pre-commit and Tests
 

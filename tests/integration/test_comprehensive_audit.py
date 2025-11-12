@@ -20,7 +20,8 @@ async def test_comprehensive_audit_example_com():
 
     # Assert
     assert result is not None
-    assert result.site == url
+    # URL may be normalized with trailing slash
+    assert result.site.rstrip('/') == url.rstrip('/')
     assert result.pages_scanned > 0
     assert result.pages_scanned <= max_pages
 
